@@ -1,0 +1,62 @@
+@font-face {
+    font-family: Cinzel;
+    font-display:swap;
+    src: local('Cinzel'),local('Cinzel-Regular'),
+    url("../utils/Cinzel-Regular.otf") format("opentype");
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    outline:none;
+}
+
+body{
+    background-color:#F9F9F9;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+.container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family:'Cinzel';
+}
+
+.discover-image{
+    width:80%;
+    margin:0 auto;
+    height:450px;
+    margin-bottom:2em;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &::after{
+        background-position:bottom !important; 
+    }
+
+    color:#efe8e8cf;
+    letter-spacing: 2px;
+
+    & p{
+        margin-bottom:1em;
+        font-size:2rem;
+        display: flex;
+        flex-direction: column;
+        & span{
+        text-align: center;
+        margin-top:0.5em;
+        }
+    }
+
+    & a{
+        padding:0.8em;
+        border:1px solid;
+        font-size:1.5rem;
+        letter-spacing: 2px;
+    }
+    
+}

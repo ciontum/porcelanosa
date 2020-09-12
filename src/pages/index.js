@@ -6,6 +6,7 @@ import Scroll from "../components/Home/Scroll"
 import Image from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
 import Navigation from "../components/Navigation"
+import { Link } from "gatsby"
 
 export default props=> {
 
@@ -28,7 +29,7 @@ export default props=> {
       const replacedB=Number(b.node.childImageSharp.fixed.originalName.replace(/.(jpeg|png|gif)/,""))
       
       return replacedA-replacedB
-    })
+    })  
 
     return secondScroll
   })
@@ -88,7 +89,7 @@ export default props=> {
     <BackgroundImage fluid={props.data.discover.childImageSharp.fluid} className="discover-image">
     <div className="header-filter"></div>
       <p>VREI SA DESCOPERI MAI <span>MULTE ?</span></p>
-      <a>CATALOAGE</a>
+      <Link to="/cataloage">CATALOAGE</Link>
     </BackgroundImage>
   </Layout>
   )

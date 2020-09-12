@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'gatsby-image'
+import { Link } from 'gatsby'
 // const cataloageMocksBaie=[{image:TestPNG,primary:'Altissima',secondary:'PIATRA NATURALA'},{image:TestPNG,primary:'Altissima',secondary:'PIATRA NATURALA'},{image:TestPNG,primary:'Altissima',secondary:'PIATRA NATURALA'},{image:TestPNG,primary:'Altissima',secondary:'PIATRA NATURALA'},{image:TestPNG,primary:'Altissima',secondary:'PIATRA NATURALA'}]
 const CataloageCategory=({name,cataloage})=>{
     console.log(cataloage)
@@ -11,8 +12,10 @@ const CataloageCategory=({name,cataloage})=>{
                 {
                     cataloage.map(catalog=>{
                         return <div className="cataloage-category_content-group">
-                            <Image fixed={catalog.image.childImageSharp.fixed} alt='catalog' />
+                            <a href={catalog.pdf} target="_blank" >
+                            <Image fixed={catalog.image.childImageSharp.fixed} alt='catalog'  />
                             <p className="cataloage-category_content-group-secondary">{catalog.secondary}</p>
+                            </a>
                             <hr/>
                             <p>{catalog.primary}</p>
                         </div>

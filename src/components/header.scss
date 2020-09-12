@@ -19,6 +19,7 @@ backdrop-filter: brightness(0.5) !important;
     font-size:3em;
     color:white;
     display: flex;
+    flex-wrap: wrap;
     & p{
         letter-spacing: 3px;
         margin-right:0.2em;
@@ -57,6 +58,12 @@ backdrop-filter: brightness(0.5) !important;
                 font-size:1.7rem;
             }
         }
+    }
+}
+
+.header-mid{
+    &:after{
+        background-position:center !important;
     }
 }
 

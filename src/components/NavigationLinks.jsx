@@ -24,7 +24,7 @@ const [isProductsMenu,setIsProductsMenu]=useState(false)
             <li><Link to="/despre" activeStyle={{borderBottom:'1px solid #ffffffa1'}}>
             DESPRE
             </Link></li>
-            <li><Link>
+            <li><Link to="/contact" activeStyle={{borderBottom:'1px solid #ffffffa1'}}>
             CONTACT
             </Link></li>
     </ul>

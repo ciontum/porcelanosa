@@ -59,6 +59,12 @@
             align-self: center;
             }
         }
+        
     }
 }
 
+@media (max-width:900px){
+    .scroll_content{
+    justify-content: center ;
+    }
+}

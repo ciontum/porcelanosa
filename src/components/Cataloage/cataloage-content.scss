@@ -41,6 +41,11 @@
             // }
 
         }
+        @media (max-width:570px){
+            &-group{
+                margin-right:0;
+            }
+        }
     }
     & hr{
         width:25px;

@@ -28,7 +28,7 @@ const Footer=()=>{
                     <p>FACEBOOK</p>
                 </div>
 
-                <div className="footer_top-group">
+                <div className="footer_top-group display-none">
                     <h3>MENIU</h3>
                     <p>ACASA</p>
                     <p>PRODUSE</p>

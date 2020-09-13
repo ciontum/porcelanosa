@@ -36,12 +36,12 @@
         font-family: 'Montserrat';
         margin-top:2em;
         display:flex;
-        width:80%;
+        width:90%;
         justify-content: space-between;
         margin:0 auto;
         color:#4D4B4B;
         font-size:1em;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         & h3{
             text-align: center;
             margin-top:1em;
@@ -49,6 +49,8 @@
         &-group{
             display:flex;
             flex-direction: column;
+            width: 22%;
+            padding: 0% 1%;
             & hr{
             margin-top:0.4em;
             margin-bottom:2em;

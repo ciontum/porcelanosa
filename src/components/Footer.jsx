@@ -23,14 +23,14 @@ const Footer=()=>{
                 <Image fixed={file.childImageSharp.fixed} alt="logo" />
                 <div className="footer_top-right">
                 <div className="footer_top-group">
-                    <h3>NE GASITI PE</h3>
+                    <h3>NE GĂSIȚI PE</h3>
                     <p>INSTAGRAM</p>
                     <p>FACEBOOK</p>
                 </div>
 
                 <div className="footer_top-group display-none">
                     <h3>MENIU</h3>
-                    <p>ACASA</p>
+                    <p>ACASĂ</p>
                     <p>PRODUSE</p>
                     <p>CATALOAGE</p>
                     <p>DESPRE NOI</p>
@@ -39,8 +39,8 @@ const Footer=()=>{
 
                 <div className="footer_top-group">
                     <h3>CONTACT</h3>
-                    <p>0771 247 916</p>
-                    <p>mail@test.ro</p>
+                    <p>0259 410 170</p>
+                    <p>contact@maisondesign.ro</p>
                     <p>DACIA NR.4 ORADEA</p>
                 </div>
             </div>

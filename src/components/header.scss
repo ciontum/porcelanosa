@@ -1,5 +1,5 @@
 .header-image{
-    height:100vh;
+    height:120vh;
 }
 .header-filter
 {
@@ -38,7 +38,7 @@ backdrop-filter: brightness(0.5) !important;
     height:100vh;
 }
 .header-cataloage{
-    max-height:40vh;
+    max-height:50vh;
     &:after{
         background-position: left;
     }

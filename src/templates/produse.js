@@ -50,12 +50,12 @@ const [cataloageArr,setCataloageArr]=useState(()=>{
         {
           cataloageArr.cataloage && cataloageArr.cataloage.length &&
         <div className="produse-cataloage">
-            <CataloageCategory cataloage={cataloageArr.cataloage} name="DESCOPERA MAI MULTE IN CATALOAGE" />
+            <CataloageCategory cataloage={cataloageArr.cataloage} name="DESCOPERĂ MAI MULTE ÎN CATALOAGE" />
         </div>
         }
         <BackgroundImage fluid={data.data.discover2.childImageSharp.fluid} className="discover-image">
     <div className="header-filter"></div>
-      <p>Ai un plan? Contacteaza-ne</p>
+      <p>Ai un plan? Contactează-ne</p>
       <Link to="/contact">Contact</Link>
     </BackgroundImage>
 

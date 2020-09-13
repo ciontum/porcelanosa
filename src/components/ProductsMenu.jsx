@@ -9,7 +9,7 @@ const images=graphql`query{
     edges{
       node{
         childImageSharp{
-          fixed(width:800,height:380){
+          fixed(width:600,height:380){
             ...GatsbyImageSharpFixed
             originalName
           }
@@ -38,14 +38,14 @@ const ProductsMenu=({className})=>{
         if(mainActive==='pardoseli')
         return ["CERAMICA","PORTELAN","LEMN NATURAL","PIATRA NATURALA","PARCHET-LAMINAT","VINYL","ADERENT"]
 
-        if(mainActive==="gresie")
-        return ['CERAMICA','PORTELAN','LEMN NATURAL',"PIATRA NATURALA","PARCHET LAMINAT","VINYL","ADERENT",'MOZAIC',"KRION"]
+        if(mainActive==='gresie')
+        return ["CERAMICA","PORTELAN","LEMN NATURAL","PIATRA NATURALA","PARCHET LAMINAT","VINYL","ADERENT","MOZAIC", "KRION"]
 
-        if(mainActive==="bucatarie")
-        return ['MOBILA',"CHIUVETE ROBINETE","MESE DE LUCRU"]
+        if(mainActive==='bucatarie')
+        return ["MOBILA","CHIUVETE ROBINETE","MESE DE LUCRU"]
 
         if(mainActive==='baie')
-        return ['MOBILA','DUSURI','CAZI',"CHIUVETE ROBINETE",'TOALETE','ACCESORII']
+        return ["MOBILA","DUSURI","CAZI","CHIUVETE ROBINETE",'TOALETE',"ACCESORII"]
         return []
     }
     const getImageByName=(name)=>{
@@ -63,11 +63,11 @@ const ProductsMenu=({className})=>{
                     </li>
 
                     <li className={mainActive==="gresie" ? 'products-menu_active' : ''} onClick={()=>setMainActive('gresie-si-faianta')}>
-                        GRESIE SI FAIANTA
+                        GRESIE ȘI FAIANȚĂ
                     </li>
 
                     <li className={mainActive==="bucatarie" ? 'products-menu_active' : ''} onClick={()=>setMainActive('bucatarie')}>
-                        BUCATARIE
+                        BUCĂTĂRIE
                     </li>
 
                     <li className={mainActive==="baie" ? 'products-menu_active' : ''} onClick={()=>setMainActive('baie')}>
@@ -89,7 +89,7 @@ const ProductsMenu=({className})=>{
 
             <div className="products-menu_image">
                 <Image fixed={mainActive==="pardoseli" ? getImageByName('pardoseli.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive==="gresie" ? getImageByName('gresie si faianta.png').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive==="gresie" ? getImageByName('pardoseli.png').node.childImageSharp.fixed : null} />
                 <Image fixed={mainActive==="bucatarie" ? getImageByName('bucatarie.png').node.childImageSharp.fixed : null} />
                 <Image fixed={mainActive==="baie" ?  getImageByName('baie.png').node.childImageSharp.fixed : null } />
             </div>

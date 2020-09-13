@@ -5,18 +5,18 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import Image from 'gatsby-image'
 const images = graphql`query{
     allFile(filter:{relativeDirectory:{eq:"menu"}})
-{
-    edges{
-      node{
-        childImageSharp{
-          fixed(width:600,height:380){
-            ...GatsbyImageSharpFixed
-            originalName
-          }
+    {
+        edges{
+            node{
+                childImageSharp{
+                    fixed(width:600,height:380){
+                        ...GatsbyImageSharpFixed
+                        originalName
+                    }
+                }
+            }
         }
-      }
     }
-}
 }
   `
 
@@ -27,6 +27,7 @@ const ProductsMenu = ({ className }) => {
     useEffect(() => {
         setSecondaryList(getSecondaryList())
     }, [mainActive])
+
     const { allFile } = useStaticQuery(images)
     useEffect(() => {
         document.getElementById('header-filter') && document.getElementById('header-filter').classList.add("dark-filter")
@@ -34,6 +35,7 @@ const ProductsMenu = ({ className }) => {
             document.getElementById('header-filter') && document.getElementById('header-filter').classList.remove('dark-filter')
         }
     }, [])
+
     const getSecondaryList = () => {
         if (mainActive === 'pardoseli')
             return ["CERAMICĂ", "PORȚELAN", "LEMN NATURAL", "PIATRĂ NATURALĂ", "PARCHET-LAMINAT", "VINYL", "ADERENT"]
@@ -48,12 +50,13 @@ const ProductsMenu = ({ className }) => {
             return ["MOBILĂ", "DUȘURI", "CĂZI", "CHIUVETE ROBINETE", 'TOALETE', "ACCESORII"]
         return []
     }
-    const getImageByName = (name) => {
 
+    const getImageByName = (name) => {
         let image = null
         image = allFile.edges.find(file => file.node.childImageSharp.fixed.originalName === name)
         return image
     }
+
     return (
         <div className={`products-menu ${className ? className : ''}`}>
             <div className="products-menu_first">
@@ -80,8 +83,10 @@ const ProductsMenu = ({ className }) => {
                 <ul>
                     {
                         secondaryList && secondaryList.map(secondary => {
-
-                            return <a href='#' onClick={() => document.location.pathname = `produse/${mainActive}/${secondary.replace(/ /g, "-").toLowerCase()}`}>{secondary}</a>
+                            let link = secondary.replace("Ă", "A")
+                            link = link.replace("Ș", "S")
+                            link = link.replace("Ț", "T").toLowerCase()
+                            return <a href='#' onClick={() => document.location.pathname = `produse/${mainActive}/${link.replace(/ /g, "-").toLowerCase()}`}>{secondary}</a>
                         })
                     }
                 </ul>

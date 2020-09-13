@@ -14,7 +14,6 @@ export default props => {
           <p>COLECȚIILE PORCELANOSA</p>
         </div>
       </Header>
-
       <CataloageContent />
     </Layout>
   )

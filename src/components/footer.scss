@@ -15,7 +15,7 @@
     margin: 0 auto;
     & h3{
         color:#EFE8E8;
-        font-size:1em;
+        font-size: calc(8px + 8 * ((100vw - 300px) / (1600 - 300)));
         letter-spacing: 1px;
         &::first-letter{
             font-size:1.1em;

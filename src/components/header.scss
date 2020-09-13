@@ -21,12 +21,14 @@
 
 .header-bottom {
     margin: auto auto 8%;
-    font-size: calc(38px + 16 * ((100vw - 300px) / (1600 - 300)));
+    font-size: calc(30px + 18 * ((100vw - 300px) / (1600 - 300)));
     color: white;
     display: flex;
     width: 70%;
     flex-wrap: wrap;
     justify-content: center;
+    position: absolute;
+    top: 78%;
 
     & p {
         letter-spacing: 3px;
@@ -34,7 +36,7 @@
     }
 
     & p::first-letter {
-        font-size: calc(50px + 18 * ((100vw - 300px) / (1600 - 300)));
+        font-size: calc(42px + 18 * ((100vw - 300px) / (1600 - 300)));
     }
 }
 
@@ -87,11 +89,12 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 740px) {
 
     .header-bottom {
-        font-size: calc(23px + 16 * ((100vw - 300px) / (1600 - 300)));
-        
+        top: 70%;
+        font-size: calc(25px + 16 * ((100vw - 300px) / (1600 - 300)));
+
         & p::first-letter {
             font-size: calc(33px + 18 * ((100vw - 300px) / (1600 - 300)));
         }

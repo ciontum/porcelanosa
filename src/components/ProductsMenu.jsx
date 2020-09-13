@@ -36,16 +36,16 @@ const ProductsMenu=({className})=>{
     }, [])
     const getSecondaryList=()=>{
         if(mainActive==='pardoseli')
-        return ["CERAMICA","PORTELAN","LEMN NATURAL","PIATRA NATURALA","PARCHET-LAMINAT","VINYL","ADERENT"]
+        return ["CERAMICĂ","PORȚELAN","LEMN NATURAL","PIATRĂ NATURALĂ","PARCHET-LAMINAT","VINYL","ADERENT"]
 
         if(mainActive==='gresie')
-        return ["CERAMICA","PORTELAN","LEMN NATURAL","PIATRA NATURALA","PARCHET LAMINAT","VINYL","ADERENT","MOZAIC", "KRION"]
+        return ["CERAMICĂ","PORȚELAN","LEMN NATURAL","PIATRĂ NATURALĂ","PARCHET LAMINAT","VINYL","ADERENT","MOZAIC", "KRION"]
 
         if(mainActive==='bucatarie')
-        return ["MOBILA","CHIUVETE ROBINETE","MESE DE LUCRU"]
+        return ["MOBILĂ","CHIUVETE ROBINETE","MESE DE LUCRU"]
 
         if(mainActive==='baie')
-        return ["MOBILA","DUSURI","CAZI","CHIUVETE ROBINETE",'TOALETE',"ACCESORII"]
+        return ["MOBILĂ","DUȘURI","CĂZI","CHIUVETE ROBINETE",'TOALETE',"ACCESORII"]
         return []
     }
     const getImageByName=(name)=>{

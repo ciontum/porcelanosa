@@ -6,6 +6,17 @@
     background:#31363D;
 }
 
+.footer_logo {
+    width: 10%;
+    height: 10%;
+
+
+    @media (min-width: 2000px) {
+        width: 20%;
+        height: 20%;
+    }
+}
+
 .footer_top {
     display:flex;
     justify-content: space-evenly;
@@ -78,6 +89,10 @@
         flex-direction: column;
         flex-wrap: nowrap;
     }
+
+    @media (min-width: 2000px) {
+        font-size: 1.5vw;
+    }
 }
 
 .footer_top-right {
@@ -91,6 +106,10 @@
         width: 100%;
         justify-content: center;
     }
+
+    @media (min-width: 2000px) {
+        font-size: 1.5vw;
+    }
 }
 
 .footer_links {
@@ -102,4 +121,14 @@
     color: #efe8e891;
     font-size: 0.9em;
     cursor: pointer;
+
+    @media (min-width: 2000px) {
+        font-size: 1.5vw;
+    }
+}
+
+h3 {
+    @media (min-width: 2000px) {
+        font-size: 1.5vw;
+    }
 }

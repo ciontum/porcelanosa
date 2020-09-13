@@ -5,11 +5,10 @@ import Image from "gatsby-image"
 
 export const query = graphql`
 {
-  file(relativePath:{eq:"logo.png"})
-    {
+  file (relativePath:{eq:"logo.png"}) {
       childImageSharp{
-        fixed(width:120){
-          ...GatsbyImageSharpFixed
+        fluid {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -21,7 +20,7 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer_top">
-                <Image fixed={file.childImageSharp.fixed} alt="logo" />
+                <Image fluid={file.childImageSharp.fluid} alt="logo" className="footer_logo" />
                 <div className="footer_top-right">
                     <div className="footer_top-group">
                         <h3>NE GĂSIȚI PE</h3>

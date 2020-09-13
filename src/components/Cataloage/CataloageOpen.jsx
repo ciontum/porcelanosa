@@ -1,8 +1,7 @@
-import React from 'react'
-import "./cataloage-content.scss"
-import CataloageCategory from './CataloageCategory'
-import { useState } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import React, { useState } from 'react'
+import styles from "./cataloage-open.module.scss"
+import CatalogCard from "./CatalogCard"
+import { graphql, useStaticQuery } from "gatsby"
 
 const cataloage = graphql`
 {
@@ -82,8 +81,8 @@ cataloageBaie:allFile(filter:{relativeDirectory:{eq:"cataloage/Baie"}}){
   }
 }
 `
-const CataloageContent = () => {
 
+const CataloageOpen = () => {
   const formatCataloageArr = (cataloageArr) => {
     const pdfs = cataloageArr.filter(catalog => catalog.node.extension === 'pdf')
     const images = cataloageArr.filter(catalog => catalog.node.extension === 'png')
@@ -100,8 +99,10 @@ const CataloageContent = () => {
 
     return cataloage
   }
+
   const { cataloageBaie, cataloageBucatarie, cataloageMobila, pardoseli, solutiiTehnice } = useStaticQuery(cataloage)
-  const [cataloageArr, setCataloageArr] = useState(() => {
+
+  const [cataloageArr] = useState(() => {
     const cataloageBaieArr = formatCataloageArr(cataloageBaie.edges)
 
     const cataloageBucatarieArr = formatCataloageArr(cataloageBucatarie.edges)
@@ -121,16 +122,63 @@ const CataloageContent = () => {
     }
   })
 
+  const [currentPDF, setCurrentPDf] = useState(() => {
+
+  })
+
+  function changePDF(subtitle, index) {
+    if (subtitle === "Baie")
+      setCurrentPDf(cataloageArr.cataloageBaie[index].pdf);
+    else if (subtitle === "Bucatarie")
+      setCurrentPDf(cataloageArr.cataloageBucatarie[index].pdf);
+    else if (subtitle === "Mobila")
+      setCurrentPDf(cataloageArr.cataloageMobila[index].pdf);
+    else if (subtitle === "Solutii tehnice")
+      setCurrentPDf(cataloageArr.cataloageTehnice[index].pdf);
+    else
+      setCurrentPDf(cataloageArr.cataloagePardoseli[index].pdf);
+  }
+
   return (
-    <div className="cataloage-content">
-      <CataloageCategory cataloage={cataloageArr.cataloageBaie} name="Baie" />
-      <CataloageCategory cataloage={cataloageArr.cataloageBucatarie} name="Bucatarie" />
-      <CataloageCategory cataloage={cataloageArr.cataloageMobila} name="Mobila" />
-      <CataloageCategory cataloage={cataloageArr.cataloagePardoseli} name="Pardoseli, Gresie si Faianta" />
-      <CataloageCategory cataloage={cataloageArr.cataloageTehnice} name="Solutii tehnice" />
+    <div className={styles.container}>
+      <div className={styles.catalogs}>
+        {
+          cataloageArr.cataloageBaie.map((catalog, index) => (
+            <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Baie"
+              pdf={catalog.pdf} onClick={changePDF} />
+          ))
+        }
+        {
+          cataloageArr.cataloageBucatarie.map((catalog, index) => (
+            <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Bucatarie"
+              pdf={catalog.pdf} onClick={changePDF} />
+          ))
+        }
+        {
+          cataloageArr.cataloageMobila.map((catalog, index) => (
+            <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Mobila"
+              pdf={catalog.pdf} onClick={changePDF} />
+          ))
+        }
+        {
+          cataloageArr.cataloagePardoseli.map((catalog, index) => (
+            <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Pardoseli, Gresie si Faianta"
+              pdf={catalog.pdf} onClick={changePDF} />
+          ))
+        }
+        {
+          cataloageArr.cataloageTehnice.map((catalog, index) => (
+            <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Solutii tehnice"
+              pdf={catalog.pdf} onClick={changePDF} />
+          ))
+        }
+
+      </div>
+      <div className={styles.pdf__viewer}>
+        <iframe src={currentPDF} className={styles.pdf} />
+      </div>
     </div>
   )
 }
 
-
-export default CataloageContent
+export default CataloageOpen

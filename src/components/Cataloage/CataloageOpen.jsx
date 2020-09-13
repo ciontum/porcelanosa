@@ -142,30 +142,40 @@ const CataloageOpen = () => {
   return (
     <div className={styles.container}>
       <div className={styles.catalogs}>
+        <h2> Baie </h2>
+        <hr />
         {
           cataloageArr.cataloageBaie.map((catalog, index) => (
             <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Baie"
               pdf={catalog.pdf} onClick={changePDF} />
           ))
         }
+        <h2> Bucatarie </h2>
+        <hr />
         {
           cataloageArr.cataloageBucatarie.map((catalog, index) => (
             <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Bucatarie"
               pdf={catalog.pdf} onClick={changePDF} />
           ))
         }
+        <h2> Mobila </h2>
+        <hr />
         {
           cataloageArr.cataloageMobila.map((catalog, index) => (
             <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Mobila"
               pdf={catalog.pdf} onClick={changePDF} />
           ))
         }
+        <h2> Pardoseli, Gresie si Faianta </h2>
+        <hr />
         {
           cataloageArr.cataloagePardoseli.map((catalog, index) => (
             <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Pardoseli, Gresie si Faianta"
               pdf={catalog.pdf} onClick={changePDF} />
           ))
         }
+        <h2> Solutii tehnice </h2>
+        <hr />
         {
           cataloageArr.cataloageTehnice.map((catalog, index) => (
             <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Solutii tehnice"

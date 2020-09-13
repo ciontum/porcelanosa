@@ -10,12 +10,12 @@
             text-decoration: none;
         }
         cursor:pointer;
-        font-size:1.2em;
+        font-size: calc(12px + 12 * ((100vw - 300px) / (1600 - 300)));
         color:white;
         letter-spacing: 2px;
         margin-right:2em;
         &::first-letter{
-            font-size:1.3em;
+        font-size: calc(14px + 12 * ((100vw - 300px) / (1600 - 300)));
         }
     }
 }
@@ -25,9 +25,9 @@
     display:flex;
     width: 40%;
     justify-content: space-between;
-    padding-right:2em;
+    padding-right:3%;
     & li{
-        margin-right:0em;
+        margin-right:0%;
     }
 
 }

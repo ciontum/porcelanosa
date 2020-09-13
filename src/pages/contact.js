@@ -10,7 +10,7 @@ import { withScriptjs, withGoogleMap, GoogleMap, GoogleMapReact, Marker } from "
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
-        defaultZoom={8}
+        defaultZoom={17}
         defaultCenter={{ lat: 47.067188, lng: 21.929793 }}
     >
         {props.isMarkerShown && <Marker position={{ lat: 47.067188, lng: 21.929793 }} />}
@@ -40,20 +40,20 @@ export default props => {
                                 <ManSVG />
                                 <h3>MANEA BENIAMIN</h3>
                                 <span>ADMINISTRATOR</span>
-                                <p>0743 507 811</p>
+                                <p>+40 743 507 811</p>
                             </div>
                             <div className="contact-left_personal-group">
                                 <ManSVG />
                                 <h3>TOMA EMANUEL</h3>
                                 <span>ADMINISTRATOR</span>
-                                <p>0743 507 811</p>
+                                <p>+40 735 859 686</p>
                             </div>
                         </div>
                     </div>
                     <div className="contact-right">
                         <MyMapComponent
                             isMarkerShown
-                            googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl3dEGwPZbUtuteaZwew7yB7d36WMXArI&v=3.exp&libraries=geometry,drawing,places"
                             loadingElement={<div style={{ height: `100%` }} />}
                             containerElement={<div style={{ height: `100%` }} />}
                             mapElement={<div style={{ height: `100%` }} />}

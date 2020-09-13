@@ -6,7 +6,7 @@
     height:380px;
     z-index: 500;
     &_first{
-        width:300px;
+        width:25%;
         background-color:#e7e7e7;
 
         & ul{
@@ -22,7 +22,7 @@
     }
 
     &_second{
-        width:320px;
+        width:25%;
         background-color: #F5F5F5;
 
         & ul{
@@ -70,6 +70,10 @@
             background: #86868A;
         }
     }
+}
+
+.products-menu_image .gatsby-image-wrapper picture img {
+    margin-left: 0% !important;
 }
 
 

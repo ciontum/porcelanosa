@@ -62,7 +62,7 @@ const ProductsMenu=({className})=>{
                         PARDOSELI
                     </li>
 
-                    <li className={mainActive==="gresie" ? 'products-menu_active' : ''} onClick={()=>setMainActive('gresie-si-faianta')}>
+                    <li className={mainActive==="gresie" ? 'products-menu_active' : ''} onClick={()=>setMainActive('gresie')}>
                         GRESIE ȘI FAIANȚĂ
                     </li>
 
@@ -89,7 +89,7 @@ const ProductsMenu=({className})=>{
 
             <div className="products-menu_image">
                 <Image fixed={mainActive==="pardoseli" ? getImageByName('pardoseli.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive==="gresie" ? getImageByName('pardoseli.png').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive==="gresie" ? getImageByName('gresiefaianta.png').node.childImageSharp.fixed : null} />
                 <Image fixed={mainActive==="bucatarie" ? getImageByName('bucatarie.png').node.childImageSharp.fixed : null} />
                 <Image fixed={mainActive==="baie" ?  getImageByName('baie.png').node.childImageSharp.fixed : null } />
             </div>

@@ -13,7 +13,7 @@ const CataloageCategory=({name,cataloage})=>{
                     cataloage.map(catalog=>{
                         return <div className="cataloage-category_content-group">
                             <a href={catalog.pdf} target="_blank" >
-                            <Image fixed={catalog.image.childImageSharp.fixed} alt='catalog'  />
+                            <Image fixed={catalog.image.childImageSharp.fixed} alt='catalog'/>
                             <p className="cataloage-category_content-group-secondary">{catalog.secondary}</p>
                             </a>
                             <hr/>

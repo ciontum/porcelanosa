@@ -7,6 +7,7 @@ import Image from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
 import Navigation from "../components/Navigation"
 import { Link } from "gatsby"
+import CataloageContent from "../components/Cataloage/CataloageContent"
 
 export default props => {
 
@@ -69,6 +70,7 @@ export default props => {
             firstScrollElements.map(scroll => {
 
               scroll.name = scroll.name.replace(/.png/, '')
+              console.log(scroll.name);
               return <div className="scroll_content-group">
                 <Link to="/cataloage">
                   <Image fixed={scroll.image} alt="scroll" />

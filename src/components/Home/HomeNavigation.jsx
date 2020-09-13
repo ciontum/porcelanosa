@@ -20,7 +20,7 @@ export const query=graphql`
 `
 
 const HomeNavigation=({classNameLinks})=>{
-  const [{isOpen,setIsOpen}]=useState(false)
+  const [isOpen,setIsOpen]=useState(false)
     const {navigationLogo}=useStaticQuery(query)
     return(
         <div className="home-navigation">

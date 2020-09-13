@@ -38,7 +38,7 @@ export default props => {
   useEffect(() => {
     const onScroll = e => {
       setScrollTop(e.target.documentElement.scrollTop);
-      console.log(scrollRef)
+      console.log(scrollRef.current.offsetTop, scrollTop)
     };
     window.addEventListener("scroll", onScroll);
 
@@ -48,8 +48,12 @@ export default props => {
   return (
     <Layout>
 
-      {scrollRef.current && (scrollTop >= scrollRef.current.offsetTop) &&
-        <Navigation />}
+      {/* {scrollRef.current && (scrollTop >= scrollRef.current.offsetTop) &&
+        <Navigation />} */}
+      {
+        scrollRef.current && (scrollTop >= 740) &&
+        <Navigation />
+      }
       <div className="header-container">
         <Header image={props.data.homeHeaders.edges[0].node.childImageSharp.fluid} >
           <div className="header-content">

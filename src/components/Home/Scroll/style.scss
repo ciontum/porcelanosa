@@ -11,6 +11,7 @@
         font-family: 'Montserrat';
         color: #4D4B4B;
         margin-top: 3%;
+        z-index: 1;
 
         & p {
             font-size: calc(10px + 8 * ((100vw - 300px) / (1600 - 300)));
@@ -28,6 +29,7 @@
 
     &_background {
         background-color: #577F9E14;
+        z-index: -1;
     }
 
     &_full-content {
@@ -36,6 +38,7 @@
         flex-wrap: wrap;
         width: 100%;
         margin-bottom: 2em;
+        z-index: 1;
     }
 
     &_content {
@@ -47,6 +50,7 @@
         font-size: calc(10px + 8 * ((100vw - 300px) / (1600 - 300)));
         flex-wrap: nowrap;
         justify-content: space-evenly;
+        z-index: 1;
 
         & h3 {
             text-align: center;
@@ -75,6 +79,13 @@
     width: 270px !important;
 }
 
+
+@media only screen and (min-width: 2100px) {
+    .scroll_content-group .gatsby-image-wrapper {
+        height: 450px !important;
+        width: 400px !important;
+    }
+}
 
 @media only screen and (max-width: 1300px) {
     .scroll_content {

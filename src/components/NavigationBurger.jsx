@@ -1,20 +1,20 @@
 import React from "react"
 import { useState } from "react"
+import RightNavigation from "./RightNavigation"
 import styled from 'styled-components'
-import MiddleNav from "./MiddleNav"
 
-const StyledBurger = styled.div`
+const StyledNavBurger = styled.div`
   width: 2rem;
   height: 2rem;
-  position: static;
+  position: absolute;
   z-index: 20;
   display: none;
+  right: 3%;
 
-  @media (max-width: 750px) {
+  @media (max-width: 950px) {
     display: flex;
     justify-content: space-around;
     flex-flow: column nowrap;
-    margin-top: 3%;
   }
   div {
     width: 2rem;
@@ -35,18 +35,18 @@ const StyledBurger = styled.div`
   }
 `;
 
-const Burger = ({classNameLinks}) => {
+const NavigationBurger = ({classNameLinks}) => {
   const [open, setOpen] = useState(false)
   
   return (
     <>
-      <StyledBurger open={open} onClick={() => setOpen(!open)}>
+      <StyledNavBurger open={open} onClick={() => setOpen(!open)}>
         <div />
         <div />
         <div />
-      </StyledBurger>
-      <MiddleNav open={open} classNameLinks={classNameLinks}/>
+      </StyledNavBurger>
+      <RightNavigation open={open} classNameLinks={classNameLinks}/>
     </>
   )
 }
-export default Burger
+export default NavigationBurger

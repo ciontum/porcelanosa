@@ -11,7 +11,7 @@ const NavigationLinks = ({ className, classNameLinks }) => {
             <ul className={`navigation-links ${classNameLinks ? classNameLinks : ''}`}>
                 <li>
                     <Link to="/" activeStyle={{ borderBottom: '1px solid white' }}>
-                        ACASA
+                        ACASĂ
                     </Link>
                 </li>
                 <li onClick={() => setIsProductsMenu(prevState => !prevState)} >

@@ -29,6 +29,7 @@
     justify-content: center;
     position: absolute;
     top: 78%;
+    z-index: -1;
 
     & p {
         letter-spacing: 3px;
@@ -66,12 +67,13 @@
         & p {
             margin-left: 8%;
             margin-bottom: 1.5em;
-            font-size: 1.5rem;
+            font-size: calc(14px + 12 * ((100vw - 300px) / (1600 - 300)));
             color: #ffffffa1;
             letter-spacing: 1px;
+            z-index: 1;
 
             &::first-letter {
-                font-size: 1.7rem;
+                font-size: calc(16px + 12 * ((100vw - 300px) / (1600 - 300)));
             }
         }
     }

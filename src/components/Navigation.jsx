@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import LogoPNG from "../images/logo.png"
 import "./navigation.scss"
-import { Link } from 'gatsby'
-import NavigationLinks from './NavigationLinks'
-import HamburgerMenu from 'react-hamburger-menu'
+import NavigationBurger from "./NavigationBurger"
 
 const Navigation = ({ className }) => {
 
@@ -11,14 +9,8 @@ const Navigation = ({ className }) => {
     return (
         <div className='navigation-container'>
             <div className={`navigation ${className ? className : ''}`}>
-                <img src={LogoPNG} alt='logo' />
-
-                <HamburgerMenu className={'navigation-hamburger'}
-                    isOpen={isOpen}
-                    menuClicked={() => setIsOpen(!isOpen)}
-                    color="white" />
-                <NavigationLinks className="main-navigation" classNameLinks="main-navigation-mini" />
-                {/* <Burger classNameLinks="main-navigation-mini" /> */}
+            <img src={LogoPNG} alt='logo' />
+                <NavigationBurger classNameLinks="main-navigation-mini" />
             </div>
         </div>
     )

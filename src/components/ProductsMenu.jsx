@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import "./products-menu.scss"
-import { useCallback } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import Image from 'gatsby-image'
+
 const images = graphql`query{
     allFile(filter:{relativeDirectory:{eq:"menu"}})
     {

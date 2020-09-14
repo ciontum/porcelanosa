@@ -15,7 +15,7 @@ const Navigation = ({ className }) => {
 
                 <HamburgerMenu className={'navigation-hamburger'}
                     isOpen={isOpen}
-                    menuClicked={() => setIsOpen(prevState => !prevState)}
+                    menuClicked={() => setIsOpen(!isOpen)}
                     color="white" />
                 <NavigationLinks className="main-navigation" classNameLinks="main-navigation-mini" />
             </div>

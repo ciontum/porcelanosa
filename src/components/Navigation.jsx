@@ -18,6 +18,7 @@ const Navigation = ({ className }) => {
                     menuClicked={() => setIsOpen(!isOpen)}
                     color="white" />
                 <NavigationLinks className="main-navigation" classNameLinks="main-navigation-mini" />
+                {/* <Burger classNameLinks="main-navigation-mini" /> */}
             </div>
         </div>
     )

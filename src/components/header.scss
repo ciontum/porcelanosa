@@ -89,11 +89,12 @@
     }
 }
 
-@media only screen and (max-width: 740px) {
+@media only screen and (max-width: 750px) {
 
     .header-bottom {
         top: 70%;
         font-size: calc(25px + 16 * ((100vw - 300px) / (1600 - 300)));
+        margin-top: 2%;
 
         & p::first-letter {
             font-size: calc(33px + 18 * ((100vw - 300px) / (1600 - 300)));

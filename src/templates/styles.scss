@@ -4,7 +4,7 @@
                        'first third fourth sixth';
 width:70%;
 margin:2em auto;
-padding:2em;    
+padding:2em;  
 
 }
 .produse-images{
@@ -17,6 +17,7 @@ padding:2em;
         & > div{
             height:416px;
         }
+        z-index:-1;
     }
     &-1 {
         grid-area:second;
@@ -25,6 +26,7 @@ padding:2em;
         & >div{
             height:200px;
         }
+        z-index:-1;
     }
     &-2{
         grid-area:third;
@@ -33,6 +35,7 @@ padding:2em;
         & >div{
             height:200px;
         }
+        z-index:-1;
     }
     &-3{
         grid-area:fourth;
@@ -40,18 +43,21 @@ padding:2em;
         & >div{
             height:416px;
         }
+        z-index:-1;
     }
     &-4{
         grid-area:fifth;
         & >div{
             height:200px;
         }
+        z-index:-1;
     }
     &-5{
         grid-area:sixth;
         & >div{
             height:200px;
         }
+        z-index:-1;
     }
 }
 

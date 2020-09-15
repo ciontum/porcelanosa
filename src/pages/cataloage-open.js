@@ -11,7 +11,7 @@ export default props => {
                 <div className="header-cataloage_content">
                     <Navigation className="navigation-cataloage" />
                     <div className="header-filter" id="header-filter"></div>
-                    <p>COLECTIILE PORCELANOSA</p>
+                    <p>COLECȚIILE PORCELANOSA</p>
                 </div>
             </Header>
 

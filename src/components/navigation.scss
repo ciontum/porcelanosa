@@ -42,13 +42,15 @@
 
 .main-navigation-mini{
     display: none;
+    position: relative;
     @media (max-width:950px){
         flex-flow: column nowrap;
-        margin-top: 0%; 
+        margin: 2%; 
         justify-content: center !important;
         align-items: center;
+        margin-right: -2em;
         li {
-            padding:3%;
+            padding: 0% 0% 3%;
         }
     }
 }

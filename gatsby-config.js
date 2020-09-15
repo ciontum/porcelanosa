@@ -19,5 +19,6 @@ module.exports = {
 `gatsby-plugin-sharp`,
 `gatsby-plugin-preload-fonts`,
 `gatsby-plugin-sass`,
-`gatsby-plugin-scroll-reveal`],
+`gatsby-plugin-scroll-reveal`,
+`gatsby-plugin-anchor-links`],
 }

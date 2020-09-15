@@ -7,7 +7,9 @@ import Image from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
 import Navigation from "../components/Navigation"
 import { Link } from "gatsby"
-import CataloageContent from "../components/Cataloage/CataloageContent"
+import { AnchorLink } from "gatsby-plugin-anchor-links";
+import { HashLink } from 'react-router-hash-link';
+import Fade from "../components/Fade"
 
 export default props => {
 
@@ -55,17 +57,10 @@ export default props => {
         <Navigation />
       }
       <div className="header-container">
-        <Header image={props.data.homeHeaders.edges[0].node.childImageSharp.fluid} >
-          <div className="header-content">
-            <div className="header-filter" id="header-filter"></div>
-            <HomeNavigation classNameLinks="navigation-links-home" />
-            <div className="header-bottom">
-              <p>DESIGN.</p>
-              <p>LUX.</p>
-              <p>INOVAȚIE.</p>
-            </div>
-          </div>
-        </Header>
+        {/* <Header image={props.data.homeHeaders.edges[0].node.childImageSharp.fluid} > */}
+        {/* <Header > */}
+        <Fade></Fade>
+        {/* </Header> */}
       </div>
 
       <Scroll title="Descoperă" subTitle="Miile de produse disponibile" scrollRef={scrollRef} >
@@ -75,10 +70,11 @@ export default props => {
 
               scroll.name = scroll.name.replace(/.png/, '')
               console.log(scroll.name);
-              return <div className="scroll_content-group">
-                <Link to="/cataloage">
+              return <div className="scroll_content-group" >
+                {/* <AnchorLink to={["/cataloage#", scroll.name].join('')} > */}
+                <AnchorLink to="/cataloage#mobila">
                   <Image fixed={scroll.image} alt="scroll" />
-                </Link>
+                </AnchorLink>
                 <h3>{scroll.name}</h3>
                 <hr />
               </div>

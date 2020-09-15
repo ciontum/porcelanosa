@@ -22,7 +22,8 @@ const images = graphql`query{
 
 const ProductsMenu = ({ className }) => {
 
-    const [mainActive, setMainActive] = useState("pardoseli")
+    const [mainActive, setMainActive] = useState()
+    const [isShown] = useState(false)
     const [secondaryList, setSecondaryList] = useState(null)
     useEffect(() => {
         setSecondaryList(getSecondaryList())
@@ -61,6 +62,9 @@ const ProductsMenu = ({ className }) => {
         <div className={`products-menu ${className ? className : ''}`}>
             <div className="products-menu_first">
                 <ul>
+                    <div className = "x_menu" onClick={() => setMainActive()}>
+                        X
+                    </div>
                     <li className={mainActive === "pardoseli" ? 'products-menu_active' : ''} onClick={() => setMainActive('pardoseli')}>
                         PARDOSELI
                     </li>

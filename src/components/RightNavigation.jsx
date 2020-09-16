@@ -7,11 +7,12 @@ const UlNav = styled.ul`
   width: 90%;
   height:100px;
   padding: 3% 0%;
-  overflow-y: auto;
+  
   @media (max-width: 950px) {
     flex-flow: column nowrap;
     background:#343434d9;
     position: absolute;
+    overflow-y: auto;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
     top: 100%;
     right: 0;

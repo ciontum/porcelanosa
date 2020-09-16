@@ -49,6 +49,7 @@ const ProductsMenu = ({ className }) => {
 
         if (mainActive === 'baie')
             return ["MOBILĂ", "DUȘURI", "CĂZI", "CHIUVETE ROBINETE", 'TOALETE', "ACCESORII"]
+            
         return []
     }
 
@@ -62,9 +63,6 @@ const ProductsMenu = ({ className }) => {
         <div className={`products-menu ${className ? className : ''}`}>
             <div className="products-menu_first">
                 <ul>
-                    {/* <div className = "x_menu" onClick={() => setMainActive()}>
-                        X
-                    </div> */}
                     <li className={mainActive === "pardoseli" ? 'products-menu_active' : ''} onClick={() => setMainActive('pardoseli')}>
                         PARDOSELI
                     </li>
@@ -79,6 +77,10 @@ const ProductsMenu = ({ className }) => {
 
                     <li className={mainActive === "baie" ? 'products-menu_active' : ''} onClick={() => setMainActive('baie')}>
                         BAIE
+                    </li>
+
+                    <li className={mainActive === "solutii-tehnice" ? 'products-menu_active' : ''} onClick={() => document.location.pathname = `produse/solutii-tehnice`}>
+                        SOLUȚII TEHNICE
                     </li>
                 </ul>
             </div>

@@ -49,8 +49,15 @@
         justify-content: center !important;
         align-items: center;
         margin-right: -2em;
+
         li {
-            padding: 0% 0% 3%;
+            padding: 0% 0% 5%;
+        }
+    }
+
+    @media (max-width:450px){
+        li {
+            padding: 0% 0% 10%;
         }
     }
 }

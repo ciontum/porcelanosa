@@ -72,7 +72,7 @@ export default props => {
               console.log(scroll.name);
               return <div className="scroll_content-group" >
                 {/* <AnchorLink to={["/cataloage#", scroll.name].join('')} > */}
-                <AnchorLink to="/cataloage#mobila">
+                <AnchorLink to="/cataloage">
                   <Image fixed={scroll.image} alt="scroll" />
                 </AnchorLink>
                 <h3>{scroll.name}</h3>

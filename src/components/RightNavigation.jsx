@@ -6,7 +6,8 @@ import styled from 'styled-components'
 const UlNav = styled.ul`
   width: 90%;
   height:100px;
-  // padding: 3% 0%;
+  padding: 3% 0%;
+  overflow-y: auto;
   @media (max-width: 950px) {
     flex-flow: column nowrap;
     background:#343434d9;
@@ -19,7 +20,6 @@ const UlNav = styled.ul`
     transition: all 0.5s ease-in-out;
     li {
       color: #fff;
-      // margin: 5% auto;
     }
     .products-menu {
       position: absolute;
@@ -32,7 +32,6 @@ const UlNav = styled.ul`
         li {
           color: black !important; 
         }
-       
       }
 
       .products-menu_second {
@@ -43,24 +42,86 @@ const UlNav = styled.ul`
         display:none;
       }
     }
+
+    .products-menu_active::after {
+      margin-left: 10%;
+      margin-right: 0px !important;
+    }
+
+    .products-menu_second ul a:hover::after{
+      margin-left: 5%;
+      margin-right: 0px !important;
+    }
   }
 
   @media (max-width: 750px) {
-    .products-menu {
-      top: 40%;
-      align-items: center;
-
-        .products-menu_second:focus {
-         display:none;
-        }
-
+    li {
+      padding: 0% auto;
     }
+    
+    .products-menu {
+      top: 34%;
+      align-items: center;
+      overflow-y: auto;
 
-   
+      .products-menu_first{
+        width: 60%;
+      }
+
+      .products-menu_second{
+        width: 60%;
+      }
+
+      .products-menu_active:after {
+        margin-left: 3%
+      }
+
+      .products-menu_second:focus {
+        display:none;
+      }
+
+      .products-menu_first ul {
+        margin: 5% 0%;
+        text-align: center;
+        font-size: calc(13px + 12 * ((100vw - 300px) / (1600 - 300)));
+
+        li {
+          justify-content: center;
+        }
+      }
+
+      .products-menu_second ul{
+        margin: 5% 0% 10%;
+        font-size: calc(11px + 12 * ((100vw - 300px) / (1600 - 300)));
+        
+        a {
+          justify-content: center;
+        }
+      }
+    }
   }
 
   @media (max-width: 450px) {
     width: 100%;
+  }
+
+  @media (max-width: 300px) {
+    .products-menu {
+      top: 30%;
+
+    .products-menu_first{
+        width: 100%;
+
+        li{
+          margin: 3% auto;
+        }
+        
+      }
+
+    .products-menu_second{
+        width: 100%;
+      }
+    }
   }
 `;
 

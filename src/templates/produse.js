@@ -37,7 +37,7 @@ export default data => {
       <div className="header-cataloage_content">
         <Navigation className="navigation-cataloage" />
         <div className="header-filter" id="header-filter"></div>
-        <p>{data.pageContext.slug.replace(/\//g, '-')}</p>
+        <p>{data.pageContext.slug.replace(/\//g, ' ')}</p>
       </div>
     </Header>
     <div className="produse-images">

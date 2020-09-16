@@ -90,14 +90,15 @@
     z-index: 10;
 }
 
-.x_menu {
-    display: none;
-}
+// .x_menu {
+//     display: none;
+// }
 
 @media only screen and (max-width: 750px) {
     .products-menu {
         display: flex;
         flex-direction: column;
+        justify-content: start;
 
         .products-menu_first {
             position: relative;

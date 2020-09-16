@@ -22,7 +22,7 @@ const images = graphql`query{
 
 const ProductsMenu = ({ className }) => {
 
-    const [mainActive, setMainActive] = useState()
+    const [mainActive, setMainActive] = useState('pardoseli')
     const [isShown] = useState(false)
     const [secondaryList, setSecondaryList] = useState(null)
     useEffect(() => {
@@ -41,7 +41,7 @@ const ProductsMenu = ({ className }) => {
         if (mainActive === 'pardoseli')
             return ["CERAMICĂ", "PORȚELAN", "LEMN NATURAL", "PIATRĂ NATURALĂ", "PARCHET-LAMINAT", "VINYL", "ADERENT"]
 
-        if (mainActive === 'gresie')
+        if (mainActive === 'gresie-si-faianta')
             return ["CERAMICĂ", "PORȚELAN", "LEMN NATURAL", "PIATRĂ NATURALĂ", "PARCHET LAMINAT", "VINYL", "ADERENT", "MOZAIC", "KRION"]
 
         if (mainActive === 'bucatarie')
@@ -62,14 +62,14 @@ const ProductsMenu = ({ className }) => {
         <div className={`products-menu ${className ? className : ''}`}>
             <div className="products-menu_first">
                 <ul>
-                    <div className = "x_menu" onClick={() => setMainActive()}>
+                    {/* <div className = "x_menu" onClick={() => setMainActive()}>
                         X
-                    </div>
+                    </div> */}
                     <li className={mainActive === "pardoseli" ? 'products-menu_active' : ''} onClick={() => setMainActive('pardoseli')}>
                         PARDOSELI
                     </li>
 
-                    <li className={mainActive === "gresie" ? 'products-menu_active' : ''} onClick={() => setMainActive('gresie')}>
+                    <li className={mainActive === "gresie-si-faianta" ? 'products-menu_active' : ''} onClick={() => setMainActive('gresie-si-faianta')}>
                         GRESIE ȘI FAIANȚĂ
                     </li>
 
@@ -98,7 +98,7 @@ const ProductsMenu = ({ className }) => {
 
             <div className="products-menu_image">
                 <Image fixed={mainActive === "pardoseli" ? getImageByName('pardoseli.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "gresie" ? getImageByName('gresiefaianta.png').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive === "gresie-si-faianta" ? getImageByName('gresiefaianta.png').node.childImageSharp.fixed : null} />
                 <Image fixed={mainActive === "bucatarie" ? getImageByName('bucatarie.png').node.childImageSharp.fixed : null} />
                 <Image fixed={mainActive === "baie" ? getImageByName('baie.png').node.childImageSharp.fixed : null} />
             </div>

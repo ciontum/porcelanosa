@@ -1,22 +1,28 @@
-.home-navigation{
+.home-navigation {
    width:100%;
    display:flex;
    flex-direction: column;
    align-items: center;
-   padding-top:2em;
-    .navigation-links{
-        width: 100%;
-        padding-right:0;
-        margin-top:3em;
-        
-    @media (max-width:750px){
-        display:none;
-    }
+   padding-top: 2em;
+   height: auto;
+
+    .navigation-links {
+        width: 80%;
+        padding-right: 0;
+        margin: 3em auto 1em; 
+
+        @media (max-width: 750px){
+            flex-flow: column nowrap;
+            margin-top: 2%;
+            height: 100%;
+
+        }
     }
 }
 
-.navigation-hamburger-home{
+.navigation-hamburger-home {
     display:none;
+    margin-top: 8%;
     @media (max-width:750px){
         display:initial;
     }

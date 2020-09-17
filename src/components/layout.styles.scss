@@ -10,6 +10,7 @@
     padding:0;
     box-sizing:border-box;
     outline:none;
+    z-index: 999;
 }
 
 body{
@@ -19,21 +20,23 @@ body{
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 
 .container{
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     font-family:'Cinzel';
+
+    overflow-x: hidden;
 }
 
 .discover-image{
-    width:80%;
-    margin:0 auto;
-    height:450px;
-    margin-bottom:2em;
+    width:90%;
+    margin:2% auto;
+    height: 400px;
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1;
     & a{
         cursor:pointer;
         text-decoration: none;
@@ -56,7 +59,7 @@ body{
 
     & p{
         margin-bottom:1em;
-        font-size:2rem;
+        font-size: calc(26px + 12 * ((100vw - 300px) / (1600 - 300)));
         display: flex;
         flex-direction: column;
         & span{
@@ -68,7 +71,7 @@ body{
     & a{
         padding:0.8em;
         border:1px solid;
-        font-size:1.5rem;
+        font-size: calc(18px + 12 * ((100vw - 300px) / (1600 - 300)));
         letter-spacing: 2px;
     }
     

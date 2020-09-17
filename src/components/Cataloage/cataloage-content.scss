@@ -21,6 +21,7 @@
         justify-content: center;
         &-group{ 
             margin-bottom:2rem;
+            z-index: 1;
             & hr{
                 margin:0.5em auto !important;
                 background:#606060 !important;

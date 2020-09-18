@@ -89,7 +89,7 @@ const ProductsMenu = ({ className }) => {
                 <ul>
                     {
                         secondaryList && secondaryList.map(secondary => {
-                            let link = secondary.replace("Ă", "A")
+                            let link = secondary.replace(/Ă/g, "A")
                             link = link.replace("Ș", "S")
                             link = link.replace("Ț", "T").toLowerCase()
                             return <a href='#' onClick={() => document.location.pathname = `produse/${mainActive}/${link.replace(/ /g, "-").toLowerCase()}`}>{secondary}</a>

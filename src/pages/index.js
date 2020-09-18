@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react"
 import Layout from "../components/Layout"
 import Header from "../components/Header"
+import { Helmet } from "react-helmet"
+
 import HomeNavigation from "../components/Home/HomeNavigation"
 import Scroll from "../components/Home/Scroll"
 import Image from "gatsby-image"
@@ -48,19 +50,19 @@ export default props => {
   }, [scrollTop]);
 
   return (
+    <>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Maison Design</title>
+    </Helmet>
     <Layout>
 
-      {/* {scrollRef.current && (scrollTop >= scrollRef.current.offsetTop) &&
-        <Navigation />} */}
       {
         scrollRef.current && (scrollTop >= 740) &&
         <Navigation />
       }
       <div className="header-container">
-        {/* <Header image={props.data.homeHeaders.edges[0].node.childImageSharp.fluid} > */}
-        {/* <Header > */}
         <Fade></Fade>
-        {/* </Header> */}
       </div>
 
       <Scroll title="Descoperă" subTitle="Miile de produse disponibile" scrollRef={scrollRef} >
@@ -71,7 +73,6 @@ export default props => {
               scroll.name = scroll.name.replace(/.png/, '')
               console.log(scroll.name);
               return <div className="scroll_content-group" >
-                {/* <AnchorLink to={["/cataloage#", scroll.name].join('')} > */}
                 <AnchorLink to="/cataloage">
                   <Image fixed={scroll.image} alt="scroll" />
                 </AnchorLink>
@@ -97,6 +98,7 @@ export default props => {
         <Link to="/cataloage">CATALOAGE</Link>
       </BackgroundImage>
     </Layout>
+    </>
   )
 }
 

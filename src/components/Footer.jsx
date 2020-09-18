@@ -2,6 +2,10 @@ import React from "react"
 import "./footer.scss"
 import { useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
+import Instagram from "../images/instagram.png"
+import Facebook from "../images/facebook.png"
+import Youtube from "../images/youtube.png"
+import { Link } from "gatsby"
 
 export const query = graphql`
 {
@@ -24,8 +28,21 @@ const Footer = () => {
                 <div className="footer_top-right">
                     <div className="footer_top-group">
                         <h3>NE GĂSIȚI PE</h3>
-                        <p>INSTAGRAM</p>
-                        <p>FACEBOOK</p>
+                        <div className="logos">
+                            <Link to='https://www.instagram.com/porcelanosa_oradea/'>
+                                <img src={Instagram} className="instagram_logo" />
+                            </Link>
+                        </div>
+                        <div className="logos" >
+                            <Link to='https://www.facebook.com/porcelanosaoradea/'>
+                                <img src={Facebook} className="facebook_logo" />
+                            </Link>
+                        </div>
+                        <div className="logos" >
+                            <Link to='https://www.youtube.com/user/porcelanosaoradea/videos?flow=grid&view=0&sort=da'>
+                                <img src={Youtube} className="youtube_logo" />
+                            </Link>
+                        </div>
                     </div>
 
                     <div className="footer_top-group display-none">

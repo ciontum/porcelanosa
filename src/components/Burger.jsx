@@ -1,8 +1,7 @@
 import React from "react"
 import { useState } from "react"
-import HamburgerMenu from "react-hamburger-menu"
-import RightNav from "./RightNav"
 import styled from 'styled-components'
+import MiddleNav from "./MiddleNav"
 
 const StyledBurger = styled.div`
   width: 2rem;
@@ -15,11 +14,12 @@ const StyledBurger = styled.div`
     display: flex;
     justify-content: space-around;
     flex-flow: column nowrap;
+    margin-top: 3%;
   }
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ open }) => open ? '#ccc' : '#ccc'};
+    background-color: #ccc;
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
@@ -45,7 +45,7 @@ const Burger = ({classNameLinks}) => {
         <div />
         <div />
       </StyledBurger>
-      <RightNav open={open} classNameLinks={classNameLinks}/>
+      <MiddleNav open={open} classNameLinks={classNameLinks}/>
     </>
   )
 }

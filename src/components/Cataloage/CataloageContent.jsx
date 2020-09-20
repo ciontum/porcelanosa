@@ -82,7 +82,7 @@ cataloageBaie:allFile(filter:{relativeDirectory:{eq:"cataloage/Baie"}}){
   }
 }
 `
-const CataloageContent = () => {
+const CataloageContent = React.forwardRef(({}, ref) => {
 
   const formatCataloageArr = (cataloageArr) => {
     const pdfs = cataloageArr.filter(catalog => catalog.node.extension === 'pdf')
@@ -122,15 +122,16 @@ const CataloageContent = () => {
   })
 
   return (
-    <div className="cataloage-content">
-      <CataloageCategory cataloage={cataloageArr.cataloageBaie} name="Baie" />
-      <CataloageCategory cataloage={cataloageArr.cataloageBucatarie} name="Bucatarie" />
-      <CataloageCategory cataloage={cataloageArr.cataloageMobila} name="Mobila" />
-      <CataloageCategory cataloage={cataloageArr.cataloagePardoseli} name="Pardoseli, Gresie si Faianta" />
+    <div ref={ref} className="cataloage-content">
+      <CataloageCategory cataloage={cataloageArr.cataloageBaie} name="Baie" id="baie"/>
+      <CataloageCategory cataloage={cataloageArr.cataloageBucatarie} name="Bucatarie" id="bucatarie"/>
+      <CataloageCategory cataloage={cataloageArr.cataloageMobila} name="Mobila" id="mobila"/>
+      <CataloageCategory cataloage={cataloageArr.cataloagePardoseli} name="Pardoseli, Gresie si Faianta" id="pardoseli"/>
       <CataloageCategory cataloage={cataloageArr.cataloageTehnice} name="Solutii tehnice" />
     </div>
   )
 }
+)
 
 
 export default CataloageContent

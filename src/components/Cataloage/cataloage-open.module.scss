@@ -20,11 +20,13 @@
     justify-content: flex-start;
 
     overflow-y: auto;
+    z-index: 1;
 }
 
 .pdf__viewer {
     height: 100px;
     width: 70%;
+    z-index: 1;
 }
 
 .pdf {

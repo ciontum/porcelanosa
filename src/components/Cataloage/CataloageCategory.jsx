@@ -28,4 +28,5 @@ const CataloageCategory = ({ name, cataloage }) => {
     )
 }
 
+
 export default CataloageCategory

@@ -22,7 +22,8 @@ const images = graphql`query{
 
 const ProductsMenu = ({ className }) => {
 
-    const [mainActive, setMainActive] = useState("pardoseli")
+    const [mainActive, setMainActive] = useState('pardoseli')
+    const [isShown] = useState(false)
     const [secondaryList, setSecondaryList] = useState(null)
     useEffect(() => {
         setSecondaryList(getSecondaryList())
@@ -40,7 +41,7 @@ const ProductsMenu = ({ className }) => {
         if (mainActive === 'pardoseli')
             return ["CERAMICĂ", "PORȚELAN", "LEMN NATURAL", "PIATRĂ NATURALĂ", "PARCHET-LAMINAT", "VINYL", "ADERENT"]
 
-        if (mainActive === 'gresie')
+        if (mainActive === 'gresie-si-faianta')
             return ["CERAMICĂ", "PORȚELAN", "LEMN NATURAL", "PIATRĂ NATURALĂ", "PARCHET LAMINAT", "VINYL", "ADERENT", "MOZAIC", "KRION"]
 
         if (mainActive === 'bucatarie')
@@ -48,6 +49,7 @@ const ProductsMenu = ({ className }) => {
 
         if (mainActive === 'baie')
             return ["MOBILĂ", "DUȘURI", "CĂZI", "CHIUVETE ROBINETE", 'TOALETE', "ACCESORII"]
+            
         return []
     }
 
@@ -65,7 +67,7 @@ const ProductsMenu = ({ className }) => {
                         PARDOSELI
                     </li>
 
-                    <li className={mainActive === "gresie" ? 'products-menu_active' : ''} onClick={() => setMainActive('gresie')}>
+                    <li className={mainActive === "gresie-si-faianta" ? 'products-menu_active' : ''} onClick={() => setMainActive('gresie-si-faianta')}>
                         GRESIE ȘI FAIANȚĂ
                     </li>
 
@@ -75,6 +77,10 @@ const ProductsMenu = ({ className }) => {
 
                     <li className={mainActive === "baie" ? 'products-menu_active' : ''} onClick={() => setMainActive('baie')}>
                         BAIE
+                    </li>
+
+                    <li className={mainActive === "solutii-tehnice" ? 'products-menu_active' : ''} onClick={() => document.location.pathname = `produse/solutii-tehnice`}>
+                        SOLUȚII TEHNICE
                     </li>
                 </ul>
             </div>
@@ -94,7 +100,7 @@ const ProductsMenu = ({ className }) => {
 
             <div className="products-menu_image">
                 <Image fixed={mainActive === "pardoseli" ? getImageByName('pardoseli.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "gresie" ? getImageByName('gresiefaianta.png').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive === "gresie-si-faianta" ? getImageByName('gresiefaianta.png').node.childImageSharp.fixed : null} />
                 <Image fixed={mainActive === "bucatarie" ? getImageByName('bucatarie.png').node.childImageSharp.fixed : null} />
                 <Image fixed={mainActive === "baie" ? getImageByName('baie.png').node.childImageSharp.fixed : null} />
             </div>

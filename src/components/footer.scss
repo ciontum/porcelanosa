@@ -49,53 +49,50 @@
             margin-top: 0.7em;
         }
 
+        & .logo_img {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            align-content: center;
+
         & .logos {
             margin-top: 3%;
+            width: 50%;
 
             @media (max-width: 768px) {
                 margin-top: 1%;
             }
+           
+                & .instagram_logo {
+                    height: 28px;
+                    width: 28px;
 
-            & .instagram_logo {
-                height: 28px;
-                width: 28px;
-                margin-left: 28%;
-
-                @media (max-width: 768px) {
-                    height: 23px;
-                    width: 23px;
-                    margin-left: 13%;
-                }
-                @media (max-width: 500px) {
-                    margin-left: 15%;
-                }
-            }
-
-            & .facebook_logo {
-                height: 37px;
-                width: 37px;
-                margin-left: 24%;
-
-                @media (max-width: 768px) {
-                    height: 30px;
-                    width: 30px;
-                    margin-left: 11%;
-                }
-            }
-
-            & .youtube_logo{
-                height: 28px;
-                width: 28px;
-                margin-left: 28%;
-
-                @media (max-width: 768px) {
-                    height: 23px;
-                    width: 23px;
-                    margin-left: 13%;
+                    @media (max-width: 768px) {
+                        height: 23px;
+                        width: 23px;
+                    }
                 }
 
-                @media (max-width: 400px) {
-                    margin-left: 16%;
+                & .facebook_logo {
+                    height: 35px;
+                    width: 37px;
+
+                    @media (max-width: 768px) {
+                        height: 30px;
+                        width: 30px;
+                    }
+                }
+
+                & .youtube_logo {
+                    height: 28px;
+                    width: 28px;
+
+                    @media (max-width: 768px) {
+                        height: 23px;
+                        width: 23px;
+                    }
+
                 }
             }
         }

@@ -42,14 +42,14 @@ const ProductsMenu = ({ className }) => {
             return ["CERAMICĂ", "PORȚELAN", "LEMN NATURAL", "PIATRĂ NATURALĂ", "PARCHET-LAMINAT", "VINYL", "ADERENT"]
 
         if (mainActive === 'gresie-si-faianta')
-            return ["CERAMICĂ", "PORȚELAN", "LEMN NATURAL", "PIATRĂ NATURALĂ", "PARCHET LAMINAT", "VINYL", "ADERENT", "MOZAIC", "KRION"]
+            return ["CERAMICĂ", "PORȚELAN", "LEMN NATURAL", "PIATRĂ NATURALĂ", "VINYL", "ADERENT", "MOZAIC"]
 
         if (mainActive === 'bucatarie')
             return ["MOBILĂ", "CHIUVETE ROBINETE", "MESE DE LUCRU"]
 
         if (mainActive === 'baie')
             return ["MOBILĂ", "DUȘURI", "CĂZI", "CHIUVETE ROBINETE", 'TOALETE', "ACCESORII"]
-            
+
         return []
     }
 
@@ -82,6 +82,10 @@ const ProductsMenu = ({ className }) => {
                     <li className={mainActive === "solutii-tehnice" ? 'products-menu_active' : ''} onClick={() => document.location.pathname = `produse/solutii-tehnice`}>
                         SOLUȚII TEHNICE
                     </li>
+
+                    <a href="https://www.krion.ro" className="link-no-decoration">
+                        KRION
+                    </a>
                 </ul>
             </div>
 

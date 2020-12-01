@@ -1,22 +1,21 @@
 .products-menu {
     display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 1em;
-    height: 380px;
-
-    position: relative;
+    box-shadow: 10px 10px 100vh #888888;
+    position: absolute;
+    left: 15vw;
+    right: 15vw;
+    margin-top: 20px;
     z-index: 500;
+    box-shadow: 0px 0px 100vh 100vh rgba(1, 1, 1, 0.5);
 
     &_first {
-        width: 28%;
+        width: 20vw;
         background-color: #e7e7e7;
 
         & ul {
             list-style: none;
-            font-size: calc(11px + 12 * ((100vw - 300px) / (1600 - 300)));
-            margin-left: 10%;
-            margin-top: 3rem;
+            font-size: calc(5px + 12 * ((100vw - 300px) / (1600 - 300)));
+            margin: 10%;
 
             & li {
                 margin-bottom: 0.5em;
@@ -26,15 +25,14 @@
     }
 
     &_second {
-        width: 28%;
+        width: 20vw;
         background-color: #F5F5F5;
 
         & ul {
             list-style: none;
-            font-size: calc(9px + 12 * ((100vw - 300px) / (1600 - 300)));
+            font-size: calc(5px + 12 * ((100vw - 300px) / (1600 - 300)));
 
-            margin-left: 10%;
-            margin-top: 3rem;
+            margin: 10%;
 
             & a {
                 margin-bottom: 0.5em;
@@ -76,12 +74,21 @@
             background: #86868A;
         }
     }
+
+    &_image {
+        width: 30vw;
+    }
 }
+
+.products-menu_image .gatsby-image-wrapper {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 
 .products-menu_image .gatsby-image-wrapper picture img {
-    margin-left: 0% !important;
+    margin-left: 0px !important;
 }
-
 
 .main-navigation {
     position: absolute;
@@ -106,48 +113,4 @@
         }
     }
 
-}
-
-@media only screen and (max-width: 800px) {
-    .products-menu_image .gatsby-image-wrapper {
-        height: 310px !important;
-        width: 330px !important;
-    }
-
-    .products-menu {
-        height: 310px;
-    }
-}
-
-@media only screen and (max-width: 1200px) {
-    .products-menu_image .gatsby-image-wrapper {
-        height: 320px !important;
-        width: 370px !important;
-    }
-
-    .products-menu {
-        height: 320px;
-    }
-}
-
-@media only screen and (max-width: 1500px) {
-    .products-menu_image .gatsby-image-wrapper {
-        height: 320px !important;
-        width: 350px !important;
-    }
-
-    .products-menu {
-        height: 320px;
-    }
-}
-
-@media only screen and (min-width: 2100px) {
-    .products-menu_image .gatsby-image-wrapper {
-        height: 420px !important;
-        width: 630px !important;
-    }
-
-    .products-menu {
-        height: 420px;
-    }
 }

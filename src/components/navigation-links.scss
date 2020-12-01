@@ -1,22 +1,21 @@
 .navigation-links{
     list-style: none;
-    display:flex;
-    // width: 80%;
+    display: flex;
+    align-items: center;
     justify-content: flex-end;
-    padding-right:2em;
+    padding-right: 2em;
+
     & li{
         & a{
             color:white;
             text-decoration: none;
         }
-        cursor:pointer;
+        
+        cursor: pointer;
         font-size: calc(12px + 12 * ((100vw - 300px) / (1600 - 300)));
         color:white;
         letter-spacing: 2px;
         margin-right:2em;
-        &::first-letter{
-        font-size: calc(14px + 12 * ((100vw - 300px) / (1600 - 300)));
-        }
     }
 }
 
@@ -31,9 +30,11 @@
     }
 
 }
+
 .navigation-links-container{
-    width:100%;
+    width: 100%;
 }
-.navigation-links-active{
-    border-bottom:1px solid white;
+
+.navigation-links-active {
+    font-weight: 900;
 }

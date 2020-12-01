@@ -62,29 +62,37 @@ const ProductsMenu = ({ className }) => {
         <div className={`products-menu ${className ? className : ''}`}>
             <div className="products-menu_first">
                 <ul>
-                    <li className={mainActive === "pardoseli" ? 'products-menu_active' : ''} onClick={() => setMainActive('pardoseli')}>
-                        PARDOSELI
+                    <li className={mainActive === "gresie" ? 'products-menu_active' : ''} onClick={() => setMainActive('pardoseli')}>
+                        GRESIE
                     </li>
 
-                    <li className={mainActive === "gresie-si-faianta" ? 'products-menu_active' : ''} onClick={() => setMainActive('gresie-si-faianta')}>
-                        GRESIE ȘI FAIANȚĂ
+                    <li className={mainActive === "faianta" ? 'products-menu_active' : ''} onClick={() => setMainActive('faianta')}>
+                        FAIANȚĂ
                     </li>
 
-                    <li className={mainActive === "bucatarie" ? 'products-menu_active' : ''} onClick={() => setMainActive('bucatarie')}>
-                        BUCĂTĂRIE
+                    <li className={mainActive === "placi-ceramice" ? 'products-menu_active' : ''} onClick={() => setMainActive('placi-ceramice')}>
+                        PLĂCI CERAMICE
                     </li>
 
-                    <li className={mainActive === "baie" ? 'products-menu_active' : ''} onClick={() => setMainActive('baie')}>
-                        BAIE
+                    <li className={mainActive === "piatra-naturala" ? 'products-menu_active' : ''} onClick={() => setMainActive('piatra-naturala')}>
+                        PIATRĂ NATURALĂ
                     </li>
 
-                    <li className={mainActive === "solutii-tehnice" ? 'products-menu_active' : ''} onClick={() => document.location.pathname = `produse/solutii-tehnice`}>
+                    <li className={mainActive === "parchet" ? 'products-menu_active' : ''} onClick={() => setMainActive('parchet')}>
+                        PARCHET
+                    </li>
+                    <li className={mainActive === "linkfloor" ? 'products-menu_active' : ''} onClick={() => setMainActive('linkfloor')}>
+                        LINKFLOOR
+                    </li>
+                    <li className={mainActive === "obiecte-sanitare" ? 'products-menu_active' : ''} onClick={() => setMainActive('obiecte-sanitare')}>
+                        OBIECTE SANITARE
+                    </li>
+                    <li className={mainActive === "mobilier" ? 'products-menu_active' : ''} onClick={() => setMainActive('mobilier')}>
+                        MOBILIER
+                    </li>
+                    <li className={mainActive === "solutii-tehnice" ? 'products-menu_active' : ''} onClick={() => document.location.pathname = 'produse/solutii-tehnice'}>
                         SOLUȚII TEHNICE
                     </li>
-
-                    <a href="https://www.krion.ro" className="link-no-decoration">
-                        KRION
-                    </a>
                 </ul>
             </div>
 

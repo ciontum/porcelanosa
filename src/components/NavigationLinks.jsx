@@ -10,7 +10,7 @@ const NavigationLinks = ({ className, classNameLinks }) => {
         <>
             <ul className={`navigation-links ${classNameLinks ? classNameLinks : ''}`}>
                 <li>
-                    <Link to="/" activeStyle={{ borderBottom: '1px solid white' }}>
+                    <Link to="/" activeStyle={{ fontWeight: "900", fontSize: "30px" }}>
                         ACASĂ
                     </Link>
                 </li>
@@ -20,23 +20,23 @@ const NavigationLinks = ({ className, classNameLinks }) => {
                     </a>
                 </li>
                 <li>
-                    <Link to="/cataloage" activeStyle={{ borderBottom: '1px solid #ffffffa1' }}>
+                    <Link to="/cataloage" activeStyle={{ fontWeight: "900", fontSize: "30px" }}>
                         CATALOAGE
                     </Link>
                 </li>
                 <li>
-                    <Link to="/despre" activeStyle={{ borderBottom: '1px solid #ffffffa1' }}>
+                    <Link to="/despre" activeStyle={{ fontWeight: "900", fontSize: "30px" }}>
                         DESPRE
                     </Link>
                 </li>
                 <li>
-                    <Link to="/contact" activeStyle={{ borderBottom: '1px solid #ffffffa1' }}>
+                    <Link to="/contact" activeStyle={{ fontWeight: "900", fontSize: "30px" }}>
                         CONTACT
                     </Link>
                 </li>
             </ul>
 
-            {isProductsMenu ? <div style={{ width: "100%", margin: "0 auto", position: "absolute", left: "0px" }}><ProductsMenu className={className} /> </div> : null}
+            {isProductsMenu ? <ProductsMenu className={className} /> : null}
         </>
     )
 }

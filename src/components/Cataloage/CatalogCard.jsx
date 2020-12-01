@@ -10,7 +10,7 @@ const CatalogCard = ({ image, title, subtitle, pdf, onClick, index }) => {
                 <div className={styles.text__container}>
                     <h2> {title} </h2>
                     <h5> {subtitle} </h5>
-                    <a href={pdf} target="_blank">
+                    <a href={pdf} target="_blank" rel="noreferrer">
                         <h5> Download </h5>
                     </a>
                 </div>

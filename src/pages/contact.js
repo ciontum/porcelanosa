@@ -6,7 +6,7 @@ import PhoneSVG from "../images/phone.svg"
 import MailSVG from "../images/mail.svg"
 import PinSVG from "../images/pin.svg"
 import ManSVG from '../images/man.svg'
-import { withScriptjs, withGoogleMap, GoogleMap, GoogleMapReact, Marker } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap

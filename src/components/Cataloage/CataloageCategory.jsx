@@ -1,7 +1,5 @@
 import React from 'react'
 import Image from 'gatsby-image'
-import { Link } from 'gatsby'
-// const cataloageMocksBaie=[{image:TestPNG,primary:'Altissima',secondary:'PIATRA NATURALA'},{image:TestPNG,primary:'Altissima',secondary:'PIATRA NATURALA'},{image:TestPNG,primary:'Altissima',secondary:'PIATRA NATURALA'},{image:TestPNG,primary:'Altissima',secondary:'PIATRA NATURALA'},{image:TestPNG,primary:'Altissima',secondary:'PIATRA NATURALA'}]
 
 const CataloageCategory = ({ name, cataloage }) => {
     console.log(cataloage)

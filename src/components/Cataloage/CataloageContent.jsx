@@ -82,7 +82,7 @@ cataloageBaie:allFile(filter:{relativeDirectory:{eq:"cataloage/Baie"}}){
   }
 }
 `
-const CataloageContent = React.forwardRef(({}, ref) => {
+const CataloageContent = React.forwardRef(({ }, ref) => {
 
   const formatCataloageArr = (cataloageArr) => {
     const pdfs = cataloageArr.filter(catalog => catalog.node.extension === 'pdf')
@@ -101,7 +101,7 @@ const CataloageContent = React.forwardRef(({}, ref) => {
     return cataloage
   }
   const { cataloageBaie, cataloageBucatarie, cataloageMobila, pardoseli, solutiiTehnice } = useStaticQuery(cataloage)
-  const [cataloageArr, setCataloageArr] = useState(() => {
+  const [cataloageArr] = useState(() => {
     const cataloageBaieArr = formatCataloageArr(cataloageBaie.edges)
 
     const cataloageBucatarieArr = formatCataloageArr(cataloageBucatarie.edges)
@@ -123,10 +123,10 @@ const CataloageContent = React.forwardRef(({}, ref) => {
 
   return (
     <div ref={ref} className="cataloage-content">
-      <CataloageCategory cataloage={cataloageArr.cataloageBaie} name="Baie" id="baie"/>
-      <CataloageCategory cataloage={cataloageArr.cataloageBucatarie} name="Bucatarie" id="bucatarie"/>
-      <CataloageCategory cataloage={cataloageArr.cataloageMobila} name="Mobila" id="mobila"/>
-      <CataloageCategory cataloage={cataloageArr.cataloagePardoseli} name="Pardoseli, Gresie si Faianta" id="pardoseli"/>
+      <CataloageCategory cataloage={cataloageArr.cataloageBaie} name="Baie" id="baie" />
+      <CataloageCategory cataloage={cataloageArr.cataloageBucatarie} name="Bucatarie" id="bucatarie" />
+      <CataloageCategory cataloage={cataloageArr.cataloageMobila} name="Mobila" id="mobila" />
+      <CataloageCategory cataloage={cataloageArr.cataloagePardoseli} name="Pardoseli, Gresie si Faianta" id="pardoseli" />
       <CataloageCategory cataloage={cataloageArr.cataloageTehnice} name="Solutii tehnice" />
     </div>
   )

@@ -1,23 +1,20 @@
 import React, { useRef, useState, useEffect } from "react"
 import Layout from "../components/Layout"
-import Header from "../components/Header"
 import { Helmet } from "react-helmet"
 
-import HomeNavigation from "../components/Home/HomeNavigation"
 import Scroll from "../components/Home/Scroll"
 import Image from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
 import Navigation from "../components/Navigation"
 import { Link } from "gatsby"
 import { AnchorLink } from "gatsby-plugin-anchor-links";
-import { HashLink } from 'react-router-hash-link';
 import Fade from "../components/Fade"
 
 export default props => {
 
   const [scrollTop, setScrollTop] = useState(0);
   const scrollRef = useRef()
-  const [firstScrollElements, f] = useState(() => {
+  const [firstScrollElements] = useState(() => {
     const firstScroll = props.data.firstScroll.edges.map(scroll => {
       return {
         image: scroll.node.childImageSharp.fixed,
@@ -27,7 +24,7 @@ export default props => {
 
     return firstScroll
   })
-  const [secondScrollElements, f2] = useState(() => {
+  const [secondScrollElements] = useState(() => {
     const wNull = props.data.secondScroll.edges.filter(edge => edge.node.childImageSharp)
     const secondScroll = wNull.sort((a, b) => {
       const replacedA = Number(a.node.childImageSharp.fixed.originalName.replace(/.(jpeg|png|gif)/, ""))
@@ -51,53 +48,53 @@ export default props => {
 
   return (
     <>
-    <Helmet>
-      <meta charSet="utf-8" />
-      <title>Maison Design</title>
-    </Helmet>
-    <Layout>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Maison Design</title>
+      </Helmet>
+      <Layout>
 
-      {
-        scrollRef.current && (scrollTop >= 740) &&
-        <Navigation />
-      }
-      <div className="header-container">
-        <Fade></Fade>
-      </div>
-
-      <Scroll title="Descoperă" subTitle="Miile de produse disponibile" scrollRef={scrollRef} >
-        <div className="scroll_content">
-          {
-            firstScrollElements.map(scroll => {
-
-              scroll.name = scroll.name.replace(/.png/, '')
-              console.log(scroll.name);
-              return <div className="scroll_content-group" >
-                <AnchorLink to="/cataloage">
-                  <Image fixed={scroll.image} alt="scroll" />
-                </AnchorLink>
-                <h3>{scroll.name}</h3>
-                <hr />
-              </div>
-            })
-          }
+        {
+          scrollRef.current && (scrollTop >= 740) &&
+          <Navigation />
+        }
+        <div className="header-container">
+          <Fade></Fade>
         </div>
-      </Scroll>
-      <Scroll title="Fii inspirat" subTitle="Explorează produsele,designul și măiestria Porcelanosa" className="scroll_background">
-        <div className="scroll_full-content">
-          {
-            secondScrollElements.map(scroll => {
-              return <Image fixed={scroll.node.childImageSharp && scroll.node.childImageSharp.fixed} alt="scroll" />
-            })
-          }
-        </div>
-      </Scroll>
-      <BackgroundImage fluid={props.data.discover.childImageSharp.fluid} className="discover-image">
-        <div className="header-filter"></div>
-        <p>VREI SĂ DESCOPERI MAI <span>MULTE ?</span></p>
-        <Link to="/cataloage">CATALOAGE</Link>
-      </BackgroundImage>
-    </Layout>
+
+        <Scroll title="Descoperă" subTitle="Miile de produse disponibile" scrollRef={scrollRef} >
+          <div className="scroll_content">
+            {
+              firstScrollElements.map(scroll => {
+
+                scroll.name = scroll.name.replace(/.png/, '')
+                console.log(scroll.name);
+                return <div className="scroll_content-group" >
+                  <AnchorLink to="/cataloage">
+                    <Image fixed={scroll.image} alt="scroll" />
+                  </AnchorLink>
+                  <h3>{scroll.name}</h3>
+                  <hr />
+                </div>
+              })
+            }
+          </div>
+        </Scroll>
+        <Scroll title="Fii inspirat" subTitle="Explorează produsele,designul și măiestria Porcelanosa" className="scroll_background">
+          <div className="scroll_full-content">
+            {
+              secondScrollElements.map(scroll => {
+                return <Image fixed={scroll.node.childImageSharp && scroll.node.childImageSharp.fixed} alt="scroll" />
+              })
+            }
+          </div>
+        </Scroll>
+        <BackgroundImage fluid={props.data.discover.childImageSharp.fluid} className="discover-image">
+          <div className="header-filter"></div>
+          <p>VREI SĂ DESCOPERI MAI <span>MULTE ?</span></p>
+          <Link to="/cataloage">CATALOAGE</Link>
+        </BackgroundImage>
+      </Layout>
     </>
   )
 }

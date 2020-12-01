@@ -30,17 +30,17 @@ const Footer = () => {
                         <h3>NE GĂSIȚI PE</h3>
                         <div className="logos">
                             <Link to='https://www.instagram.com/porcelanosa_oradea/'>
-                                <img src={Instagram} className="instagram_logo" />
+                                <img src={Instagram} alt="instagram-logo-porcelanosa" className="instagram_logo" />
                             </Link>
                         </div>
                         <div className="logos" >
                             <Link to='https://www.facebook.com/porcelanosaoradea/'>
-                                <img src={Facebook} className="facebook_logo" />
+                                <img src={Facebook} alt="facebook-logo-porcelanosa" className="facebook_logo" />
                             </Link>
                         </div>
                         <div className="logos" >
                             <Link to='https://www.youtube.com/user/porcelanosaoradea/videos?flow=grid&view=0&sort=da'>
-                                <img src={Youtube} className="youtube_logo" />
+                                <img src={Youtube} alt="youtube-logo-porcelanosa" className="youtube_logo" />
                             </Link>
                         </div>
                     </div>

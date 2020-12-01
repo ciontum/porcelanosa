@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "./products-menu.scss"
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
 const images = graphql`query{
@@ -23,7 +23,6 @@ const images = graphql`query{
 const ProductsMenu = ({ className }) => {
 
     const [mainActive, setMainActive] = useState('pardoseli')
-    const [isShown] = useState(false)
     const [secondaryList, setSecondaryList] = useState(null)
     useEffect(() => {
         setSecondaryList(getSecondaryList())

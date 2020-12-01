@@ -25,7 +25,7 @@ export default data => {
 
     return cataloage
   }
-  const [cataloageArr, setCataloageArr] = useState(() => {
+  const [cataloageArr] = useState(() => {
     const cataloage = formatCataloageArr(data.data.cataloage.edges)
 
     return {

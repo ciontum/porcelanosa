@@ -185,7 +185,7 @@ const CataloageOpen = () => {
 
       </div>
       <div className={styles.pdf__viewer}>
-        <iframe src={currentPDF} className={styles.pdf} />
+        <iframe title="pdf-viewer" src={currentPDF} className={styles.pdf} />
       </div>
     </div>
   )

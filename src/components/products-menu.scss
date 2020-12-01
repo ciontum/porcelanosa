@@ -20,6 +20,11 @@
             & li {
                 margin-bottom: 0.5em;
                 cursor: pointer;
+
+                & a {
+                    text-decoration: none;
+                    color: black;
+                }
             }
         }
     }
@@ -56,6 +61,11 @@
                 }
             }
         }
+    }
+
+    &_second-empty {
+        width: 20vw;
+        background-color: #e7e7e7;
     }
 
     &_active {

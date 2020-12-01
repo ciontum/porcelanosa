@@ -9,6 +9,19 @@ import "./styles.scss"
 import BackgroundImage from 'gatsby-background-image'
 
 export default data => {
+  const formatImagesArr = (imagesArr) => {
+    let result = []
+    for (let i = 0; i < imagesArr.length; i++) {
+      if (i % 6 === 0) {
+        result.push([imagesArr[i]])
+      } else {
+        result[result.length - 1].push(imagesArr[i])
+      }
+    }
+
+    return result
+  }
+
   const formatCataloageArr = (cataloageArr) => {
     const pdfs = cataloageArr.filter(catalog => catalog.node.extension === 'pdf')
     const images = cataloageArr.filter(catalog => catalog.node.extension === 'png')
@@ -25,13 +38,17 @@ export default data => {
 
     return cataloage
   }
-  const [cataloageArr] = useState(() => {
+
+  const [state] = useState(() => {
     const cataloage = formatCataloageArr(data.data.cataloage.edges)
+    const images = formatImagesArr(data.data.images.edges)
 
     return {
       cataloage,
+      images
     }
   })
+
   return <Layout>
     <Header image={data.data.hero.edges[0].node.childImageSharp.fluid} className="header-cataloage header-mid">
       <div className="header-cataloage_content">
@@ -40,17 +57,23 @@ export default data => {
         <p>{data.pageContext.slug.replace(/\//g, ' ')}</p>
       </div>
     </Header>
-    <div className="produse-images">
-      {
-        data.data.images.edges.map((image, i) => {
-          return <span className={`produse-images-${i}`}><Image fluid={image.node.childImageSharp.fluid} /></span>
-        })
-      }
-    </div>
     {
-      cataloageArr.cataloage && cataloageArr.cataloage.length &&
+      state.images.map((imageArr) => {
+        return (
+          <div className="produse-images">
+            {
+              imageArr.map((image, j) => (
+                <span className={`produse-images-${j}`}><Image fluid={image.node.childImageSharp.fluid} /></span>
+              ))
+            }
+          </div>
+        )
+      })
+    }
+    {
+      state.cataloage && state.cataloage.length &&
       <div className="produse-cataloage">
-        <CataloageCategory cataloage={cataloageArr.cataloage} name="DESCOPERĂ MAI MULTE ÎN CATALOAGE" />
+        <CataloageCategory cataloage={state.cataloage} name="DESCOPERĂ MAI MULTE ÎN CATALOAGE" />
       </div>
     }
     <BackgroundImage fluid={data.data.discover2.childImageSharp.fluid} className="discover-image">
@@ -59,7 +82,7 @@ export default data => {
       <Link to="/contact">Contact</Link>
     </BackgroundImage>
 
-  </Layout>
+  </Layout >
 }
 
 export const query = graphql`

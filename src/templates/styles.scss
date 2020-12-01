@@ -1,22 +1,13 @@
 .produse-images {
     display: grid;
-    grid-template-areas: 'first second fourth fifth'
+    grid-template-areas: 
+        'first second fourth fifth'
         'first third fourth sixth';
+        
     width: 70%;
     margin: 2em auto;
     padding: 2em;
 
-    @media (max-width: 950px) {
-        width: 90%;
-    }
-
-    @media (max-width: 600px) {
-        width: 100%;
-    }
-
-}
-
-.produse-images {
     .gatsby-image-wrapper {
         z-index: -200;
     }
@@ -25,7 +16,7 @@
         grid-area: first;
         margin-right: 1em;
 
-        &>div {
+        & > div {
             height: 416px;
         }
 
@@ -37,7 +28,7 @@
         height: 200px;
         margin-bottom: 1em;
 
-        &>div {
+        & > div {
             height: 200px;
         }
 
@@ -49,7 +40,7 @@
 
         height: 200px;
 
-        &>div {
+        & > div {
             height: 200px;
         }
 
@@ -60,7 +51,7 @@
         grid-area: fourth;
         margin: 0 1em;
 
-        &>div {
+        & > div {
             height: 416px;
         }
 
@@ -70,7 +61,7 @@
     &-4 {
         grid-area: fifth;
 
-        &>div {
+        & > div {
             height: 200px;
         }
 
@@ -80,11 +71,19 @@
     &-5 {
         grid-area: sixth;
 
-        &>div {
+        & > div {
             height: 200px;
         }
 
         z-index:-1;
+    }
+
+    @media (max-width: 950px) {
+        width: 90%;
+    }
+
+    @media (max-width: 600px) {
+        width: 100%;
     }
 }
 

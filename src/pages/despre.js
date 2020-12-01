@@ -21,13 +21,12 @@ export default props => {
 
 export const query = graphql`
 {
-    cataloageHeader:file(relativePath:{eq:"despre-header.png"}){
-        childImageSharp{
-          fluid(maxWidth:1600){
+    cataloageHeader:file(relativePath:{eq:"despre-header.png"}) {
+        childImageSharp {
+          fluid(maxWidth:1600) {
             ...GatsbyImageSharpFluid
           }
         }
-      }
-
+    }
 }
 `

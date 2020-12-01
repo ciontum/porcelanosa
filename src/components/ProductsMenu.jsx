@@ -37,32 +37,30 @@ const ProductsMenu = ({ className }) => {
     }, [])
 
     const getSecondaryList = () => {
-        if (mainActive === 'pardoseli')
-            return ["CERAMICĂ", "PORȚELAN", "LEMN NATURAL", "PIATRĂ NATURALĂ", "PARCHET-LAMINAT", "VINYL", "ADERENT"]
+        if (mainActive === 'parchet')
+            return ["LEMN NATURAL", "LAMINAT"]
 
-        if (mainActive === 'gresie-si-faianta')
-            return ["CERAMICĂ", "PORȚELAN", "LEMN NATURAL", "PIATRĂ NATURALĂ", "VINYL", "ADERENT", "MOZAIC"]
+        if (mainActive === 'obiecte-sanitare')
+            return ["BATERII", "LAVOARE", "CĂZI", "COLOANE DUȘ", "STICLE DUȘ", "PLANURI DUȘ", "RADIATOARE"]
 
-        if (mainActive === 'bucatarie')
-            return ["MOBILĂ", "CHIUVETE ROBINETE", "MESE DE LUCRU"]
+        if (mainActive === 'mobilier')
+            return ["BAIE", "BUCĂTĂRIE", "DRESING"]
 
-        if (mainActive === 'baie')
-            return ["MOBILĂ", "DUȘURI", "CĂZI", "CHIUVETE ROBINETE", 'TOALETE', "ACCESORII"]
+        if (mainActive === 'solutii-tehnice')
+            return ["PROFILE", "ADEZIVI", "SISTEME DUȘ", "FOLII IZOLARE", "ÎNCĂLZIRE PARDOSEA ELECTRIC", "MICRO-STUK"]
 
         return []
     }
 
     const getImageByName = (name) => {
-        let image = null
-        image = allFile.edges.find(file => file.node.childImageSharp.fixed.originalName === name)
-        return image
+        return allFile.edges.find(file => file.node.childImageSharp.fixed.originalName === name)
     }
 
     return (
         <div className={`products-menu ${className ? className : ''}`}>
             <div className="products-menu_first">
                 <ul>
-                    <li className={mainActive === "gresie" ? 'products-menu_active' : ''} onClick={() => setMainActive('pardoseli')}>
+                    <li className={mainActive === "gresie" ? 'products-menu_active' : ''} onClick={() => setMainActive('gresie')}>
                         GRESIE
                     </li>
 
@@ -90,7 +88,7 @@ const ProductsMenu = ({ className }) => {
                     <li className={mainActive === "mobilier" ? 'products-menu_active' : ''} onClick={() => setMainActive('mobilier')}>
                         MOBILIER
                     </li>
-                    <li className={mainActive === "solutii-tehnice" ? 'products-menu_active' : ''} onClick={() => document.location.pathname = 'produse/solutii-tehnice'}>
+                    <li className={mainActive === "solutii-tehnice" ? 'products-menu_active' : ''} onClick={() => setMainActive('solutii-tehnice')}>
                         SOLUȚII TEHNICE
                     </li>
                 </ul>

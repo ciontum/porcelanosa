@@ -2,6 +2,7 @@ import React from 'react'
 import "../components/contact.scss"
 import Navigation from '../components/Navigation'
 import Layout from '../components/Layout'
+import Header from "../components/Header"
 import PhoneSVG from "../images/phone.svg"
 import MailSVG from "../images/mail.svg"
 import PinSVG from "../images/pin.svg"
@@ -18,10 +19,16 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
 ))
 
 export default props => {
-
     return (
         <Layout>
-            <Navigation />
+            <Header image={props.data.cataloageHeader.childImageSharp.fluid} className="header-cataloage header-despre">
+                <div className="header-cataloage_content">
+                    <Navigation className="navigation-cataloage" />
+                    <div className="header-filter" id="header-filter"></div>
+                    <p>CONTACT</p>
+                </div>
+            </Header>
+
             <div className="contact-container">
                 <div className="contact">
                     <div className="contact-left">
@@ -61,6 +68,19 @@ export default props => {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </Layout >
     )
 }
+
+export const query = graphql`
+{
+    cataloageHeader: file(relativePath:{eq:"contact-header.png"}) {
+        childImageSharp {
+          fluid(maxWidth:1600) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+
+}
+`

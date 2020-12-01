@@ -36,7 +36,7 @@ const NavigationLinks = ({ className, classNameLinks }) => {
                 </li>
             </ul>
 
-            {isProductsMenu ? <ProductsMenu className={className} /> : null}
+            {isProductsMenu ? <div style={{ width: "100%", margin: "0 auto", position: "absolute", left: "0px" }}><ProductsMenu className={className} /> </div> : null}
         </>
     )
 }

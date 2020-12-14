@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'gatsby-image'
+import { Link } from "gatsby"
 
 const CataloageCategory = ({ name, cataloage }) => {
-    console.log(cataloage)
     return (
         <div className="cataloage-category">
             <h2>{name}</h2>
@@ -12,10 +12,11 @@ const CataloageCategory = ({ name, cataloage }) => {
                 {
                     cataloage.map((catalog, index) => {
                         return <div className="cataloage-category_content-group">
-                            <a href={["/cataloage-open#", name, index].join('')}>
+                            <Link to={"/cataloage-open#" + [name.toLowerCase().replace(/[\s]/g, '-'), catalog.primary.replace(/[\s]/g, '-').toLowerCase()].join('_')}
+                                onClick={() => window.scrollTo(0, 0)}>
                                 <Image fixed={catalog.image.childImageSharp.fixed} alt='catalog' />
                                 <p className="cataloage-category_content-group-secondary">{catalog.secondary}</p>
-                            </a>
+                            </Link>
                             <hr />
                             <p>{catalog.primary}</p>
                         </div>

@@ -4,7 +4,6 @@ import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Navigation from '../components/Navigation'
 import Image from "gatsby-image"
-import CataloageCategory from "../components/Cataloage/CataloageCategory"
 import "./styles.scss"
 import BackgroundImage from 'gatsby-background-image'
 
@@ -69,12 +68,6 @@ export default data => {
           </div>
         )
       })
-    }
-    {
-      state.cataloage && state.cataloage.length &&
-      <div className="produse-cataloage">
-        <CataloageCategory cataloage={state.cataloage} name="DESCOPERĂ MAI MULTE ÎN CATALOAGE" />
-      </div>
     }
     <BackgroundImage fluid={data.data.discover2.childImageSharp.fluid} className="discover-image">
       <div className="header-filter"></div>

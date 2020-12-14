@@ -83,6 +83,7 @@ cataloageBaie:allFile(filter:{relativeDirectory:{eq:"cataloage/Baie"}}){
 `
 
 const CataloageOpen = () => {
+
   const formatCataloageArr = (cataloageArr) => {
     const pdfs = cataloageArr.filter(catalog => catalog.node.extension === 'pdf')
     const images = cataloageArr.filter(catalog => catalog.node.extension === 'png')
@@ -123,66 +124,120 @@ const CataloageOpen = () => {
   })
 
   const [currentPDF, setCurrentPDf] = useState(() => {
+    console.log(window.location.href)
+    const path = window.location.href
+    const pdfParts = path.split('#')[1].split('_')
 
+    if (pdfParts[0] === "baie") {
+      for (let i = 0; i < cataloageArr.cataloageBaie.length; i++) {
+        if (cataloageArr.cataloageBaie[i].primary.replace(/[\s]/g, '-').toLowerCase() === pdfParts[1])
+          return cataloageArr.cataloageBaie[i].pdf
+      }
+    } else if (pdfParts[0] === "bucatarie") {
+      for (let i = 0; i < cataloageArr.cataloageBucatarie.length; i++) {
+        if (cataloageArr.cataloageBucatarie[i].primary.replace(/[\s]/g, '-').toLowerCase() === pdfParts[1])
+          return cataloageArr.cataloageBucatarie[i].pdf
+      }
+    } else if (pdfParts[0] === "mobila") {
+      for (let i = 0; i < cataloageArr.cataloageMobila.length; i++) {
+        if (cataloageArr.cataloageMobila[i].primary.replace(/[\s]/g, '-').toLowerCase() === pdfParts[1])
+          return cataloageArr.cataloageMobila[i].pdf
+      }
+    } else if (pdfParts[0] === "solutii-tehnice") {
+      for (let i = 0; i < cataloageArr.cataloageTehnice.length; i++) {
+        if (cataloageArr.cataloageTehnice[i].primary.replace(/[\s]/g, '-').toLowerCase() === pdfParts[1])
+          return cataloageArr.cataloageTehnice[i].pdf
+      }
+    } else {
+      for (let i = 0; i < cataloageArr.cataloagePardoseli.length; i++) {
+        if (cataloageArr.cataloagePardoseli[i].primary.replace(/[\s]/g, '-').toLowerCase() === pdfParts[1])
+          return cataloageArr.cataloagePardoseli[i].pdf
+      }
+    }
   })
 
   function changePDF(subtitle, index) {
-    if (subtitle === "Baie")
+    if (subtitle === "Baie") {
       setCurrentPDf(cataloageArr.cataloageBaie[index].pdf);
-    else if (subtitle === "Bucatarie")
+      window.location.hash = 'baie_' + cataloageArr.cataloageBaie[index].primary.replace(/[\s]/g, '-').toLowerCase()
+    } else if (subtitle === "Bucatarie") {
       setCurrentPDf(cataloageArr.cataloageBucatarie[index].pdf);
-    else if (subtitle === "Mobila")
+      window.location.hash = 'bucatarie_' + cataloageArr.cataloageBucatarie[index].primary.replace(/[\s]/g, '-').toLowerCase()
+    } else if (subtitle === "Mobila") {
       setCurrentPDf(cataloageArr.cataloageMobila[index].pdf);
-    else if (subtitle === "Solutii tehnice")
+      window.location.hash = 'mobila_' + cataloageArr.cataloageMobila[index].primary.replace(/[\s]/g, '-').toLowerCase()
+    } else if (subtitle === "Solutii tehnice") {
       setCurrentPDf(cataloageArr.cataloageTehnice[index].pdf);
-    else
+      window.location.hash = 'solutii-tehnice_' + cataloageArr.cataloageTehnice[index].primary.replace(/[\s]/g, '-').toLowerCase()
+    } else {
       setCurrentPDf(cataloageArr.cataloagePardoseli[index].pdf);
+      window.location.hash = 'pardoseli_' + cataloageArr.cataloagePardoseli[index].primary.replace(/[\s]/g, '-').toLowerCase()
+    }
   }
 
   return (
     <div className={styles.container}>
       <div className={styles.catalogs}>
-        <h2> Baie </h2>
-        <hr />
-        {
-          cataloageArr.cataloageBaie.map((catalog, index) => (
-            <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Baie"
-              pdf={catalog.pdf} onClick={changePDF} />
-          ))
-        }
-        <h2> Bucatarie </h2>
-        <hr />
-        {
-          cataloageArr.cataloageBucatarie.map((catalog, index) => (
-            <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Bucatarie"
-              pdf={catalog.pdf} onClick={changePDF} />
-          ))
-        }
-        <h2> Mobila </h2>
-        <hr />
-        {
-          cataloageArr.cataloageMobila.map((catalog, index) => (
-            <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Mobila"
-              pdf={catalog.pdf} onClick={changePDF} />
-          ))
-        }
-        <h2> Pardoseli, Gresie si Faianta </h2>
-        <hr />
-        {
-          cataloageArr.cataloagePardoseli.map((catalog, index) => (
-            <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Pardoseli, Gresie si Faianta"
-              pdf={catalog.pdf} onClick={changePDF} />
-          ))
-        }
-        <h2> Solutii tehnice </h2>
-        <hr />
-        {
-          cataloageArr.cataloageTehnice.map((catalog, index) => (
-            <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Solutii tehnice"
-              pdf={catalog.pdf} onClick={changePDF} />
-          ))
-        }
-
+        <div className={styles.section}>
+          <div className={styles.section_title}>
+            <h2> Baie </h2>
+          </div>
+          <hr />
+          {
+            cataloageArr.cataloageBaie.map((catalog, index) => (
+              <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Baie"
+                pdf={catalog.pdf} onClick={changePDF} />
+            ))
+          }
+        </div>
+        <div className={styles.section}>
+          <div className={styles.section_title}>
+            <h2> Bucătărie </h2>
+          </div>
+          <hr />
+          {
+            cataloageArr.cataloageBucatarie.map((catalog, index) => (
+              <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Bucatarie"
+                pdf={catalog.pdf} onClick={changePDF} />
+            ))
+          }
+        </div>
+        <div className={styles.section}>
+          <div className={styles.section_title}>
+            <h2> Mobilă </h2>
+          </div>
+          <hr />
+          {
+            cataloageArr.cataloageMobila.map((catalog, index) => (
+              <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Mobila"
+                pdf={catalog.pdf} onClick={changePDF} />
+            ))
+          }
+        </div>
+        <div className={styles.section}>
+          <div className={styles.section_title}>
+            <h2> Pardoseli, Gresie și Faianță </h2>
+          </div>
+          <hr />
+          {
+            cataloageArr.cataloagePardoseli.map((catalog, index) => (
+              <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Pardoseli, Gresie si Faianta"
+                pdf={catalog.pdf} onClick={changePDF} />
+            ))
+          }
+        </div>
+        <div className={styles.section}>
+          <div className={styles.section_title}>
+            <h2> Soluții tehnice </h2>
+          </div>
+          <hr />
+          {
+            cataloageArr.cataloageTehnice.map((catalog, index) => (
+              <CatalogCard index={index} image={catalog.image.childImageSharp.fixed} title={catalog.primary} subtitle="Solutii tehnice"
+                pdf={catalog.pdf} onClick={changePDF} />
+            ))
+          }
+        </div>
       </div>
       <div className={styles.pdf__viewer}>
         <iframe title="pdf-viewer" src={currentPDF} className={styles.pdf} />

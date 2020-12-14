@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react"
 import Layout from "../components/Layout"
 import { Helmet } from "react-helmet"
-
 import Scroll from "../components/Home/Scroll"
 import Image from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
@@ -39,7 +38,6 @@ export default props => {
   useEffect(() => {
     const onScroll = e => {
       setScrollTop(e.target.documentElement.scrollTop);
-      console.log(scrollRef.current.offsetTop, scrollTop)
     };
     window.addEventListener("scroll", onScroll);
 
@@ -68,7 +66,6 @@ export default props => {
               firstScrollElements.map(scroll => {
 
                 scroll.name = scroll.name.replace(/.png/, '')
-                console.log(scroll.name);
                 return <div className="scroll_content-group" >
                   <AnchorLink to="/cataloage">
                     <Image fixed={scroll.image} alt="scroll" />

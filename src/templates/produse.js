@@ -53,22 +53,20 @@ export default data => {
       <div className="header-cataloage_content">
         <Navigation className="navigation-cataloage" />
         <div className="header-filter" id="header-filter"></div>
-        <p>{data.pageContext.slug.replace(/\//g, ' ')}</p>
+        <p>{data.pageContext.slug.replace(/\//g, '. ')}</p>
       </div>
     </Header>
-    {
-      state.images.map((imageArr) => {
-        return (
-          <div className="produse-images">
-            {
-              imageArr.map((image, j) => (
-                <span className={`produse-images-${j}`}><Image fluid={image.node.childImageSharp.fluid} /></span>
-              ))
-            }
-          </div>
-        )
-      })
-    }
+    <div className="produse-images">
+      {
+        state.images.map((imageArr) => {
+          return (
+            imageArr.map((image, j) => (
+              <span className="image_container"><Image fluid={image.node.childImageSharp.fluid} className="image" /></span>
+            ))
+          )
+        })
+      }
+    </div>
     <BackgroundImage fluid={data.data.discover2.childImageSharp.fluid} className="discover-image">
       <div className="header-filter"></div>
       <p>Ai un plan? Contactează-ne</p>

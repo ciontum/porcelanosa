@@ -124,7 +124,6 @@ const CataloageOpen = () => {
   })
 
   const [currentPDF, setCurrentPDf] = useState(() => {
-    console.log(window.location.href)
     const path = window.location.href
     const pdfParts = path.split('#')[1].split('_')
 

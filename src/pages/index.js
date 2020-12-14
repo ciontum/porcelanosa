@@ -51,7 +51,6 @@ export default props => {
         <title>Maison Design</title>
       </Helmet>
       <Layout>
-
         {
           scrollRef.current && (scrollTop >= 740) &&
           <Navigation />
@@ -59,7 +58,6 @@ export default props => {
         <div className="header-container">
           <Fade></Fade>
         </div>
-
         <Scroll title="Descoperă" subTitle="Miile de produse disponibile" scrollRef={scrollRef} >
           <div className="scroll_content">
             {

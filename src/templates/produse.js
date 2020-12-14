@@ -56,7 +56,6 @@ export default data => {
       <p>Ai un plan? Contactează-ne</p>
       <Link to="/contact">Contact</Link>
     </BackgroundImage>
-
   </Layout >
 }
 

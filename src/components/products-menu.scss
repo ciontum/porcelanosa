@@ -1,9 +1,7 @@
 .products-menu {
     display: flex;
-    box-shadow: 10px 10px 100vh #888888;
     position: absolute;
-    left: 15vw;
-    right: 15vw;
+    max-width: 70vw;
     margin-top: 20px;
     z-index: 500;
     box-shadow: 0px 0px 100vh 100vh rgba(1, 1, 1, 0.5);
@@ -64,8 +62,8 @@
     }
 
     &_second-empty {
-        width: 20vw;
         background-color: #e7e7e7;
+        width: 0px;
     }
 
     &_active {

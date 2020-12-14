@@ -8,18 +8,6 @@ import "./styles.scss"
 import BackgroundImage from 'gatsby-background-image'
 
 export default data => {
-  const formatImagesArr = (imagesArr) => {
-    let result = []
-    for (let i = 0; i < imagesArr.length; i++) {
-      if (i % 6 === 0) {
-        result.push([imagesArr[i]])
-      } else {
-        result[result.length - 1].push(imagesArr[i])
-      }
-    }
-
-    return result
-  }
 
   const formatCataloageArr = (cataloageArr) => {
     const pdfs = cataloageArr.filter(catalog => catalog.node.extension === 'pdf')
@@ -40,7 +28,7 @@ export default data => {
 
   const [state] = useState(() => {
     const cataloage = formatCataloageArr(data.data.cataloage.edges)
-    const images = formatImagesArr(data.data.images.edges)
+    const images = data.data.images.edges
 
     return {
       cataloage,
@@ -58,13 +46,9 @@ export default data => {
     </Header>
     <div className="produse-images">
       {
-        state.images.map((imageArr) => {
-          return (
-            imageArr.map((image, j) => (
-              <span className="image_container"><Image fluid={image.node.childImageSharp.fluid} className="image" /></span>
-            ))
-          )
-        })
+        state.images.map((image) => (
+          <span className="image_container"><Image fluid={image.node.childImageSharp.fluid} className="image" /></span>
+        ))
       }
     </div>
     <BackgroundImage fluid={data.data.discover2.childImageSharp.fluid} className="discover-image">

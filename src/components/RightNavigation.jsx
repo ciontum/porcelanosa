@@ -2,6 +2,7 @@ import React from "react"
 import NavigationLinks from "./NavigationLinks"
 import "./navigation-links.scss"
 import styled from 'styled-components'
+import styles from "./right-navigation.module.scss"
 
 const UlNav = styled.ul`
   width: 90%;
@@ -128,9 +129,10 @@ const UlNav = styled.ul`
 
 const RightNavigation = ({ open, classNameLinks }) => {
   return (
-    <UlNav open={open}>
+    // <UlNav open={open}>
+    <div className={styles.container}>
       <NavigationLinks classNameLinks={classNameLinks} />
-    </UlNav>
+    </div>
   )
 }
 

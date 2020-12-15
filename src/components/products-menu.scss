@@ -1,8 +1,11 @@
 .products-menu {
     display: flex;
     position: absolute;
-    max-width: 70vw;
+    width: 70vw;
     margin-top: 20px;
+    
+    // margin-left: 15vw;
+    // margin-right: 15vw;
     z-index: 500;
     box-shadow: 0px 0px 100vh 100vh rgba(1, 1, 1, 0.5);
 
@@ -84,7 +87,8 @@
     }
 
     &_image {
-        width: 30vw;
+        min-width: 30vw;
+        width: 50vw;
     }
 }
 

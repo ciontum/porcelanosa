@@ -29,10 +29,13 @@ export default data => {
   const [state] = useState(() => {
     const cataloage = formatCataloageArr(data.data.cataloage.edges)
     const images = data.data.images.edges
+    const pageName = data.pageContext.slug.split('/')
+    const displayedName = pageName[pageName.length - 1].replace(/-/g, ' ')
 
     return {
       cataloage,
-      images
+      images,
+      displayedName
     }
   })
 
@@ -41,7 +44,7 @@ export default data => {
       <div className="header-cataloage_content">
         <Navigation className="navigation-cataloage" />
         <div className="header-filter" id="header-filter"></div>
-        <p>{data.pageContext.slug.replace(/\//g, '. ')}</p>
+        <p>{state.displayedName}</p>
       </div>
     </Header>
     <div className="produse-images">

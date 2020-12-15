@@ -18,7 +18,7 @@ const images = graphql`query{
         }
     }
 }
-  `
+`
 
 const ProductsMenu = ({ className }) => {
 
@@ -56,38 +56,75 @@ const ProductsMenu = ({ className }) => {
         return allFile.edges.find(file => file.node.childImageSharp.fixed.originalName === name)
     }
 
+    const onHoverBegin = (e) => {
+        var text = e.target.textContent
+
+        if (text === 'GRESIE') {
+            setMainActive('gresie')
+        } else if (text === 'FAIANȚĂ') {
+            setMainActive('faianta')
+        } else if (text === 'PLĂCI CERAMICE') {
+            setMainActive('placi-ceramice')
+        } else if (text === 'PIATRĂ NATURALĂ') {
+            setMainActive('piatra-naturala')
+        } else if (text === 'PARCHET') {
+            setMainActive('parchet')
+        } else if (text === 'LINKFLOOR') {
+            setMainActive('linkfloor')
+        } else if (text === 'OBIECTE SANITARE') {
+            setMainActive('obiecte-sanitare')
+        } else if (text === 'MOBILIER') {
+            setMainActive('mobilier')
+        } else if (text === 'SOLUȚII TEHNICE') {
+            setMainActive('solutii-tehnice')
+        }
+    }
+
     return (
         <div className={`products-menu ${className ? className : ''}`}>
             <div className="products-menu_first">
                 <ul>
-                    <li className={mainActive === "gresie" ? 'products-menu_active' : ''} onClick={() => setMainActive('gresie')}>
-                        <Link to="/produse/gresie">GRESIE</Link>
-                    </li>
+                    <Link to="/produse/gresie" className="link-no-decoration" onMouseEnter={onHoverBegin}>
+                        <li className={mainActive === "gresie" ? 'products-menu_active' : ''}>
+                            GRESIE
+                        </li>
+                    </Link>
 
-                    <li className={mainActive === "faianta" ? 'products-menu_active' : ''} onClick={() => setMainActive('faianta')}>
-                        <Link to="/produse/faianta">FAIANȚĂ</Link>
-                    </li>
+                    <Link to="/produse/faianta" className="link-no-decoration" onMouseEnter={onHoverBegin}>
+                        <li className={mainActive === "faianta" ? 'products-menu_active' : ''}>
+                            FAIANȚĂ
+                        </li>
+                    </Link>
 
-                    <li className={mainActive === "placi-ceramice" ? 'products-menu_active' : ''} onClick={() => setMainActive('placi-ceramice')}>
-                        <Link to="/produse/placi-ceramice">PLĂCI CERAMICE</Link>
-                    </li>
+                    <Link to="/produse/placi-ceramice" className="link-no-decoration" onMouseEnter={onHoverBegin}>
+                        <li className={mainActive === "placi-ceramice" ? 'products-menu_active' : ''}>
+                            PLĂCI CERAMICE
+                        </li>
+                    </Link>
 
-                    <li className={mainActive === "piatra-naturala" ? 'products-menu_active' : ''} onClick={() => setMainActive('piatra-naturala')}>
-                        <Link to="/produse/piatra-naturala">PIATRĂ NATURALĂ</Link>
-                    </li>
-                    <li className={mainActive === "parchet" ? 'products-menu_active' : ''} onClick={() => setMainActive('parchet')}>
+                    <Link to="/produse/piatra-naturala" className="link-no-decoration" onMouseEnter={onHoverBegin}>
+                        <li className={mainActive === "piatra-naturala" ? 'products-menu_active' : ''}>
+                            PIATRĂ NATURALĂ
+                        </li>
+                    </Link>
+
+                    <li className={mainActive === "parchet" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>
                         PARCHET
                     </li>
-                    <li className={mainActive === "linkfloor" ? 'products-menu_active' : ''} onClick={() => setMainActive('linkfloor')}>
-                        <Link to="/produse/linkfloor">LINKFLOOR</Link>
-                    </li>
-                    <li className={mainActive === "obiecte-sanitare" ? 'products-menu_active' : ''} onClick={() => setMainActive('obiecte-sanitare')}>
+
+                    <Link to="/produse/linkfloor" className="link-no-decoration" onMouseEnter={onHoverBegin}>
+                        <li className={mainActive === "linkfloor" ? 'products-menu_active' : ''}>
+                            LINKFLOOR
+                        </li>
+                    </Link>
+
+                    <li className={mainActive === "obiecte-sanitare" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>
                         OBIECTE SANITARE
                     </li>
-                    <li className={mainActive === "mobilier" ? 'products-menu_active' : ''} onClick={() => setMainActive('mobilier')}>
+                    <li className={mainActive === "mobilier" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>
                         MOBILIER
                     </li>
-                    <li className={mainActive === "solutii-tehnice" ? 'products-menu_active' : ''} onClick={() => setMainActive('solutii-tehnice')}>
+                    <li className={mainActive === "solutii-tehnice" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>
                         SOLUȚII TEHNICE
                     </li>
                 </ul>
@@ -108,17 +145,17 @@ const ProductsMenu = ({ className }) => {
             </div>
 
             <div className="products-menu_image">
-                <Image fixed={mainActive === "gresie" ? getImageByName('pardoseli.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "faianta" ? getImageByName('gresiefaianta.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "placi-ceramice" ? getImageByName('bucatarie.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "piatra-naturala" ? getImageByName('baie.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "parchet" ? getImageByName('baie.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "linkfloor" ? getImageByName('baie.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "obiecte-sanitare" ? getImageByName('baie.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "mobilier" ? getImageByName('baie.png').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "solutii-tehnice" ? getImageByName('baie.png').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive === "gresie" ? getImageByName('gresie.jpg').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive === "faianta" ? getImageByName('faianta.jpg').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive === "placi-ceramice" ? getImageByName('placi-ceramice.jpg').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive === "piatra-naturala" ? getImageByName('piatra-naturala.jpg').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive === "parchet" ? getImageByName('parchet.jpg').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive === "linkfloor" ? getImageByName('linkfloor.jpg').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive === "obiecte-sanitare" ? getImageByName('obiecte-sanitare.jpg').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive === "mobilier" ? getImageByName('mobilier.jpg').node.childImageSharp.fixed : null} />
+                <Image fixed={mainActive === "solutii-tehnice" ? getImageByName('solutii-tehnice.jpg').node.childImageSharp.fixed : null} />
             </div>
-        </div>
+        </div >
 
     )
 }

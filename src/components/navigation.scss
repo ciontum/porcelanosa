@@ -1,24 +1,18 @@
-.navigation{
+.navigation {
     display: flex;
     justify-content: flex-end;
-    align-items:center;
-    // padding:1em 0;
+    align-items: center;
     position: fixed;
     width: 100%;
     z-index: 100;
-    margin-left:auto;
+    margin-left: auto;
     background:#343434d9;
-    // overflow: hidden;
-    
-
-
 }
 
-.navigation-container{
+.navigation-container {
     display:flex;
     flex-direction: column;
     height:120px;
-    // overflow: hidden;
 
     & img{
         width: 100px;
@@ -29,12 +23,13 @@
     }
 }
 
-.navigation-cataloage{
-    background:none;
-    margin-top:1em;
-    position:initial;
-    & .navigation-links{
-        & li a{
+.navigation-cataloage {
+    background: none;
+    margin-top: 1em;
+    position: initial;
+
+    & .navigation-links {
+        & li a {
             color:#ffffffa1;
         }
     }

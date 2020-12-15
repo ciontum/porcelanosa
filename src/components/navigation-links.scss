@@ -1,12 +1,12 @@
-.navigation-links{
+.navigation-links {
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding-right: 2em;
 
-    & li{
-        & a{
+    & li {
+        & a {
             color:white;
             text-decoration: none;
         }
@@ -15,27 +15,38 @@
         font-size: calc(12px + 12 * ((100vw - 300px) / (1600 - 300)));
         color:white;
         letter-spacing: 2px;
-        margin-right:2em;
+        margin-right: 2em;
     }
 }
 
-.navigation-links-home{
+.navigation-links-home {
     list-style: none;
-    display:flex;
+    display: flex;
     width: 40%;
     justify-content: space-between;
-    padding-right:3%;
-    & li{
-        margin-right:0%;
-    }
+    padding-right: 3%;
 
+    & li {
+        margin-right: 0%;
+    }
 }
 
-.navigation-links-container{
+.navigation-links-container {
     width: 100%;
 }
 
 .navigation-links-active {
     font-weight: 900;
     font-size: 30px;
+}
+
+.active {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+@media only screen and (max-width: 800px) {
+    .active {
+        font-size: 20px;
+    }
 }

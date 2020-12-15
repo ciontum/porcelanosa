@@ -56,27 +56,50 @@ const ProductsMenu = ({ className }) => {
         return allFile.edges.find(file => file.node.childImageSharp.fixed.originalName === name)
     }
 
+    const changeImageOpacity = (currentImage) => {
+        const imageIds = ['img-gresie', 'img-faianta', 'img-placi-ceramice', 'img-piatra-naturala', 'img-parchet', 'img-linkfloor',
+            'img-obiecte-sanitare', 'img-mobilier', 'img-solutii-tehnice']
+
+        for (let i = 0; i < imageIds.length; i++) {
+            var img = document.getElementById(imageIds[i])
+            if (imageIds[i] === currentImage) {
+                img.style.opacity = 1
+            } else {
+                img.style.opacity = 0
+            }
+        }
+    }
+
     const onHoverBegin = (e) => {
         var text = e.target.textContent
 
         if (text === 'GRESIE') {
             setMainActive('gresie')
+            changeImageOpacity('img-gresie')
         } else if (text === 'FAIANȚĂ') {
             setMainActive('faianta')
+            changeImageOpacity('img-faianta')
         } else if (text === 'PLĂCI CERAMICE') {
             setMainActive('placi-ceramice')
+            changeImageOpacity('img-placi-ceramice')
         } else if (text === 'PIATRĂ NATURALĂ') {
             setMainActive('piatra-naturala')
+            changeImageOpacity('img-piatra-naturala')
         } else if (text === 'PARCHET') {
             setMainActive('parchet')
+            changeImageOpacity('img-parchet')
         } else if (text === 'LINKFLOOR') {
             setMainActive('linkfloor')
+            changeImageOpacity('img-linkfloor')
         } else if (text === 'OBIECTE SANITARE') {
             setMainActive('obiecte-sanitare')
+            changeImageOpacity('img-obiecte-sanitare')
         } else if (text === 'MOBILIER') {
             setMainActive('mobilier')
+            changeImageOpacity('img-mobilier')
         } else if (text === 'SOLUȚII TEHNICE') {
             setMainActive('solutii-tehnice')
+            changeImageOpacity('img-solutii-tehnice')
         }
     }
 
@@ -145,15 +168,33 @@ const ProductsMenu = ({ className }) => {
             </div>
 
             <div className="products-menu_image">
-                <Image fixed={mainActive === "gresie" ? getImageByName('gresie.jpg').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "faianta" ? getImageByName('faianta.jpg').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "placi-ceramice" ? getImageByName('placi-ceramice.jpg').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "piatra-naturala" ? getImageByName('piatra-naturala.jpg').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "parchet" ? getImageByName('parchet.jpg').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "linkfloor" ? getImageByName('linkfloor.jpg').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "obiecte-sanitare" ? getImageByName('obiecte-sanitare.jpg').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "mobilier" ? getImageByName('mobilier.jpg').node.childImageSharp.fixed : null} />
-                <Image fixed={mainActive === "solutii-tehnice" ? getImageByName('solutii-tehnice.jpg').node.childImageSharp.fixed : null} />
+                <div id="img-gresie" className="img-gatsby">
+                    <Image fixed={getImageByName('gresie.jpg').node.childImageSharp.fixed} />
+                </div>
+                <div id="img-faianta" className="img-gatsby">
+                    <Image fixed={getImageByName('faianta.jpg').node.childImageSharp.fixed} />
+                </div>
+                <div id="img-placi-ceramice" className="img-gatsby">
+                    <Image fixed={getImageByName('placi-ceramice.jpg').node.childImageSharp.fixed} />
+                </div>
+                <div id="img-piatra-naturala" className="img-gatsby">
+                    <Image fixed={getImageByName('piatra-naturala.jpg').node.childImageSharp.fixed} />
+                </div>
+                <div id="img-parchet" className="img-gatsby">
+                    <Image fixed={getImageByName('parchet.jpg').node.childImageSharp.fixed} />
+                </div>
+                <div id="img-linkfloor" className="img-gatsby">
+                    <Image fixed={getImageByName('linkfloor.jpg').node.childImageSharp.fixed} />
+                </div>
+                <div id="img-obiecte-sanitare" className="img-gatsby">
+                    <Image fixed={getImageByName('obiecte-sanitare.jpg').node.childImageSharp.fixed} />
+                </div>
+                <div id="img-mobilier" className="img-gatsby">
+                    <Image fixed={getImageByName('mobilier.jpg').node.childImageSharp.fixed} />
+                </div>
+                <div id="img-solutii-tehnice" className="img-gatsby">
+                    <Image fixed={getImageByName('solutii-tehnice.jpg').node.childImageSharp.fixed} />
+                </div>
             </div>
         </div >
 

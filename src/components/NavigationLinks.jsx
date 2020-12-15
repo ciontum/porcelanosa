@@ -10,7 +10,7 @@ const NavigationLinks = ({ className, classNameLinks }) => {
         <>
             <ul className={`navigation-links ${classNameLinks ? classNameLinks : ''}`}>
                 <li>
-                    <Link to="/" activeStyle={{ fontWeight: "900", fontSize: "30px" }}>
+                    <Link to="/" activeClassName="active">
                         ACASĂ
                     </Link>
                 </li>
@@ -20,17 +20,17 @@ const NavigationLinks = ({ className, classNameLinks }) => {
                     </a>
                 </li>
                 <li>
-                    <Link to="/cataloage" activeStyle={{ fontWeight: "900", fontSize: "30px" }}>
+                    <Link to="/cataloage" activeClassName="active">
                         CATALOAGE
                     </Link>
                 </li>
                 <li>
-                    <Link to="/despre" activeStyle={{ fontWeight: "900", fontSize: "30px" }}>
+                    <Link to="/despre" activeClassName="active">
                         DESPRE
                     </Link>
                 </li>
                 <li>
-                    <Link to="/contact" activeStyle={{ fontWeight: "900", fontSize: "30px" }}>
+                    <Link to="/contact" activeClassName="active">
                         CONTACT
                     </Link>
                 </li>

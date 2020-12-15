@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { graphql, Link } from "gatsby"
 import Layout from '../components/Layout'
 import Header from '../components/Header'
@@ -8,6 +8,18 @@ import "./styles.scss"
 import BackgroundImage from 'gatsby-background-image'
 
 export default data => {
+
+  const [scrollTop, setScrollTop] = useState(0);
+  const scrollRef = useRef()
+
+  useEffect(() => {
+    const onScroll = e => {
+      setScrollTop(e.target.documentElement.scrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollTop]);
 
   const formatCataloageArr = (cataloageArr) => {
     const pdfs = cataloageArr.filter(catalog => catalog.node.extension === 'pdf')
@@ -40,6 +52,7 @@ export default data => {
   })
 
   return <Layout>
+
     <Header image={data.data.hero.edges[0].node.childImageSharp.fluid} className="header-cataloage header-mid">
       <div className="header-cataloage_content">
         <Navigation className="navigation-cataloage" />
@@ -47,7 +60,12 @@ export default data => {
         <p>{state.displayedName}</p>
       </div>
     </Header>
-    <div className="produse-images">
+    {
+      scrollRef.current && (scrollTop >= 200) && <div style={{ position: "absolute", top: "0px" }}>
+        <Navigation />
+      </div>
+    }
+    <div className="produse-images" ref={scrollRef}>
       {
         state.images.map((image) => (
           <span className="image_container"><Image fluid={image.node.childImageSharp.fluid} className="image" /></span>

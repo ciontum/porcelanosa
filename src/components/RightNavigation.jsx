@@ -2,46 +2,56 @@ import React from "react"
 import NavigationLinks from "./NavigationLinks"
 import "./navigation-links.scss"
 import styled from 'styled-components'
-import styles from "./right-navigation.module.scss"
 
 const UlNav = styled.ul`
-  width: 90%;
-  height:100px;
+  width: 85%;
+  height: 100px;
   padding: 3% 0%;
   
   @media (max-width: 950px) {
     flex-flow: column nowrap;
-    background:#343434d9;
+    background: #343434d9;
     position: absolute;
-    overflow-y: auto;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
+    transition: transform 0.5s ease-in-out;
+
     top: 100%;
     right: 0;
+    
     height: auto;
     width: 100%;
-    transition: all 0.5s ease-in-out;
+
     li {
       color: #fff;
     }
+
     .products-menu {
       position: absolute;
+      width: 100%;
       z-index: 1000;
-      top: 30%;
       height: 300px;
+      margin: 0 auto;
 
       .products-menu_first {
-        width: 32%;
+        width: 35%;
         li {
+          font-size: 15px;
           color: black !important; 
         }
       }
 
       .products-menu_second {
-        width: 32%;
+        width: 30%;
+        ul > a {
+          font-size: 15px;
+        }
       }
 
       .products-menu_image {
-        display:none;
+        position: relative;
+        min-width: 50%;
+        width: 70%;
+        background-color: black;
       }
     }
 
@@ -129,10 +139,9 @@ const UlNav = styled.ul`
 
 const RightNavigation = ({ open, classNameLinks }) => {
   return (
-    // <UlNav open={open}>
-    <div className={styles.container}>
+    <UlNav open={open}>
       <NavigationLinks classNameLinks={classNameLinks} />
-    </div>
+    </UlNav>
   )
 }
 

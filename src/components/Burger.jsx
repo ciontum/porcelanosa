@@ -7,7 +7,7 @@ const StyledBurger = styled.div`
   width: 2rem;
   height: 2rem;
   position: static;
-  z-index: 20;
+  z-index: 100;
   display: none;
 
   @media (max-width: 750px) {
@@ -16,6 +16,7 @@ const StyledBurger = styled.div`
     flex-flow: column nowrap;
     margin-top: 3%;
   }
+
   div {
     width: 2rem;
     height: 0.25rem;
@@ -23,21 +24,24 @@ const StyledBurger = styled.div`
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
+
     &:nth-child(1) {
       transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
     }
+
     &:nth-child(2) {
       opacity: ${({ open }) => open ? 0 : 1};
     }
+    
     &:nth-child(3) {
       transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
     }
   }
 `;
 
-const Burger = ({classNameLinks}) => {
+const Burger = ({ classNameLinks }) => {
   const [open, setOpen] = useState(false)
-  
+
   return (
     <>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
@@ -45,7 +49,7 @@ const Burger = ({classNameLinks}) => {
         <div />
         <div />
       </StyledBurger>
-      <MiddleNav open={open} classNameLinks={classNameLinks}/>
+      <MiddleNav open={open} classNameLinks={classNameLinks} />
     </>
   )
 }

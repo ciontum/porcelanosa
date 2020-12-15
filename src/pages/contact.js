@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import "../components/contact.scss"
 import Navigation from '../components/Navigation'
 import Layout from '../components/Layout'
@@ -19,6 +19,18 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
 ))
 
 export default props => {
+    const [scrollTop, setScrollTop] = useState(0);
+    const scrollRef = useRef()
+
+    useEffect(() => {
+        const onScroll = e => {
+            setScrollTop(e.target.documentElement.scrollTop);
+        };
+        window.addEventListener("scroll", onScroll);
+
+        return () => window.removeEventListener("scroll", onScroll);
+    }, [scrollTop]);
+
     return (
         <Layout>
             <Header image={props.data.cataloageHeader.childImageSharp.fluid} className="header-cataloage header-despre">
@@ -28,8 +40,12 @@ export default props => {
                     <p>CONTACT</p>
                 </div>
             </Header>
-
-            <div className="contact-container">
+            {
+                scrollRef.current && (scrollTop >= 200) && <div style={{ position: "absolute", top: "0px" }}>
+                    <Navigation />
+                </div>
+            }
+            <div className="contact-container" ref={scrollRef}>
                 <div className="contact">
                     <div className="contact-left">
                         <div className="contact-left_content">

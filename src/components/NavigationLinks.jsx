@@ -36,7 +36,7 @@ const NavigationLinks = ({ className, classNameLinks }) => {
                 </li>
             </ul>
 
-            {isProductsMenu ? <ProductsMenu className={className} /> : null}
+            {isProductsMenu ? <ProductsMenu className={className} isHome={classNameLinks.includes('home')} /> : null}
         </>
     )
 }

@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery } from "gatsby"
+import { useStaticQuery, Link } from "gatsby"
 import Image from "gatsby-image"
 import "./home-navigation.scss"
 import Burger from "../Burger"

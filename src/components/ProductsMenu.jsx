@@ -20,7 +20,7 @@ const images = graphql`query{
 }
 `
 
-const ProductsMenu = ({ className }) => {
+const ProductsMenu = ({ className, isHome }) => {
 
     const [mainActive, setMainActive] = useState('gresie')
     const [secondaryList, setSecondaryList] = useState(null)
@@ -104,7 +104,7 @@ const ProductsMenu = ({ className }) => {
     }
 
     return (
-        <div className={`products-menu ${className ? className : ''}`}>
+        <div className={`products-menu ${className ? className : (isHome ? 'home' : '')}`}>
             <div className="products-menu_first">
                 <ul>
                     <Link to="/produse/gresie" className="link-no-decoration" onMouseEnter={onHoverBegin}>
@@ -154,23 +154,24 @@ const ProductsMenu = ({ className }) => {
             </div>
 
             <div className={secondaryList && secondaryList.length > 0 ? "products-menu_second" : "products-menu_second-empty"}>
-                <ul>
-                    {
-                        secondaryList && secondaryList.map(secondary => {
-                            let link = secondary.replace(/Ă/g, "A")
-                            link = link.replace("Ș", "S")
-                            link = link.replace("Î", "I")
-                            link = link.replace("Ț", "T").toLowerCase()
-                            return <a href='#' onClick={() => document.location.pathname = `produse/${mainActive}/${link.replace(/ /g, "-").toLowerCase()}`}>{secondary}</a>
-                        })
-                    }
-                </ul>
+                {
+                    secondaryList &&
+                    <ul>
+                        {
+                            secondaryList && secondaryList.map(secondary => {
+                                let link = secondary.replace(/Ă/g, "A")
+                                link = link.replace("Ș", "S")
+                                link = link.replace("Î", "I")
+                                link = link.replace("Ț", "T").toLowerCase()
+                                return <a href='#' onClick={() => document.location.pathname = `produse/${mainActive}/${link.replace(/ /g, "-").toLowerCase()}`}>{secondary}</a>
+                            })
+                        }
+                    </ul>
+
+                }
             </div>
 
             <div className="products-menu_image">
-                <div id="img-gresie" className="img-gatsby">
-                    <Image fixed={getImageByName('gresie.jpg').node.childImageSharp.fixed} />
-                </div>
                 <div id="img-faianta" className="img-gatsby">
                     <Image fixed={getImageByName('faianta.jpg').node.childImageSharp.fixed} />
                 </div>
@@ -194,6 +195,9 @@ const ProductsMenu = ({ className }) => {
                 </div>
                 <div id="img-solutii-tehnice" className="img-gatsby">
                     <Image fixed={getImageByName('solutii-tehnice.jpg').node.childImageSharp.fixed} />
+                </div>
+                <div id="img-gresie" className="img-gatsby">
+                    <Image fixed={getImageByName('gresie.jpg').node.childImageSharp.fixed} />
                 </div>
             </div>
         </div >

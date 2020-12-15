@@ -62,7 +62,6 @@ export default props => {
           <div className="scroll_content">
             {
               firstScrollElements.map(scroll => {
-
                 scroll.name = scroll.name.replace(/.png/, '')
                 return <div className="scroll_content-group" >
                   <AnchorLink to="/cataloage">

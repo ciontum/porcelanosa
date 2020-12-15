@@ -43,6 +43,13 @@
 .active {
     font-weight: 900;
     font-size: 30px;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 @media only screen and (max-width: 800px) {
@@ -52,5 +59,9 @@
 
     .navigation-links-active {
         font-size: 20px;
+    }
+
+    .navigation-links {
+        padding: 0px;
     }
 }

@@ -10,7 +10,7 @@ const NavigationLinks = ({ className, classNameLinks }) => {
         <>
             <ul className={`navigation-links ${classNameLinks ? classNameLinks : ''}`}>
                 <li>
-                    <Link to="/" activeClassName="active">
+                    <Link to="/" activeClassName="active" onClick={() => window.scrollTo(0, 0)}>
                         ACASĂ
                     </Link>
                 </li>
@@ -20,17 +20,17 @@ const NavigationLinks = ({ className, classNameLinks }) => {
                     </a>
                 </li>
                 <li>
-                    <Link to="/cataloage" activeClassName="active">
+                    <Link to="/cataloage" activeClassName="active" onClick={() => window.scrollTo(0, 0)}>
                         CATALOAGE
                     </Link>
                 </li>
                 <li>
-                    <Link to="/despre" activeClassName="active">
+                    <Link to="/despre" activeClassName="active" onClick={() => window.scrollTo(0, 0)}>
                         DESPRE
                     </Link>
                 </li>
                 <li>
-                    <Link to="/contact" activeClassName="active">
+                    <Link to="/contact" activeClassName="active" onClick={() => window.scrollTo(0, 0)}>
                         CONTACT
                     </Link>
                 </li>

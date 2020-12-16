@@ -119,6 +119,15 @@ const UlNav = styled.ul`
   @media (max-width: 450px) {
     width: 100%;
   }
+
+  @media (orientation: landscape) and (max-width: 600px) {
+    overflow-y: scroll;
+
+    .products-menu {
+      box-shadow: none;
+      height: 100%;
+    }
+  }
 `;
 
 const RightNavigation = ({ open, classNameLinks }) => {

@@ -52,8 +52,9 @@ export default props => {
       </Helmet>
       <Layout>
         {
-          scrollRef.current && (scrollTop >= 740) &&
-          <Navigation />
+          scrollRef.current && (scrollTop >= 740) && <div style={{ position: "absolute", top: "0px" }}>
+            <Navigation />
+          </div>
         }
         <div className="header-container">
           <Fade></Fade>

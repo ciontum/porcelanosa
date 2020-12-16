@@ -41,13 +41,13 @@ const ProductsMenu = ({ className, isHome }) => {
             return ["LEMN NATURAL", "LAMINAT"]
 
         if (mainActive === 'obiecte-sanitare')
-            return ["BATERII", "LAVOARE", "CĂZI", "COLOANE DUȘ", "STICLE DUȘ", "PLATOURI DUȘ", "RADIATOARE"]
+            return ["BATERII", "LAVOARE", "CĂZI", "COLOANE DUȘ", "RAIN SHOWER", "STICLE DUȘ", "PLATOURI DUȘ", "RADIATOARE"]
 
         if (mainActive === 'mobilier')
-            return ["BAIE", "BUCĂTĂRIE", "DRESING"]
+            return ["BAIE", "BUCĂTĂRIE"]
 
         if (mainActive === 'solutii-tehnice')
-            return ["PROFILE", "ADEZIVI", "SISTEME DUȘ", "FOLII IZOLANTE", "ÎNCĂLZIRE PARDOSEALĂ", "MICRO-STUK"]
+            return ["PROFILE", "ADEZIVI", "FOLII IZOLANTE", "ÎNCĂLZIRE PARDOSEALĂ"]
 
         return []
     }

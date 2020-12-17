@@ -1,6 +1,6 @@
 import React from "react"
-import NavigationLinks from "./NavigationLinks"
-import "./navigation-links.scss"
+import NavigationLinks from "../General/NavigationLinks"
+import "../General/navigation-links.scss"
 import styled from 'styled-components'
 
 const Ul = styled.div`
@@ -11,7 +11,7 @@ const Ul = styled.div`
   @media (max-width: 950px) {
     flex-flow: column nowrap;
     background: #343434d9;
-    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
+    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(150%)'};
     transition: transform 0.5s ease-in-out;
 
     top: 100%;

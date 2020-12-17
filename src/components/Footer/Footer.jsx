@@ -2,9 +2,9 @@ import React from "react"
 import "./footer.scss"
 import { useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
-import Instagram from "../images/instagram.png"
-import Facebook from "../images/facebook.png"
-import Youtube from "../images/youtube.png"
+import Instagram from "../../images/instagram.png"
+import Facebook from "../../images/facebook.png"
+import Youtube from "../../images/youtube.png"
 import { Link } from "gatsby"
 
 export const query = graphql`

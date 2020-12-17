@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from "react"
-import Layout from "../components/Layout"
+import Layout from "../components/Layout/Layout"
 import { Helmet } from "react-helmet"
 import Scroll from "../components/Home/Scroll"
 import Image from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
-import Navigation from "../components/Navigation"
+import Navigation from "../components/Navigation/Navigation"
 import { Link } from "gatsby"
 import { AnchorLink } from "gatsby-plugin-anchor-links";
-import Fade from "../components/Fade"
+import Fade from "../components/Navigation/Home/Fade"
 import { DismissMenuContext } from "../utils/context"
 
 export default props => {

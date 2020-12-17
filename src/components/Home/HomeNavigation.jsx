@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 import "./home-navigation.scss"
-import Burger from "../Burger"
+import Burger from "../Navigation/Home/Burger"
 import { IsMenuOpenedContext } from "../../utils/context"
 import { useState } from "react"
 

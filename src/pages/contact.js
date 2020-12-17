@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react'
-import "../components/contact.scss"
-import Navigation from '../components/Navigation'
-import Layout from '../components/Layout'
-import Header from "../components/Header"
+import "./contact.scss"
+import Navigation from '../components/Navigation/Navigation'
+import Layout from '../components/Layout/Layout'
+import Header from "../components/Header/Header"
 import PhoneSVG from "../images/phone.svg"
 import MailSVG from "../images/mail.svg"
 import PinSVG from "../images/pin.svg"

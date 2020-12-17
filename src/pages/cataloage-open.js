@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
-import Header from '../components/Header'
-import Navigation from '../components/Navigation'
-import Layout from '../components/Layout'
+import Header from '../components/Header/Header'
+import Navigation from '../components/Navigation/Navigation'
+import Layout from '../components/Layout/Layout'
 import CataloageOpen from '../components/Cataloage/CataloageOpen'
 import { DismissMenuContext } from "../utils/context"
 

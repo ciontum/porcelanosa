@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import "./navigation-links.scss"
 import { Link } from "gatsby"
 import ProductsMenu from "./ProductsMenu"
-import { IsMenuOpenedContext } from "../utils/context"
+import { IsMenuOpenedContext } from "../../../utils/context"
 
 const NavigationLinks = ({ className, classNameLinks }) => {
     const { isProductsMenuOpen, setProductsMenuOpen } = useContext(IsMenuOpenedContext)

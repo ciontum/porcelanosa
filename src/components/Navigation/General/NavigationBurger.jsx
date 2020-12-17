@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import RightNavigation from "./RightNavigation"
 import styled from 'styled-components'
-import { IsMenuOpenedContext, DismissMenuContext } from "../utils/context"
+import { IsMenuOpenedContext, DismissMenuContext } from "../../../utils/context"
 
 const StyledNavBurger = styled.div`
   width: 2rem;

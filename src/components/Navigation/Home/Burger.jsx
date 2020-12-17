@@ -2,7 +2,7 @@ import React from "react"
 import { useState, useEffect, useContext } from "react"
 import styled from 'styled-components'
 import MiddleNav from "./MiddleNav"
-import { IsMenuOpenedContext, DismissMenuContext } from "../utils/context"
+import { IsMenuOpenedContext, DismissMenuContext } from "../../../utils/context"
 
 const StyledBurger = styled.div`
   width: 2rem;

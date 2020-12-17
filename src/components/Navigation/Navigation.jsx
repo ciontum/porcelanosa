@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import LogoPNG from "../images/logo.png"
+import LogoPNG from "../../images/logo.png"
 import "./navigation.scss"
-import NavigationBurger from "./NavigationBurger"
+import NavigationBurger from "./General/NavigationBurger"
 import { Link } from "gatsby"
-import { IsMenuOpenedContext } from "../utils/context"
+import { IsMenuOpenedContext } from "../../utils/context"
 
 const Navigation = ({ className }) => {
     const [isProductsMenuOpen, setProductsMenuOpen] = useState(false)

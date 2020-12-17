@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react"
-import Layout from '../components/Layout'
-import Header from '../components/Header'
-import Navigation from '../components/Navigation'
+import Layout from '../components/Layout/Layout'
+import Header from '../components/Header/Header'
+import Navigation from '../components/Navigation/Navigation'
 import Image from "gatsby-image"
 import BackgroundImage from 'gatsby-background-image'
 import { graphql, Link } from "gatsby"

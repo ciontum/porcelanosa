@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import image1 from "../images/transition/1.png"
+import image1 from "../../../images/transition/1.png"
 import "./fadestyle.scss"
-import "./header.scss"
-import HomeNavigation from "../components/Home/HomeNavigation"
+import "../../Header/header.scss"
+import HomeNavigation from "../../Home/HomeNavigation"
 
 export default class Fade extends Component {
   render() {

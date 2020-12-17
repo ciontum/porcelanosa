@@ -1,7 +1,7 @@
-import React from "react"
-import { useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import RightNavigation from "./RightNavigation"
 import styled from 'styled-components'
+import { IsMenuOpenedContext, DismissMenuContext } from "../utils/context"
 
 const StyledNavBurger = styled.div`
   width: 2rem;
@@ -40,16 +40,25 @@ const StyledNavBurger = styled.div`
 `;
 
 const NavigationBurger = ({ classNameLinks }) => {
+  const { _, setProductsMenuOpen } = useContext(IsMenuOpenedContext)
+  const { showSecondNav } = useContext(DismissMenuContext)
   const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    if (!showSecondNav) {
+      setOpen(false)
+      setProductsMenuOpen(false)
+    }
+  }, [showSecondNav])
 
   return (
     <>
-      <StyledNavBurger open={open} onClick={() => setOpen(!open)}>
+      <StyledNavBurger open={open && showSecondNav} onClick={() => { setOpen(!open); setProductsMenuOpen(false) }}>
         <div />
         <div />
         <div />
       </StyledNavBurger>
-      <RightNavigation open={open} classNameLinks={classNameLinks} />
+      <RightNavigation open={open && showSecondNav} classNameLinks={classNameLinks} />
     </>
   )
 }

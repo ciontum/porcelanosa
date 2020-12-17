@@ -29,35 +29,35 @@ const Footer = () => {
                     <div className="footer_top-group">
                         <h3>NE GĂSIȚI PE</h3>
                         <div className="logos">
-                            <Link to='https://www.instagram.com/porcelanosa_oradea/'>
+                            <a href='https://www.instagram.com/porcelanosa_oradea/' target="_blank" rel="noreferrer">
                                 <img src={Instagram} alt="instagram-logo-porcelanosa" className="instagram_logo" />
-                            </Link>
+                            </a>
                         </div>
                         <div className="logos" >
-                            <Link to='https://www.facebook.com/porcelanosaoradea/'>
+                            <a href='https://www.facebook.com/porcelanosaoradea/' target="_blank" rel="noreferrer">
                                 <img src={Facebook} alt="facebook-logo-porcelanosa" className="facebook_logo" />
-                            </Link>
+                            </a>
                         </div>
                         <div className="logos" >
-                            <Link to='https://www.youtube.com/user/porcelanosaoradea/videos?flow=grid&view=0&sort=da'>
+                            <a href='https://www.youtube.com/user/porcelanosaoradea/videos?flow=grid&view=0&sort=da' target="_blank" rel="noreferrer">
                                 <img src={Youtube} alt="youtube-logo-porcelanosa" className="youtube_logo" />
-                            </Link>
+                            </a>
                         </div>
                     </div>
 
                     <div className="footer_top-group display-none">
                         <h3>MENIU</h3>
                         <div className="footer_links">
-                            <a href="/" className="no_decoration"> ACASĂ </a>
+                            <Link to="/" className="no_decoration"> ACASĂ </Link>
                         </div>
                         <div className="footer_links">
-                            <a href="/cataloage" className="no_decoration">CATALOAGE</a>
+                            <Link to="/cataloage" className="no_decoration">CATALOAGE</Link>
                         </div>
                         <div className="footer_links">
-                            <a href="/despre" className="no_decoration">DESPRE NOI</a>
+                            <Link to="/despre" className="no_decoration">DESPRE NOI</Link>
                         </div>
                         <div className="footer_links">
-                            <a href="/contact" className="no_decoration">CONTACT</a>
+                            <Link to="/contact" className="no_decoration">CONTACT</Link>
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@ const Footer = () => {
             </div>
             <div className="footer_bottom">
                 <p>2020 Maison Design SRL. Toate drepturile rezervate</p>
-                <p>Designed by Pantech.</p>
+                <p>Designed by Pantech <span style={{ color: "red" }}>.</span></p>
             </div>
         </footer>
     )

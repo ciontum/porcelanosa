@@ -13,6 +13,7 @@ export default props => {
 
   const [scrollTop, setScrollTop] = useState(0);
   const scrollRef = useRef()
+
   const [firstScrollElements] = useState(() => {
     const firstScroll = props.data.firstScroll.edges.map(scroll => {
       return {
@@ -23,6 +24,7 @@ export default props => {
 
     return firstScroll
   })
+
   const [secondScrollElements] = useState(() => {
     const wNull = props.data.secondScroll.edges.filter(edge => edge.node.childImageSharp)
     const secondScroll = wNull.sort((a, b) => {

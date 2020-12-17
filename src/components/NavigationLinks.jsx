@@ -1,11 +1,12 @@
-import React, { useState } from "react"
+import React, { useContext } from "react"
 import "./navigation-links.scss"
 import { Link } from "gatsby"
 import ProductsMenu from "./ProductsMenu"
+import { IsMenuOpenedContext } from "../utils/context"
 
 const NavigationLinks = ({ className, classNameLinks }) => {
+    const { isProductsMenuOpen, setProductsMenuOpen } = useContext(IsMenuOpenedContext)
 
-    const [isProductsMenu, setIsProductsMenu] = useState(false)
     return (
         <>
             <ul className={`navigation-links ${classNameLinks ? classNameLinks : ''}`}>
@@ -14,8 +15,8 @@ const NavigationLinks = ({ className, classNameLinks }) => {
                         ACASĂ
                     </Link>
                 </li>
-                <li onClick={() => setIsProductsMenu(prevState => !prevState)} >
-                    <a className={isProductsMenu ? 'navigation-links-active' : ''}>
+                <li onClick={() => setProductsMenuOpen(!isProductsMenuOpen)} >
+                    <a className={isProductsMenuOpen ? 'navigation-links-active' : ''}>
                         PRODUSE
                     </a>
                 </li>
@@ -36,7 +37,7 @@ const NavigationLinks = ({ className, classNameLinks }) => {
                 </li>
             </ul>
 
-            {isProductsMenu ? <ProductsMenu className={className} isHome={classNameLinks.includes('home')} /> : null}
+            {isProductsMenuOpen ? <ProductsMenu className={className} isHome={classNameLinks.includes('home')} /> : null}
         </>
     )
 }

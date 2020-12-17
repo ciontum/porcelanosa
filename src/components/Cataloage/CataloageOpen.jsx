@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import styles from "./cataloage-open.module.scss"
 import CatalogCard from "./CatalogCard"
 import { graphql, useStaticQuery } from "gatsby"
+import { useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const cataloage = graphql`
 {
@@ -123,37 +125,39 @@ const CataloageOpen = () => {
     }
   })
 
-  const [currentPDF, setCurrentPDf] = useState(() => {
+  const [currentPDF, setCurrentPDf] = useState(null)
+
+  useEffect(() => {
     const path = window.location.href
     const pdfParts = path.split('#')[1].split('_')
 
     if (pdfParts[0] === "baie") {
       for (let i = 0; i < cataloageArr.cataloageBaie.length; i++) {
         if (cataloageArr.cataloageBaie[i].primary.replace(/[\s]/g, '-').toLowerCase() === pdfParts[1])
-          return cataloageArr.cataloageBaie[i].pdf
+          setCurrentPDf(cataloageArr.cataloageBaie[i].pdf)
       }
     } else if (pdfParts[0] === "bucatarie") {
       for (let i = 0; i < cataloageArr.cataloageBucatarie.length; i++) {
         if (cataloageArr.cataloageBucatarie[i].primary.replace(/[\s]/g, '-').toLowerCase() === pdfParts[1])
-          return cataloageArr.cataloageBucatarie[i].pdf
+          setCurrentPDf(cataloageArr.cataloageBucatarie[i].pdf)
       }
     } else if (pdfParts[0] === "mobila") {
       for (let i = 0; i < cataloageArr.cataloageMobila.length; i++) {
         if (cataloageArr.cataloageMobila[i].primary.replace(/[\s]/g, '-').toLowerCase() === pdfParts[1])
-          return cataloageArr.cataloageMobila[i].pdf
+          setCurrentPDf(cataloageArr.cataloageMobila[i].pdf)
       }
     } else if (pdfParts[0] === "solutii-tehnice") {
       for (let i = 0; i < cataloageArr.cataloageTehnice.length; i++) {
         if (cataloageArr.cataloageTehnice[i].primary.replace(/[\s]/g, '-').toLowerCase() === pdfParts[1])
-          return cataloageArr.cataloageTehnice[i].pdf
+          setCurrentPDf(cataloageArr.cataloageTehnice[i].pdf)
       }
     } else {
       for (let i = 0; i < cataloageArr.cataloagePardoseli.length; i++) {
         if (cataloageArr.cataloagePardoseli[i].primary.replace(/[\s]/g, '-').toLowerCase() === pdfParts[1])
-          return cataloageArr.cataloagePardoseli[i].pdf
+          setCurrentPDf(cataloageArr.cataloagePardoseli[i].pdf)
       }
     }
-  })
+  }, [currentPDF])
 
   function changePDF(subtitle, index) {
     if (subtitle === "Baie") {

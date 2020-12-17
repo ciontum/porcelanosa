@@ -30,7 +30,7 @@ export default class Fade extends Component {
 
         <div className="header-content">
           <div className="header-filter" id="header-filter" />
-          <HomeNavigation classNameLinks="navigation-links-home" />
+          <HomeNavigation />
           <div className="header-bottom">
             <p>DESIGN.</p>
             <p>LUX.</p>

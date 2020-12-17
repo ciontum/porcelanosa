@@ -8,6 +8,7 @@ import MailSVG from "../images/mail.svg"
 import PinSVG from "../images/pin.svg"
 import ManSVG from '../images/man.svg'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { DismissMenuContext } from "../utils/context"
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
@@ -19,10 +20,17 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
 ))
 
 export default props => {
+    const [showSecondNav, setShowSecondNav] = useState(false)
     const [scrollTop, setScrollTop] = useState(0);
     const scrollRef = useRef()
 
     useEffect(() => {
+        if (scrollTop >= 200) {
+            setShowSecondNav(true)
+        } else {
+            setShowSecondNav(false)
+        }
+
         const onScroll = e => {
             setScrollTop(e.target.documentElement.scrollTop);
         };
@@ -35,14 +43,18 @@ export default props => {
         <Layout>
             <Header image={props.data.cataloageHeader.childImageSharp.fluid} className="header-cataloage header-despre">
                 <div className="header-cataloage_content">
-                    <Navigation className="navigation-cataloage" />
+                    <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>
+                        <Navigation className="navigation-cataloage" />
+                    </DismissMenuContext.Provider>
                     <div className="header-filter" id="header-filter"></div>
                     <p>CONTACT</p>
                 </div>
             </Header>
             {
                 scrollRef.current && (scrollTop >= 200) && <div style={{ position: "absolute", top: "0px" }}>
-                    <Navigation />
+                    <DismissMenuContext.Provider value={{ showSecondNav, setShowSecondNav }}>
+                        <Navigation />
+                    </DismissMenuContext.Provider>
                 </div>
             }
             <div className="contact-container" ref={scrollRef}>

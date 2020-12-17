@@ -8,9 +8,10 @@ import Navigation from "../components/Navigation"
 import { Link } from "gatsby"
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 import Fade from "../components/Fade"
+import { DismissMenuContext } from "../utils/context"
 
 export default props => {
-
+  const [showSecondNav, setShowSecondNav] = useState(false)
   const [scrollTop, setScrollTop] = useState(0);
   const scrollRef = useRef()
 
@@ -38,6 +39,12 @@ export default props => {
   })
 
   useEffect(() => {
+    if (scrollTop >= 200) {
+      setShowSecondNav(true)
+    } else {
+      setShowSecondNav(false)
+    }
+
     const onScroll = e => {
       setScrollTop(e.target.documentElement.scrollTop);
     };
@@ -53,14 +60,18 @@ export default props => {
         <title>Maison Design</title>
       </Helmet>
       <Layout>
+        <div className="header-container">
+          <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>
+            <Fade />
+          </DismissMenuContext.Provider>
+        </div>
         {
           scrollRef.current && (scrollTop >= 740) && <div style={{ position: "absolute", top: "0px" }}>
-            <Navigation />
+            <DismissMenuContext.Provider value={{ showSecondNav: showSecondNav, setShowSecondNav }}>
+              <Navigation />
+            </DismissMenuContext.Provider>
           </div>
         }
-        <div className="header-container">
-          <Fade></Fade>
-        </div>
         <Scroll title="Descoperă" subTitle="Miile de produse disponibile" scrollRef={scrollRef} >
           <div className="scroll_content">
             {

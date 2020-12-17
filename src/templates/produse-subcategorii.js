@@ -5,14 +5,22 @@ import Navigation from '../components/Navigation'
 import Image from "gatsby-image"
 import BackgroundImage from 'gatsby-background-image'
 import { graphql, Link } from "gatsby"
+import { DismissMenuContext } from "../utils/context"
 import styles from "./produse-subcategorii.module.scss"
 import "./styles.scss"
 
 export default data => {
+    const [showSecondNav, setShowSecondNav] = useState(false)
     const [scrollTop, setScrollTop] = useState(0);
     const scrollRef = useRef()
 
     useEffect(() => {
+        if (scrollTop >= 200) {
+            setShowSecondNav(true)
+        } else {
+            setShowSecondNav(false)
+        }
+
         const onScroll = e => {
             setScrollTop(e.target.documentElement.scrollTop);
         };
@@ -39,14 +47,18 @@ export default data => {
         <Layout>
             <Header image={data.data.hero.edges[0].node.childImageSharp.fluid} className="header-cataloage header-mid">
                 <div className="header-cataloage_content">
-                    <Navigation className="navigation-cataloage" />
+                    <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>
+                        <Navigation className="navigation-cataloage" />
+                    </DismissMenuContext.Provider>
                     <div className="header-filter" id="header-filter"></div>
                     <p>{state.displayedName}</p>
                 </div>
             </Header>
             {
                 scrollRef.current && (scrollTop >= 200) && <div style={{ position: "absolute", top: "0px" }}>
-                    <Navigation />
+                    <DismissMenuContext.Provider value={{ showSecondNav: showSecondNav, setShowSecondNav }}>
+                        <Navigation />
+                    </DismissMenuContext.Provider>
                 </div>
             }
             <div className={styles.categories} ref={scrollRef}>

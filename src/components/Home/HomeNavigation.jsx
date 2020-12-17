@@ -3,27 +3,31 @@ import { useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 import "./home-navigation.scss"
 import Burger from "../Burger"
+import { IsMenuOpenedContext } from "../../utils/context"
+import { useState } from "react"
 
 export const query = graphql`
 {
-  navigationLogo:file(relativePath:{eq:"logo.png"})
-    {
-      childImageSharp{
-        fixed(width:120){
+  navigationLogo:file(relativePath:{eq:"logo.png"}) {
+    childImageSharp {
+      fixed(width:120) {
           ...GatsbyImageSharpFixed
-        }
       }
     }
+  }
 }
 `
 
-const HomeNavigation = ({ classNameLinks }) => {
+const HomeNavigation = () => {
   const { navigationLogo } = useStaticQuery(query)
+  const [isProductsMenuOpen, setProductsMenuOpen] = useState(false)
 
   return (
     <div className="home-navigation">
       <Image fixed={navigationLogo.childImageSharp.fixed} />
-      <Burger classNameLinks={'navigation-links-home'} ></Burger>
+      <IsMenuOpenedContext.Provider value={{ isProductsMenuOpen, setProductsMenuOpen }}>
+        <Burger classNameLinks={'navigation-links-home'} />
+      </IsMenuOpenedContext.Provider>
     </div>
   )
 }

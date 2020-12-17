@@ -1,7 +1,8 @@
 import React from "react"
-import { useState } from "react"
+import { useState, useEffect, useContext } from "react"
 import styled from 'styled-components'
 import MiddleNav from "./MiddleNav"
+import { IsMenuOpenedContext, DismissMenuContext } from "../utils/context"
 
 const StyledBurger = styled.div`
   width: 2rem;
@@ -40,11 +41,20 @@ const StyledBurger = styled.div`
 `;
 
 const Burger = ({ classNameLinks }) => {
+  const { _, setProductsMenuOpen } = useContext(IsMenuOpenedContext)
+  const { showSecondNav } = useContext(DismissMenuContext)
   const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    if (!showSecondNav) {
+      setOpen(false)
+      setProductsMenuOpen(false)
+    }
+  }, [showSecondNav])
 
   return (
     <>
-      <StyledBurger open={open} onClick={() => setOpen(!open)}>
+      <StyledBurger open={open && showSecondNav} onClick={() => { setOpen(!open); setProductsMenuOpen(false) }}>
         <div />
         <div />
         <div />

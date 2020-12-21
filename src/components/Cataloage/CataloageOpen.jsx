@@ -3,7 +3,6 @@ import styles from "./cataloage-open.module.scss"
 import CatalogCard from "./CatalogCard"
 import { graphql, useStaticQuery } from "gatsby"
 import { useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
 
 const cataloage = graphql`
 {

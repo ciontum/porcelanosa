@@ -26,6 +26,11 @@ const NavigationLinks = ({ className, classNameLinks }) => {
                     </Link>
                 </li>
                 <li>
+                    <Link to="/portofoliu" activeClassName="active" onClick={() => window.scrollTo(0, 0)}>
+                        PORTOFOLIU
+                    </Link>
+                </li>
+                <li>
                     <Link to="/despre" activeClassName="active" onClick={() => window.scrollTo(0, 0)}>
                         DESPRE
                     </Link>

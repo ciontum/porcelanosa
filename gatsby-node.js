@@ -3,14 +3,14 @@ const path = require('path')
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
     const result = await graphql(`
-        query{
-            allFile(filter:{relativeDirectory:{eq:"produse/slugs"}}){
-                edges{
-                  node{
+        query {
+            allFile(filter:{relativeDirectory:{eq:"produse/slugs"}}) {
+                edges {
+                  node {
                     name
                   }
                 }
-              }
+            }
         }
     `)
 
@@ -31,6 +31,14 @@ exports.createPages = async ({ graphql, actions }) => {
                     categories: ['Baterii baie', 'Baterii bucătărie'],
                     images1: 'produse/obiecte-sanitare/baterii/images/baterii-baie',
                     images2: 'produse/obiecte-sanitare/baterii/images/baterii-bucatarie'
+                }
+            })
+        } else if (slug2.includes('portofoliu')) {
+            createPage({
+                path: slug2,
+                component: path.resolve('./src/templates/portofoliu-page.js'),
+                context: {
+                    slug: slug2
                 }
             })
         } else {

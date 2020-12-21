@@ -5,8 +5,7 @@ import styled from 'styled-components'
 
 const UlNav = styled.ul`
   width: 85%;
-  height: 100px;
-  padding: 3% 0%;
+  height: 100%;
   
   @media (max-width: 950px) {
     flex-flow: column nowrap;

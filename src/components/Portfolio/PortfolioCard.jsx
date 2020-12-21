@@ -5,7 +5,7 @@ import styles from "./portfolio-card.module.scss"
 
 const PortfolioCard = ({ name, image }) => {
     return <Link to={"/portofoliu/" + name.replace(/[\s]/g, '-').toLowerCase()}
-        onClick={() => window.scrollTo(0, 0)}>
+        onClick={() => window.scrollTo(0, 0)} className={styles.link}>
         <div className={styles.card_layout}>
             <Image fixed={image} alt={'catalog ' + name.replace(/[\s]/g, '-').toLowerCase()} />
             <div className={styles.line} />

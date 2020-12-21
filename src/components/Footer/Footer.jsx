@@ -9,7 +9,7 @@ import { Link } from "gatsby"
 
 export const query = graphql`
 {
-  file (relativePath:{eq:"logo.png"}) {
+  file (relativePath:{eq:"logo2.png"}) {
       childImageSharp{
         fluid {
           ...GatsbyImageSharpFluid

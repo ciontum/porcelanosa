@@ -4,8 +4,8 @@ import "../General/navigation-links.scss"
 import styled from 'styled-components'
 
 const Ul = styled.div`
-  width: 85%;
-  height: 100px;
+  width: 90%;
+  height: 100%;
   padding: 3% 0%;
 
   @media (max-width: 950px) {

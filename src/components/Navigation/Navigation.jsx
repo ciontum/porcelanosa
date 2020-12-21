@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import LogoPNG from "../../images/logo.png"
+import LogoPNG from "../../images/logo2.png"
 import "./navigation.scss"
 import NavigationBurger from "./General/NavigationBurger"
 import { Link } from "gatsby"

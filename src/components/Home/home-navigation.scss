@@ -1,13 +1,13 @@
 .home-navigation {
-   width:100%;
-   display:flex;
+   width: 100%;
+   display: flex;
    flex-direction: column;
    align-items: center;
    padding-top: 2em;
    height: auto;
 
     .navigation-links {
-        width: 80%;
+        width: 100%;
         padding-right: 0;
         margin: 3em auto 1em; 
 
@@ -21,9 +21,10 @@
 }
 
 .navigation-hamburger-home {
-    display:none;
+    display: none;
     margin-top: 8%;
-    @media (max-width:750px){
-        display:initial;
+    
+    @media (max-width:750px) {
+        display: initial;
     }
 }

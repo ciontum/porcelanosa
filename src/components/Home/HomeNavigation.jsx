@@ -8,7 +8,7 @@ import { useState } from "react"
 
 export const query = graphql`
 {
-  navigationLogo:file(relativePath:{eq:"logo.png"}) {
+  navigationLogo:file(relativePath:{eq:"logo2.png"}) {
     childImageSharp {
       fixed(width:120) {
           ...GatsbyImageSharpFixed

@@ -107,39 +107,39 @@ const ProductsMenu = ({ className, isHome }) => {
         <div className={`products-menu ${className ? className : (isHome ? 'home' : '')}`}>
             <div className="products-menu_first">
                 <ul>
-                    <Link to="/produse/gresie" className="link-no-decoration" onMouseEnter={onHoverBegin}>
-                        <li className={mainActive === "gresie" ? 'products-menu_active' : ''}>
+                    <li className={mainActive === "gresie" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>
+                        <Link to="/produse/gresie" className="link-no-decoration">
                             GRESIE
-                        </li>
-                    </Link>
+                        </Link>
+                    </li>
 
-                    <Link to="/produse/faianta" className="link-no-decoration" onMouseEnter={onHoverBegin}>
-                        <li className={mainActive === "faianta" ? 'products-menu_active' : ''}>
+                    <li className={mainActive === "faianta" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>
+                        <Link to="/produse/faianta" className="link-no-decoration">
                             FAIANȚĂ
-                        </li>
-                    </Link>
+                        </Link>
+                    </li>
 
-                    <Link to="/produse/placi-ceramice" className="link-no-decoration" onMouseEnter={onHoverBegin}>
-                        <li className={mainActive === "placi-ceramice" ? 'products-menu_active' : ''}>
+                    <li className={mainActive === "placi-ceramice" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>
+                        <Link to="/produse/placi-ceramice" className="link-no-decoration">
                             PLĂCI CERAMICE
-                        </li>
-                    </Link>
+                        </Link>
+                    </li>
 
-                    <Link to="/produse/piatra-naturala" className="link-no-decoration" onMouseEnter={onHoverBegin}>
-                        <li className={mainActive === "piatra-naturala" ? 'products-menu_active' : ''}>
+                    <li className={mainActive === "piatra-naturala" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>
+                        <Link to="/produse/piatra-naturala" className="link-no-decoration">
                             PIATRĂ NATURALĂ
-                        </li>
-                    </Link>
+                        </Link>
+                    </li>
 
                     <li className={mainActive === "parchet" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>
                         PARCHET
                     </li>
 
-                    <Link to="/produse/linkfloor" className="link-no-decoration" onMouseEnter={onHoverBegin}>
-                        <li className={mainActive === "linkfloor" ? 'products-menu_active' : ''}>
+                    <li className={mainActive === "linkfloor" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>
+                        <Link to="/produse/linkfloor" className="link-no-decoration">
                             LINKFLOOR
-                        </li>
-                    </Link>
+                        </Link>
+                    </li>
 
                     <li className={mainActive === "obiecte-sanitare" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>
                         OBIECTE SANITARE
@@ -163,7 +163,7 @@ const ProductsMenu = ({ className, isHome }) => {
                                 link = link.replace("Ș", "S")
                                 link = link.replace("Î", "I")
                                 link = link.replace("Ț", "T").toLowerCase()
-                                return <a href='#' onClick={() => document.location.pathname = `produse/${mainActive}/${link.replace(/ /g, "-").toLowerCase()}`}>{secondary}</a>
+                                return <Link to={"/produse/" + mainActive + "/" + link.replace(/ /g, "-").toLowerCase()}> {secondary}</Link>
                             })
                         }
                     </ul>

@@ -20,10 +20,15 @@
     }
 }
 
+.logo {
+    width: 23%;
+    height: 41%;
+}
+
 .navigation-hamburger-home {
     display: none;
     margin-top: 8%;
-    
+
     @media (max-width:750px) {
         display: initial;
     }

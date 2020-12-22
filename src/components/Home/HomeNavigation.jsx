@@ -10,8 +10,8 @@ export const query = graphql`
 {
   navigationLogo:file(relativePath:{eq:"logo2.png"}) {
     childImageSharp {
-      fixed(width:120) {
-          ...GatsbyImageSharpFixed
+      fluid {
+          ...GatsbyImageSharpFluid
       }
     }
   }
@@ -24,7 +24,7 @@ const HomeNavigation = () => {
 
   return (
     <div className="home-navigation">
-      <Image fixed={navigationLogo.childImageSharp.fixed} />
+      <Image fluid={navigationLogo.childImageSharp.fluid} className="logo" />
       <IsMenuOpenedContext.Provider value={{ isProductsMenuOpen, setProductsMenuOpen }}>
         <Burger classNameLinks={'navigation-links-home'} />
       </IsMenuOpenedContext.Provider>

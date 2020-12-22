@@ -13,7 +13,7 @@ const Navigation = ({ className }) => {
             <div className='navigation-container'>
                 <div className={`navigation ${className ? className : ''}`}>
                     <Link to="/">
-                        <img src={LogoPNG} alt='logo' />
+                        <img src={LogoPNG} alt='logo' className="navigation-container-logo" />
                     </Link>
                     <NavigationBurger classNameLinks="main-navigation-mini" />
                 </div>

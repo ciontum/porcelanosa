@@ -2,13 +2,13 @@ import React, { useState, useRef, useEffect } from "react"
 import Layout from '../components/Layout/Layout'
 import Header from '../components/Header/Header'
 import Navigation from '../components/Navigation/Navigation'
-import Image from "gatsby-image"
 import BackgroundImage from 'gatsby-background-image'
 import { graphql, Link } from "gatsby"
 import { DismissMenuContext } from "../utils/context"
 import styles from "./produse-subcategorii.module.scss"
 import "./styles.scss"
 import SEO from "../components/SEO/SEO"
+import ZoomedImage from "../components/ZoomedImage/ZoomedImage"
 
 export default data => {
     const [showSecondNav, setShowSecondNav] = useState(false)
@@ -77,17 +77,9 @@ export default data => {
             <div className={styles.produse_images}>
                 {
                     idx === 0 ?
-                        state.imagesBaie.map((image) => (
-                            <span className={styles.image_container}>
-                                <Image fluid={image.node.childImageSharp.fluid} className={styles.image} />
-                            </span>
-                        ))
+                        state.imagesBaie.map(image => <ZoomedImage image={image.node.childImageSharp.fluid} text={image.node.name} />)
                         :
-                        state.imagesBucatarie.map((image) => (
-                            <span className={styles.image_container}>
-                                <Image fluid={image.node.childImageSharp.fluid} className={styles.image} />
-                            </span>
-                        ))
+                        state.imagesBucatarie.map(image => <ZoomedImage image={image.node.childImageSharp.fluid} text={image.node.name} />)
                 }
             </div>
             <BackgroundImage fluid={data.data.discover2.childImageSharp.fluid} className="discover-image">
@@ -126,25 +118,27 @@ query ($slug:String!,$hero:String,$images1:String,$images2:String) {
             }
         }
     }
-    images1:allFile(filter:{relativeDirectory:{eq:$images1}}) {
+    images1:allFile(filter:{relativeDirectory:{eq:$images1}}, sort: {order: ASC, fields: childImageSharp___resolutions___height}) {
         edges{
             node{
                 childImageSharp{
-                    fluid(maxWidth:300){
+                    fluid(quality: 100, jpegQuality: 100, pngQuality: 100) {
                         ...GatsbyImageSharpFluid
                     }
                 }
+                name
             }
         }
    },
-   images2:allFile(filter:{relativeDirectory:{eq:$images2}}) {
+   images2:allFile(filter:{relativeDirectory:{eq:$images2}}, sort: {order: ASC, fields: childImageSharp___resolutions___height}) {
         edges {
             node {
                 childImageSharp {
-                    fluid(maxWidth:300) {
+                    fluid(quality: 100, jpegQuality: 100, pngQuality: 100) {
                         ...GatsbyImageSharpFluid
                     }
                 }
+                name
             }
         }
    }

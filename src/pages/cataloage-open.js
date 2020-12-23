@@ -5,7 +5,6 @@ import Layout from '../components/Layout/Layout'
 import CataloageOpen from '../components/Cataloage/CataloageOpen'
 import { DismissMenuContext } from "../utils/context"
 import SEO from '../components/SEO/SEO'
-import { decodeOpenCatalogName } from '../utils/helpers'
 
 export default props => {
     const [showSecondNav, setShowSecondNav] = useState(false)
@@ -29,7 +28,7 @@ export default props => {
 
     return (
         <Layout>
-            <SEO title={"Catalog " + decodeOpenCatalogName(window.location.hash) + " | Maison Design"}
+            <SEO title="Colectiile Porcelanosa | Maison Design"
                 description="Descopera cataloagele Maison Design. Peste 7 categorii si 20 de cataloage diferite pentru toate nevoile casei tale"
                 canonical="http://maisondesign.ro/cataloage-open" robots="index, follow" />
             <Header image={props.data.cataloageHeader.childImageSharp.fluid} className="header-cataloage">

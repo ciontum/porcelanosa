@@ -3,11 +3,12 @@ import { graphql, Link } from "gatsby"
 import Layout from '../components/Layout/Layout'
 import Header from '../components/Header/Header'
 import Navigation from '../components/Navigation/Navigation'
-import Image from "gatsby-image"
 import "./styles.scss"
 import BackgroundImage from 'gatsby-background-image'
+import ZoomedImage from "../components/ZoomedImage/ZoomedImage"
 import SEO from "../components/SEO/SEO"
 import { DismissMenuContext } from "../utils/context"
+import 'react-medium-image-zoom/dist/styles.css'
 
 export default data => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -33,17 +34,19 @@ export default data => {
     const images = data.data.images.edges
     const pageName = data.pageContext.slug.split('/')
     const displayedName = pageName[pageName.length - 1].replace(/-/g, ' ')
+    const metaCanonical = "http://www.maisondesign.ro/" + data.pageContext.slug
 
     return {
       images,
-      displayedName
+      displayedName,
+      metaCanonical
     }
   })
 
   return <Layout>
     <SEO title={state.displayedName.toUpperCase() + " | Maison Design"}
       description="Alege cele mai bune produse marca Porcelanosa"
-      canonical={"http://www.maisondesign.ro" + window.location.pathname} robots="index, follow" />
+      canonical={state.metaCanonical} robots="index, follow" />
     <Header image={data.data.hero.edges[0].node.childImageSharp.fluid} className="header-cataloage header-mid">
       <div className="header-cataloage_content">
         <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>
@@ -62,9 +65,7 @@ export default data => {
     }
     <div className="produse-images" ref={scrollRef}>
       {
-        state.images.map((image) => (
-          <span className="image_container"><Image fluid={image.node.childImageSharp.fluid} className="image" /></span>
-        ))
+        state.images.map(image => <ZoomedImage image={image.node.childImageSharp.fluid} text={image.node.name} />)
       }
     </div>
     <BackgroundImage fluid={data.data.discover2.childImageSharp.fluid} className="discover-image">
@@ -102,14 +103,15 @@ query ($slug:String!,$hero:String,$images:String){
       }
     }
   }
-  images:allFile(filter:{relativeDirectory:{eq:$images}}) {
+  images: allFile(filter: {relativeDirectory: {eq: $images}}, sort: {order: ASC, fields: childImageSharp___resolutions___height}) {
     edges {
       node {
         childImageSharp {
-          fluid(maxWidth:300) {
+          fluid(quality: 100, jpegQuality: 100, pngQuality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
+        name
       }
     }
   }

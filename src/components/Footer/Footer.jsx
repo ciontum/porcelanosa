@@ -27,7 +27,7 @@ const Footer = () => {
                 <Image fluid={file.childImageSharp.fluid} alt="logo" className="footer_logo" />
                 <div className="footer_top-right">
                     <div className="footer_top-group">
-                        <h3>NE GĂSIȚI PE</h3>
+                        <h3>SOCIAL MEDIA</h3>
                         <div className="logos">
                             <a href='https://www.instagram.com/porcelanosa_oradea/' target="_blank" rel="noreferrer">
                                 <img src={Instagram} alt="instagram-logo-porcelanosa" className="instagram_logo" />

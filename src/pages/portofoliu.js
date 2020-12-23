@@ -10,7 +10,6 @@ export default props => {
     const [showSecondNav, setShowSecondNav] = useState(false)
     const [scrollTop, setScrollTop] = useState(0);
     const scrollRef = useRef()
-    console.log(scrollRef)
 
     useEffect(() => {
         if (scrollTop >= 200) {

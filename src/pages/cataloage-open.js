@@ -4,6 +4,8 @@ import Navigation from '../components/Navigation/Navigation'
 import Layout from '../components/Layout/Layout'
 import CataloageOpen from '../components/Cataloage/CataloageOpen'
 import { DismissMenuContext } from "../utils/context"
+import SEO from '../components/SEO/SEO'
+import { decodeOpenCatalogName } from '../utils/helpers'
 
 export default props => {
     const [showSecondNav, setShowSecondNav] = useState(false)
@@ -27,6 +29,9 @@ export default props => {
 
     return (
         <Layout>
+            <SEO title={"Catalog " + decodeOpenCatalogName(window.location.hash) + " | Maison Design"}
+                description="Descopera cataloagele Maison Design. Peste 7 categorii si 20 de cataloage diferite pentru toate nevoile casei tale"
+                canonical="http://maisondesign.ro/cataloage-open" robots="index, follow" />
             <Header image={props.data.cataloageHeader.childImageSharp.fluid} className="header-cataloage">
                 <div className="header-cataloage_content">
                     <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>
@@ -52,11 +57,10 @@ export const query = graphql`
 {
     cataloageHeader:file(relativePath:{eq:"cataloage-header.png"}){
         childImageSharp{
-          fluid(maxWidth:1600){
+          fluid(quality: 100, jpegQuality: 100, pngQuality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
-      }
-            
+    }  
 }
 `

@@ -9,6 +9,7 @@ import PinSVG from "../images/pin.svg"
 import ManSVG from '../images/man.svg'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import { DismissMenuContext } from "../utils/context"
+import SEO from '../components/SEO/SEO'
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
@@ -41,6 +42,9 @@ export default props => {
 
     return (
         <Layout>
+            <SEO title="Contact | Maison Design"
+                description="Doresti sa comanzi sau sa ne intrebi detalii despre produsele noastre? Nu ezita sa ne contactezi la 0259 410 170 sau pe adresa de email contact@maisondesign.ro"
+                canonical="http://maisondesign.ro/contact" robots="index, follow" />
             <Header image={props.data.cataloageHeader.childImageSharp.fluid} className="header-cataloage header-despre">
                 <div className="header-cataloage_content">
                     <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>
@@ -104,7 +108,7 @@ export const query = graphql`
 {
     cataloageHeader: file(relativePath:{eq:"contact-header.png"}) {
         childImageSharp {
-          fluid(maxWidth:1600) {
+          fluid(quality: 100, jpegQuality: 100, pngQuality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

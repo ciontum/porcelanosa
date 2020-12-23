@@ -54,6 +54,9 @@ const Footer = () => {
                             <Link to="/cataloage" className="no_decoration">CATALOAGE</Link>
                         </div>
                         <div className="footer_links">
+                            <Link to="/portofoliu" className="no_decoration">PORTOFOLIU</Link>
+                        </div>
+                        <div className="footer_links">
                             <Link to="/despre" className="no_decoration">DESPRE NOI</Link>
                         </div>
                         <div className="footer_links">

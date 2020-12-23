@@ -8,6 +8,7 @@ import { graphql, Link } from "gatsby"
 import { DismissMenuContext } from "../utils/context"
 import styles from "./produse-subcategorii.module.scss"
 import "./styles.scss"
+import SEO from "../components/SEO/SEO"
 
 export default data => {
     const [showSecondNav, setShowSecondNav] = useState(false)
@@ -45,6 +46,9 @@ export default data => {
 
     return (
         <Layout>
+            <SEO title="Baterii | Maison Design"
+                description="Alege din cea mai variata gama de baterii de baie sau bucatarie, de la Maison Design"
+                canonical="http://www.maisondesign.ro/produse/obiecte-sanitare/baterii" robots="index, follow" />
             <Header image={data.data.hero.edges[0].node.childImageSharp.fluid} className="header-cataloage header-mid">
                 <div className="header-cataloage_content">
                     <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>
@@ -115,7 +119,7 @@ query ($slug:String!,$hero:String,$images1:String,$images2:String) {
         edges{
             node{
                 childImageSharp{
-                    fluid(maxWidth:1600){
+                    fluid(quality: 100, jpegQuality: 100, pngQuality: 100) {
                         ...GatsbyImageSharpFluid
                     }
                 }

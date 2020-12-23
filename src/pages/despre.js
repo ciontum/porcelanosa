@@ -3,6 +3,7 @@ import Layout from "../components/Layout/Layout"
 import Header from "../components/Header/Header"
 import Navigation from "../components/Navigation/Navigation"
 import DespreCard from "../components/Despre/DespreCard"
+import SEO from "../components/SEO/SEO"
 import { DismissMenuContext } from "../utils/context"
 
 export default props => {
@@ -27,6 +28,9 @@ export default props => {
 
   return (
     <Layout>
+      <SEO title="Despre noi | Maison Design"
+        description="Cu o experiență de peste 13 ani în amenajări interioare, Maison Design aduce în prim plan eleganța și rafinamentul Porcelanosa prin elementele care satisfac orice exigență legată de inovație, exclusivism și calitate."
+        canonical="http://maisondesign.ro/despre" robots="index, follow" />
       <Header image={props.data.cataloageHeader.childImageSharp.fluid} className="header-cataloage header-despre">
         <div className="header-cataloage_content">
           <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>
@@ -52,7 +56,7 @@ export const query = graphql`
 {
     cataloageHeader:file(relativePath:{eq:"despre-header.png"}) {
         childImageSharp {
-          fluid(maxWidth:1600) {
+          fluid(quality: 100, jpegQuality: 100, pngQuality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

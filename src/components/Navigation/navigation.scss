@@ -10,7 +10,7 @@
     margin-left: auto;
     background:#343434d9;
 
-    @media(max-width: 950px) {
+    @media (max-width: 950px) {
         justify-content: space-between;
     }
 }
@@ -22,11 +22,38 @@
 }
 
 .navigation-container-logo {
-    width: 64%;
-    height: 100%;
-    margin-top: 6%;
-    margin-bottom: 2%;
-    margin-left: 10%;
+    width: 100%;
+    height: auto;
+}
+
+.navigation-container-homelink {
+    width: 20%;
+    height: 80%;
+    margin: 1%;
+
+    @media (max-width: 950px) {
+        width: 25%;
+    }
+
+    @media (max-width: 750px) {
+        width: 30%;
+        margin-left: 3%;
+    }
+
+    @media (max-width: 600px) {
+        width: 35%;
+        margin-left: 3%;
+    }
+
+    @media (max-width: 500px) {
+        width: 45%;
+        margin-left: 3%;
+    }
+
+    @media (max-width: 500px) {
+        width: 55%;
+        margin-left: 3%;
+    }
 }
 
 .navigation-cataloage {

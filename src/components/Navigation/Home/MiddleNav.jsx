@@ -3,12 +3,33 @@ import NavigationLinks from "../General/NavigationLinks"
 import "../General/navigation-links.scss"
 import styled from 'styled-components'
 
+// @media(max - width: 750px) {
+//     .products - menu {
+//     height: 220px;
+
+//       .products - menu_first {
+//       width: 35 %;
+//       li {
+//         font - size: 12px;
+//         color: black!important;
+//       }
+//     }
+
+//       .products - menu_second {
+//       width: 30 %;
+//       ul > a {
+//         font - size: 12px;
+//       }
+//     }
+//   }
+// }
+
 const Ul = styled.div`
   width: 90%;
   height: 100%;
   padding: 3% 0%;
 
-  @media (max-width: 950px) {
+  @media (max-width: 750px) {
     flex-flow: column nowrap;
     background: #343434d9;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(150%)'};
@@ -28,7 +49,7 @@ const Ul = styled.div`
       position: absolute;
       width: 100%;
       z-index: 1000;
-      height: 400px;
+      height: auto;
       margin: 0 auto;
 
       .products-menu_first {
@@ -40,7 +61,7 @@ const Ul = styled.div`
       }
 
       .products-menu_second {
-        width: 30%;
+        width: 35%;
         ul > a {
           font-size: 15px;
         }
@@ -48,8 +69,8 @@ const Ul = styled.div`
 
       .products-menu_image {
         position: relative;
-        min-width: 50%;
-        width: 70%;
+        min-width: 30%;
+        width: 50%;
         background-color: black;
       }
     }
@@ -65,28 +86,7 @@ const Ul = styled.div`
     }
   }
 
-  @media (max-width: 750px) {
-    .products-menu {
-      height: 220px;
-
-      .products-menu_first {
-        width: 35%;
-        li {
-          font-size: 12px;
-          color: black !important; 
-        }
-      }
-
-      .products-menu_second {
-        width: 30%;
-        ul > a {
-          font-size: 12px;
-        }
-      }
-    }
-  }
-
-  @media (max-width: 650px) {
+  @media (max-width: 700px) {
     .products-menu {
       .products-menu_first {
         min-width: 50%;
@@ -117,15 +117,6 @@ const Ul = styled.div`
 
   @media (max-width: 450px) {
     width: 100%;
-  }
-
-  @media (orientation: landscape) and (max-width: 600px) {
-    overflow-y: scroll;
-
-    .products-menu {
-      box-shadow: none;
-      height: 100%;
-    }
   }
 `;
 

@@ -6,6 +6,7 @@ import Navigation from '../components/Navigation/Navigation'
 import Image from "gatsby-image"
 import "./styles.scss"
 import BackgroundImage from 'gatsby-background-image'
+import SEO from "../components/SEO/SEO"
 import { DismissMenuContext } from "../utils/context"
 
 export default data => {
@@ -40,6 +41,9 @@ export default data => {
   })
 
   return <Layout>
+    <SEO title={state.displayedName.toUpperCase() + " | Maison Design"}
+      description="Alege cele mai bune produse marca Porcelanosa"
+      canonical={"http://www.maisondesign.ro" + window.location.pathname} robots="index, follow" />
     <Header image={data.data.hero.edges[0].node.childImageSharp.fluid} className="header-cataloage header-mid">
       <div className="header-cataloage_content">
         <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>
@@ -91,7 +95,7 @@ query ($slug:String!,$hero:String,$images:String){
     edges {
       node {
         childImageSharp {
-          fluid(maxWidth:1600) {
+          fluid(quality: 100, jpegQuality: 100, pngQuality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const UlNav = styled.ul`
   width: 85%;
   height: 100%;
-  
+
   @media (max-width: 950px) {
     flex-flow: column nowrap;
     background: #343434d9;
@@ -17,7 +17,7 @@ const UlNav = styled.ul`
     top: 100%;
     right: 0;
     
-    height: auto;
+    height: 100vh;
     width: 100%;
 
     li {
@@ -30,6 +30,8 @@ const UlNav = styled.ul`
       z-index: 1000;
       height: 300px;
       margin: 0 auto;
+      left: 0px;
+      box-shadow: none;
 
       .products-menu_first {
         width: 35%;
@@ -68,6 +70,7 @@ const UlNav = styled.ul`
   @media (max-width: 750px) {
     .products-menu {
       height: 220px;
+      margin-top: 0px;
 
       .products-menu_first {
         width: 35%;
@@ -119,8 +122,9 @@ const UlNav = styled.ul`
     width: 100%;
   }
 
-  @media (orientation: landscape) and (max-width: 600px) {
+  @media (orientation: landscape) and (max-width: 950px) {
     overflow-y: scroll;
+    overflow-x: hidden;
 
     .products-menu {
       box-shadow: none;

@@ -6,11 +6,11 @@ import Image from 'gatsby-image'
 const images = graphql`query{
     allFile(filter:{relativeDirectory:{eq:"menu"}})
     {
-        edges{
-            node{
-                childImageSharp{
-                    fixed(width:600,height:380){
-                        ...GatsbyImageSharpFixed
+        edges {
+            node {
+                childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
                         originalName
                     }
                 }
@@ -53,7 +53,7 @@ const ProductsMenu = ({ className, isHome }) => {
     }
 
     const getImageByName = (name) => {
-        return allFile.edges.find(file => file.node.childImageSharp.fixed.originalName === name)
+        return allFile.edges.find(file => file.node.childImageSharp.fluid.originalName === name)
     }
 
     const changeImageOpacity = (currentImage) => {
@@ -173,31 +173,31 @@ const ProductsMenu = ({ className, isHome }) => {
 
             <div className="products-menu_image">
                 <div id="img-faianta" className="img-gatsby">
-                    <Image fixed={getImageByName('faianta.jpg').node.childImageSharp.fixed} />
+                    <Image fluid={getImageByName('faianta.jpg').node.childImageSharp.fluid} />
                 </div>
                 <div id="img-placi-ceramice" className="img-gatsby">
-                    <Image fixed={getImageByName('placi-ceramice.jpg').node.childImageSharp.fixed} />
+                    <Image fluid={getImageByName('placi-ceramice.jpg').node.childImageSharp.fluid} />
                 </div>
                 <div id="img-piatra-naturala" className="img-gatsby">
-                    <Image fixed={getImageByName('piatra-naturala.jpg').node.childImageSharp.fixed} />
+                    <Image fluid={getImageByName('piatra-naturala.jpg').node.childImageSharp.fluid} />
                 </div>
                 <div id="img-parchet" className="img-gatsby">
-                    <Image fixed={getImageByName('parchet.jpg').node.childImageSharp.fixed} />
+                    <Image fluid={getImageByName('parchet.jpg').node.childImageSharp.fluid} />
                 </div>
                 <div id="img-linkfloor" className="img-gatsby">
-                    <Image fixed={getImageByName('linkfloor.jpg').node.childImageSharp.fixed} />
+                    <Image fluid={getImageByName('linkfloor.jpg').node.childImageSharp.fluid} />
                 </div>
                 <div id="img-obiecte-sanitare" className="img-gatsby">
-                    <Image fixed={getImageByName('obiecte-sanitare.jpg').node.childImageSharp.fixed} />
+                    <Image fluid={getImageByName('obiecte-sanitare.jpg').node.childImageSharp.fluid} />
                 </div>
                 <div id="img-mobilier" className="img-gatsby">
-                    <Image fixed={getImageByName('mobilier.jpg').node.childImageSharp.fixed} />
+                    <Image fluid={getImageByName('mobilier.jpg').node.childImageSharp.fluid} />
                 </div>
                 <div id="img-solutii-tehnice" className="img-gatsby">
-                    <Image fixed={getImageByName('solutii-tehnice.jpg').node.childImageSharp.fixed} />
+                    <Image fluid={getImageByName('solutii-tehnice.jpg').node.childImageSharp.fluid} />
                 </div>
                 <div id="img-gresie" className="img-gatsby">
-                    <Image fixed={getImageByName('gresie.jpg').node.childImageSharp.fixed} />
+                    <Image fluid={getImageByName('gresie.jpg').node.childImageSharp.fluid} />
                 </div>
             </div>
         </div >

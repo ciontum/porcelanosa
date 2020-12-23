@@ -12,7 +12,7 @@ const Navigation = ({ className }) => {
         <IsMenuOpenedContext.Provider value={{ isProductsMenuOpen, setProductsMenuOpen }}>
             <div className='navigation-container'>
                 <div className={`navigation ${className ? className : ''}`}>
-                    <Link to="/">
+                    <Link to="/" className="navigation-container-homelink">
                         <img src={LogoPNG} alt='logo' className="navigation-container-logo" />
                     </Link>
                     <NavigationBurger classNameLinks="main-navigation-mini" />

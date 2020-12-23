@@ -27,6 +27,10 @@
                 }
             }
         }
+
+        @media (max-width: 950px) {
+            width: 25vw;
+        }
     }
 
     &_second {
@@ -60,6 +64,10 @@
                 }
             }
         }
+
+        @media (max-width: 950px) {
+            width: 25vw;
+        }
     }
 
     &_second-empty {
@@ -88,11 +96,26 @@
         min-width: 30vw;
         width: 50vw;
         background-color: black;
+
+        @media(max-width: 950px) {
+            min-width: 40vw;
+            width: 70vw;
+        }
+    }
+
+    @media (max-width: 950px) {
+        width: 90vw;
+        left: 5vw;
+        right: 5vw;
     }
 }
 
 .home {
     margin: 0 auto;
+
+    @media (max-width: 750px) {
+        left: 0px;
+    }
 }
 
 .img-gatsby {

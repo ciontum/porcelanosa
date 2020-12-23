@@ -6,6 +6,7 @@ import Navigation from '../components/Navigation/Navigation'
 import Image from "gatsby-image"
 import "./styles.scss"
 import BackgroundImage from 'gatsby-background-image'
+import SEO from "../components/SEO/SEO"
 import { DismissMenuContext } from "../utils/context"
 
 export default data => {
@@ -33,15 +34,20 @@ export default data => {
     const pageName = data.pageContext.slug.split('/')
     const displayedName = pageName[pageName.length - 1].replace(/-/g, ' ')
     const description = data.data.description.edges[0].node.childMarkdownRemark.html
+    const metaDescription = data.data.description.edges[0].node.childMarkdownRemark.plainText
 
     return {
       images,
       displayedName,
-      description
+      description,
+      metaDescription
     }
   })
 
   return <Layout>
+    <SEO title={state.displayedName.toUpperCase() + " | Maison Design"}
+      description={state.metaDescription}
+      canonical={"http://www.maisondesign.ro" + window.location.pathname} robots="index, follow" />
     <Header image={data.data.discover2.childImageSharp.fluid} className="header-cataloage header-mid">
       <div className="header-cataloage_content">
         <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>

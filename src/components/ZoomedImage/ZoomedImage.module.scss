@@ -5,11 +5,19 @@
     width: 300px;
     z-index: 1;
     margin: .5%;
+
+    @media (min-width: 1920px) {
+        width: 500px;
+    }
+
+    @media (min-width: 3000px) {
+        width: 800px;
+    }
 }
 
 .image_container {
-    width: 300px;
-    z-index: 1;
+    width: 100%;
+    z-index: 1;    
 }
 
 .image_layout_line {
@@ -21,4 +29,8 @@
 .image_layout_title {
     color: black;
     text-align: center;
+
+    @media (min-width: 3000px) {
+        font-size: 35px;
+    }
 }

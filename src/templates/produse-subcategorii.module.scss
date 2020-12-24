@@ -49,6 +49,11 @@
     margin-top: 2%;
     background-color: lightgray;
     z-index: 1;
+
+    @media (min-width: 1920px) {
+        width: 70%;
+        height: 70px;
+    }
 }
 
 .category {
@@ -67,6 +72,10 @@
         cursor: default;
         border-right: 1px solid black;
         z-index: 1;
+    }
+
+    @media (min-width: 1920px) {
+        font-size: 1vw;
     }
 }
 

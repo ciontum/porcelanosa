@@ -17,9 +17,15 @@ export default props => {
 
   const [firstScrollElements] = useState(() => {
     const firstScroll = props.data.firstScroll.edges.map(scroll => {
+      const name = scroll.node.childImageSharp.fluid.originalName
+      let hash = name.replace(/[\s]/g, '-').replace(".png", "").toLowerCase()
+      if (hash === 'pardoseală')
+        hash = 'gresie-și-faianță'
+
       return {
-        image: scroll.node.childImageSharp.fixed,
-        name: scroll.node.childImageSharp.fixed.originalName
+        image: scroll.node.childImageSharp.fluid,
+        name,
+        hash
       }
     })
 
@@ -29,8 +35,8 @@ export default props => {
   const [secondScrollElements] = useState(() => {
     const wNull = props.data.secondScroll.edges.filter(edge => edge.node.childImageSharp)
     const secondScroll = wNull.sort((a, b) => {
-      const replacedA = Number(a.node.childImageSharp.fixed.originalName.replace(/.(jpeg|png|gif)/, ""))
-      const replacedB = Number(b.node.childImageSharp.fixed.originalName.replace(/.(jpeg|png|gif)/, ""))
+      const replacedA = Number(a.node.childImageSharp.fluid.originalName.replace(/.(jpeg|png|gif)/, ""))
+      const replacedB = Number(b.node.childImageSharp.fluid.originalName.replace(/.(jpeg|png|gif)/, ""))
 
       return replacedA - replacedB
     })
@@ -78,8 +84,8 @@ export default props => {
               firstScrollElements.map(scroll => {
                 scroll.name = scroll.name.replace(/.png/, '')
                 return <div className="scroll_content-group" >
-                  <AnchorLink to="/cataloage">
-                    <Image fixed={scroll.image} alt="scroll" />
+                  <AnchorLink to={"/cataloage#" + scroll.hash}>
+                    <Image fluid={scroll.image} alt="scroll" className="scroll_full-content_image" />
                   </AnchorLink>
                   <h3>{scroll.name}</h3>
                   <hr />
@@ -92,7 +98,7 @@ export default props => {
           <div className="scroll_full-content">
             {
               secondScrollElements.map(scroll => {
-                return <Image fixed={scroll.node.childImageSharp && scroll.node.childImageSharp.fixed} alt="scroll" />
+                return <Image fluid={scroll.node.childImageSharp.fluid} alt="scroll" className="scroll_full-content_image" />
               })
             }
           </div>
@@ -125,8 +131,8 @@ export const query = graphql`
     edges{
       node{
         childImageSharp{
-          fixed(width:300,height:380){
-            ...GatsbyImageSharpFixed
+          fluid {
+            ...GatsbyImageSharpFluid
             originalName
           }
         }
@@ -134,12 +140,12 @@ export const query = graphql`
     }
   }
 
-  secondScroll:allFile(filter:{relativeDirectory:{eq:"scroll2"}}){
-    edges{
-      node{
-        childImageSharp{
-          fixed(width:317,height:317){
-            ...GatsbyImageSharpFixed
+  secondScroll:allFile(filter:{relativeDirectory:{eq:"scroll2"}}) {
+    edges {
+      node {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
             originalName
           }
         }

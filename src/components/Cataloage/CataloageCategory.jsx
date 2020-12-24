@@ -2,16 +2,16 @@ import React from 'react'
 import Image from 'gatsby-image'
 import { Link } from "gatsby"
 
-const CataloageCategory = ({ name, cataloage }) => {
+const CataloageCategory = ({ name, cataloage, id }) => {
     return (
-        <div className="cataloage-category">
+        <div className="cataloage-category" id={id}>
             <h2>{name}</h2>
             <hr />
 
             <div className="cataloage-category_content">
                 {
                     cataloage.map((catalog, index) => {
-                        return <div className="cataloage-category_content-group">
+                        return <div className="cataloage-category_content-group" key={index}>
                             <Link to={"/cataloage-open#" + [name.toLowerCase().replace(/[\s]/g, '-'), catalog.primary.replace(/[\s]/g, '-').toLowerCase()].join('_')}
                                 onClick={() => window.scrollTo(0, 0)}>
                                 <Image fixed={catalog.image.childImageSharp.fixed} alt='catalog' />

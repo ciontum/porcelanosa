@@ -124,9 +124,9 @@ const CataloageContent = React.forwardRef(({ }, ref) => {
   return (
     <div ref={ref} className="cataloage-content">
       <CataloageCategory cataloage={cataloageArr.cataloageBaie} name="Baie" id="baie" />
-      <CataloageCategory cataloage={cataloageArr.cataloageBucatarie} name="Bucatarie" id="bucătărie" />
+      <CataloageCategory cataloage={cataloageArr.cataloageBucatarie} name="Bucatarie" id="bucatarie" />
       <CataloageCategory cataloage={cataloageArr.cataloageMobila} name="Mobila" id="mobila" />
-      <CataloageCategory cataloage={cataloageArr.cataloagePardoseli} name="Pardoseli, Gresie si Faianta" id="gresie-și-faianță" />
+      <CataloageCategory cataloage={cataloageArr.cataloagePardoseli} name="Pardoseli, Gresie si Faianta" id="gresie-si-faianta" />
       <CataloageCategory cataloage={cataloageArr.cataloageTehnice} name="Solutii tehnice" id="solutii-tehnice" />
     </div>
   )

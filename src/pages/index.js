@@ -19,8 +19,8 @@ export default props => {
     const firstScroll = props.data.firstScroll.edges.map(scroll => {
       const name = scroll.node.childImageSharp.fluid.originalName
       let hash = name.replace(/[\s]/g, '-').replace(".png", "").toLowerCase()
-      if (hash === 'pardoseală')
-        hash = 'gresie-și-faianță'
+      if (hash === 'pardoseala')
+        hash = 'gresie-si-faianta'
 
       return {
         image: scroll.node.childImageSharp.fluid,
@@ -116,10 +116,10 @@ export default props => {
 export const query = graphql`
 {
   homeHeaders:allFile(filter:{relativeDirectory:{eq:"hero"}}){
-    edges{
-      node{
-        childImageSharp{
-          fluid(maxWidth:1600){
+    edges {
+      node {
+        childImageSharp {
+          fluid(maxWidth:1600) {
             ...GatsbyImageSharpFluid
           }
         }

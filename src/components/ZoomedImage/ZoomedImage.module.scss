@@ -1,0 +1,36 @@
+.card_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 300px;
+    z-index: 1;
+    margin: .5%;
+
+    @media (min-width: 1920px) {
+        width: 500px;
+    }
+
+    @media (min-width: 3000px) {
+        width: 800px;
+    }
+}
+
+.image_container {
+    width: 100%;
+    z-index: 1;    
+}
+
+.image_layout_line {
+    margin: 10px auto;
+    width: 20%;
+    border-bottom: 3px solid gray;
+}
+
+.image_layout_title {
+    color: black;
+    text-align: center;
+
+    @media (min-width: 3000px) {
+        font-size: 35px;
+    }
+}

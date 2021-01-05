@@ -1,37 +1,42 @@
 import React, { useRef, useState, useEffect } from "react"
-import Layout from "../components/Layout"
-import Header from "../components/Header"
+import Layout from "../components/Layout/Layout"
 import { Helmet } from "react-helmet"
-
-import HomeNavigation from "../components/Home/HomeNavigation"
 import Scroll from "../components/Home/Scroll"
 import Image from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
-import Navigation from "../components/Navigation"
+import Navigation from "../components/Navigation/Navigation"
 import { Link } from "gatsby"
 import { AnchorLink } from "gatsby-plugin-anchor-links";
-import { HashLink } from 'react-router-hash-link';
-import Fade from "../components/Fade"
+import Fade from "../components/Navigation/Home/Fade"
+import { DismissMenuContext } from "../utils/context"
 
 export default props => {
-
+  const [showSecondNav, setShowSecondNav] = useState(false)
   const [scrollTop, setScrollTop] = useState(0);
   const scrollRef = useRef()
-  const [firstScrollElements, f] = useState(() => {
+
+  const [firstScrollElements] = useState(() => {
     const firstScroll = props.data.firstScroll.edges.map(scroll => {
+      const name = scroll.node.childImageSharp.fluid.originalName
+      let hash = name.replace(/[\s]/g, '-').replace(".png", "").toLowerCase()
+      if (hash === 'pardoseala')
+        hash = 'gresie-si-faianta'
+
       return {
-        image: scroll.node.childImageSharp.fixed,
-        name: scroll.node.childImageSharp.fixed.originalName
+        image: scroll.node.childImageSharp.fluid,
+        name,
+        hash
       }
     })
 
     return firstScroll
   })
-  const [secondScrollElements, f2] = useState(() => {
+
+  const [secondScrollElements] = useState(() => {
     const wNull = props.data.secondScroll.edges.filter(edge => edge.node.childImageSharp)
     const secondScroll = wNull.sort((a, b) => {
-      const replacedA = Number(a.node.childImageSharp.fixed.originalName.replace(/.(jpeg|png|gif)/, ""))
-      const replacedB = Number(b.node.childImageSharp.fixed.originalName.replace(/.(jpeg|png|gif)/, ""))
+      const replacedA = Number(a.node.childImageSharp.fluid.originalName.replace(/.(jpeg|png|gif)/, ""))
+      const replacedB = Number(b.node.childImageSharp.fluid.originalName.replace(/.(jpeg|png|gif)/, ""))
 
       return replacedA - replacedB
     })
@@ -40,9 +45,14 @@ export default props => {
   })
 
   useEffect(() => {
+    if (scrollTop >= 200) {
+      setShowSecondNav(true)
+    } else {
+      setShowSecondNav(false)
+    }
+
     const onScroll = e => {
       setScrollTop(e.target.documentElement.scrollTop);
-      console.log(scrollRef.current.offsetTop, scrollTop)
     };
     window.addEventListener("scroll", onScroll);
 
@@ -51,53 +61,54 @@ export default props => {
 
   return (
     <>
-    <Helmet>
-      <meta charSet="utf-8" />
-      <title>Maison Design</title>
-    </Helmet>
-    <Layout>
-
-      {
-        scrollRef.current && (scrollTop >= 740) &&
-        <Navigation />
-      }
-      <div className="header-container">
-        <Fade></Fade>
-      </div>
-
-      <Scroll title="Descoperă" subTitle="Miile de produse disponibile" scrollRef={scrollRef} >
-        <div className="scroll_content">
-          {
-            firstScrollElements.map(scroll => {
-
-              scroll.name = scroll.name.replace(/.png/, '')
-              console.log(scroll.name);
-              return <div className="scroll_content-group" >
-                <AnchorLink to="/cataloage">
-                  <Image fixed={scroll.image} alt="scroll" />
-                </AnchorLink>
-                <h3>{scroll.name}</h3>
-                <hr />
-              </div>
-            })
-          }
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Maison Design</title>
+      </Helmet>
+      <Layout>
+        <div className="header-container">
+          <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>
+            <Fade />
+          </DismissMenuContext.Provider>
         </div>
-      </Scroll>
-      <Scroll title="Fii inspirat" subTitle="Explorează produsele,designul și măiestria Porcelanosa" className="scroll_background">
-        <div className="scroll_full-content">
-          {
-            secondScrollElements.map(scroll => {
-              return <Image fixed={scroll.node.childImageSharp && scroll.node.childImageSharp.fixed} alt="scroll" />
-            })
-          }
-        </div>
-      </Scroll>
-      <BackgroundImage fluid={props.data.discover.childImageSharp.fluid} className="discover-image">
-        <div className="header-filter"></div>
-        <p>VREI SĂ DESCOPERI MAI <span>MULTE ?</span></p>
-        <Link to="/cataloage">CATALOAGE</Link>
-      </BackgroundImage>
-    </Layout>
+        {
+          scrollRef.current && (scrollTop >= 740) && <div style={{ position: "absolute", top: "0px" }}>
+            <DismissMenuContext.Provider value={{ showSecondNav: showSecondNav, setShowSecondNav }}>
+              <Navigation />
+            </DismissMenuContext.Provider>
+          </div>
+        }
+        <Scroll title="Descoperă" subTitle="Miile de produse disponibile" scrollRef={scrollRef} >
+          <div className="scroll_content">
+            {
+              firstScrollElements.map(scroll => {
+                scroll.name = scroll.name.replace(/.png/, '')
+                return <div className="scroll_content-group" >
+                  <AnchorLink to={"/cataloage#" + scroll.hash}>
+                    <Image fluid={scroll.image} alt="scroll" className="scroll_full-content_image" />
+                  </AnchorLink>
+                  <h3>{scroll.name}</h3>
+                  <hr />
+                </div>
+              })
+            }
+          </div>
+        </Scroll>
+        <Scroll title="Fii inspirat" subTitle="Explorează produsele,designul și măiestria Porcelanosa" className="scroll_background">
+          <div className="scroll_full-content">
+            {
+              secondScrollElements.map(scroll => {
+                return <Image fluid={scroll.node.childImageSharp.fluid} alt="scroll" className="scroll_full-content_image" />
+              })
+            }
+          </div>
+        </Scroll>
+        <BackgroundImage fluid={props.data.discover.childImageSharp.fluid} className="discover-image">
+          <div className="header-filter"></div>
+          <p>VREI SĂ DESCOPERI MAI <span>MULTE ?</span></p>
+          <Link to="/cataloage">CATALOAGE</Link>
+        </BackgroundImage>
+      </Layout>
     </>
   )
 }
@@ -105,10 +116,10 @@ export default props => {
 export const query = graphql`
 {
   homeHeaders:allFile(filter:{relativeDirectory:{eq:"hero"}}){
-    edges{
-      node{
-        childImageSharp{
-          fluid(maxWidth:1600){
+    edges {
+      node {
+        childImageSharp {
+          fluid(maxWidth:1600) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -120,8 +131,8 @@ export const query = graphql`
     edges{
       node{
         childImageSharp{
-          fixed(width:300,height:380){
-            ...GatsbyImageSharpFixed
+          fluid {
+            ...GatsbyImageSharpFluid
             originalName
           }
         }
@@ -129,12 +140,12 @@ export const query = graphql`
     }
   }
 
-  secondScroll:allFile(filter:{relativeDirectory:{eq:"scroll2"}}){
-    edges{
-      node{
-        childImageSharp{
-          fixed(width:317,height:317){
-            ...GatsbyImageSharpFixed
+  secondScroll:allFile(filter:{relativeDirectory:{eq:"scroll2"}}) {
+    edges {
+      node {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
             originalName
           }
         }
@@ -148,7 +159,5 @@ export const query = graphql`
       }
     }
   }
-
 }
-
 `

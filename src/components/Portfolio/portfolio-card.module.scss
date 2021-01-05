@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    width: 80%;
+    margin: 5% auto;
+}
+
+.card_layout {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_title {
+    color: black;
+}
+
+.link{
+    text-decoration: none;
+    margin: 20px;
+    z-index: 0;
+}
+
+.line {
+    margin: 10px auto;
+    width: 20%;
+    border-bottom: 3px solid gray;
+}

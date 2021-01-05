@@ -1,117 +1,117 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { graphql, Link } from "gatsby"
-import Layout from '../components/Layout'
-import Header from '../components/Header'
-import Navigation from '../components/Navigation'
-import Image from "gatsby-image"
-import CataloageCategory from "../components/Cataloage/CataloageCategory"
+import Layout from '../components/Layout/Layout'
+import Header from '../components/Header/Header'
+import Navigation from '../components/Navigation/Navigation'
 import "./styles.scss"
 import BackgroundImage from 'gatsby-background-image'
+import ZoomedImage from "../components/ZoomedImage/ZoomedImage"
+import SEO from "../components/SEO/SEO"
+import { DismissMenuContext } from "../utils/context"
+import 'react-medium-image-zoom/dist/styles.css'
 
 export default data => {
-  const formatCataloageArr = (cataloageArr) => {
-    const pdfs = cataloageArr.filter(catalog => catalog.node.extension === 'pdf')
-    const images = cataloageArr.filter(catalog => catalog.node.extension === 'png')
+  const [scrollTop, setScrollTop] = useState(0);
+  const [showSecondNav, setShowSecondNav] = useState(false)
+  const scrollRef = useRef()
 
-    const cataloage = pdfs.map(pdf => {
-      const myImage = images.filter(image => image.node.name === pdf.node.name)[0]
+  useEffect(() => {
+    if (scrollTop >= 200) {
+      setShowSecondNav(true)
+    } else {
+      setShowSecondNav(false)
+    }
 
-      return {
-        image: myImage ? myImage.node : { childImageSharp: { fixed: null } },
-        pdf: myImage ? pdf.node.publicURL : null,
-        primary: myImage ? pdf.node.name : null
-      }
-    })
+    const onScroll = e => {
+      setScrollTop(e.target.documentElement.scrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
 
-    return cataloage
-  }
-  const [cataloageArr, setCataloageArr] = useState(() => {
-    const cataloage = formatCataloageArr(data.data.cataloage.edges)
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollTop]);
+
+  const [state] = useState(() => {
+    const images = data.data.images.edges
+    const pageName = data.pageContext.slug.split('/')
+    const displayedName = pageName[pageName.length - 1].replace(/-/g, ' ')
+    const metaCanonical = "http://www.maisondesign.ro/" + data.pageContext.slug
 
     return {
-      cataloage,
+      images,
+      displayedName,
+      metaCanonical
     }
   })
+
   return <Layout>
+    <SEO title={state.displayedName.toUpperCase() + " | Maison Design"}
+      description="Alege cele mai bune produse marca Porcelanosa"
+      canonical={state.metaCanonical} robots="index, follow" />
     <Header image={data.data.hero.edges[0].node.childImageSharp.fluid} className="header-cataloage header-mid">
       <div className="header-cataloage_content">
-        <Navigation className="navigation-cataloage" />
+        <DismissMenuContext.Provider value={{ showSecondNav: !showSecondNav, setShowSecondNav }}>
+          <Navigation className="navigation-cataloage" />
+        </DismissMenuContext.Provider>
         <div className="header-filter" id="header-filter"></div>
-        <p>{data.pageContext.slug.replace(/\//g, ' ')}</p>
+        <p>{state.displayedName}</p>
       </div>
     </Header>
-    <div className="produse-images">
-      {
-        data.data.images.edges.map((image, i) => {
-          return <span className={`produse-images-${i}`}><Image fluid={image.node.childImageSharp.fluid} /></span>
-        })
-      }
-    </div>
     {
-      cataloageArr.cataloage && cataloageArr.cataloage.length &&
-      <div className="produse-cataloage">
-        <CataloageCategory cataloage={cataloageArr.cataloage} name="DESCOPERĂ MAI MULTE ÎN CATALOAGE" />
+      scrollRef.current && (scrollTop >= 200) && <div style={{ position: "absolute", top: "0px" }}>
+        <DismissMenuContext.Provider value={{ showSecondNav, setShowSecondNav }}>
+          <Navigation />
+        </DismissMenuContext.Provider>
       </div>
     }
+    <div className="produse-images" ref={scrollRef}>
+      {
+        state.images.map(image => <ZoomedImage image={image.node.childImageSharp.fluid} text={image.node.name} />)
+      }
+    </div>
     <BackgroundImage fluid={data.data.discover2.childImageSharp.fluid} className="discover-image">
       <div className="header-filter"></div>
       <p>Ai un plan? Contactează-ne</p>
       <Link to="/contact">Contact</Link>
     </BackgroundImage>
-
-  </Layout>
+  </Layout >
 }
 
 export const query = graphql`
-query ($slug:String!,$hero:String,$cataloage:String,$images:String){
-    names:allFile(filter:{relativeDirectory:{eq:$slug}}){
-    edges{
-      node{
+query ($slug:String!,$hero:String,$images:String){
+  names:allFile(filter:{relativeDirectory:{eq:$slug}}) {
+    edges {
+      node {
         name
       }
     }
   }
-  discover2:file(relativePath:{eq:"discover2.png"}){
-    childImageSharp{
-      fluid(maxWidth:1600,maxHeight:750){
+  discover2:file(relativePath:{eq:"discover2.png"}) {
+    childImageSharp {
+      fluid(maxWidth:1600,maxHeight:750) {
         ...GatsbyImageSharpFluid
       }
     }
   }
-    hero:allFile(filter:{relativeDirectory:{eq:$hero}}){
-      edges{
-        node{
-          childImageSharp{
-            fluid(maxWidth:1600){
-              ...GatsbyImageSharpFluid
-            }
+  hero:allFile(filter:{relativeDirectory:{eq:$hero}}) {
+    edges {
+      node {
+        childImageSharp {
+          fluid(quality: 100, jpegQuality: 100, pngQuality: 100) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
     }
-   images:allFile(filter:{relativeDirectory:{eq:$images}}){
-     edges{
-       node{
-         childImageSharp{
-           fluid(maxWidth:300){
-             ...GatsbyImageSharpFluid
-           }
-         }
-       }
-     }
-   }
-
-   cataloage:allFile(filter:{relativeDirectory:{eq:$cataloage}}){
-    edges{
-      node{
-          extension
-          publicURL
-          name
-          childImageSharp{
-          fixed(width:200,height:300){
-            ...GatsbyImageSharpFixed
+  }
+  images: allFile(filter: {relativeDirectory: {eq: $images}}, sort: {order: ASC, fields: childImageSharp___resolutions___height}) {
+    edges {
+      node {
+        childImageSharp {
+          fluid(quality: 100, jpegQuality: 100, pngQuality: 100) {
+            ...GatsbyImageSharpFluid
           }
         }
+        name
       }
     }
   }

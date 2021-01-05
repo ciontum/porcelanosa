@@ -41,7 +41,7 @@ const ProductsMenu = ({ className, isHome }) => {
             return ["LEMN NATURAL", "LAMINAT"]
 
         if (mainActive === 'obiecte-sanitare')
-            return ["BATERII", "LAVOARE", "CĂZI", "COLOANE DUȘ", "RAIN SHOWER", "STICLE DUȘ", "PLATOURI DUȘ", "RADIATOARE"]
+            return ["BATERII", "LAVOARE", "CĂZI", "COLOANE DUȘ", "RAIN SHOWER", "STICLE DUȘ", "PLATOURI DUȘ", "VASE WC", "RADIATOARE"]
 
         if (mainActive === 'mobilier')
             return ["BAIE", "BUCĂTĂRIE"]

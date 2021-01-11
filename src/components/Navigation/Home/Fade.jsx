@@ -48,7 +48,6 @@ const Fade = () => {
             </div>
           ))
         }
-
       </Slider>
 
       <div className="header-content">

@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useRef, useEffect } from "react"
 import "./navigation-links.scss"
 import { Link } from "gatsby"
 import ProductsMenu from "./ProductsMenu"
@@ -6,6 +6,28 @@ import { IsMenuOpenedContext } from "../../../utils/context"
 
 const NavigationLinks = ({ className, classNameLinks }) => {
     const { isProductsMenuOpen, setProductsMenuOpen } = useContext(IsMenuOpenedContext)
+
+    const modalRef = useRef(null);
+    const buttonRef = useRef(null);
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (isProductsMenuOpen) {
+                if (!modalRef.current.contains(event.target)) {
+                    setProductsMenuOpen(false)
+                }
+            } else {
+                if (buttonRef.current && buttonRef.current.contains(event.target)) {
+                    setProductsMenuOpen(!isProductsMenuOpen)
+                }
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [modalRef, buttonRef, isProductsMenuOpen]);
 
     return (
         <>
@@ -15,7 +37,7 @@ const NavigationLinks = ({ className, classNameLinks }) => {
                         ACASĂ
                     </Link>
                 </li>
-                <li onClick={() => setProductsMenuOpen(!isProductsMenuOpen)} >
+                <li ref={buttonRef} >
                     <a className={isProductsMenuOpen ? 'navigation-links-active' : ''}>
                         PRODUSE
                     </a>
@@ -42,7 +64,7 @@ const NavigationLinks = ({ className, classNameLinks }) => {
                 </li>
             </ul>
 
-            {isProductsMenuOpen ? <ProductsMenu className={className} isHome={classNameLinks.includes('home')} /> : null}
+            {isProductsMenuOpen ? <ProductsMenu reference={modalRef} className={className} isHome={classNameLinks.includes('home')} /> : null}
         </>
     )
 }

@@ -20,7 +20,7 @@ const images = graphql`query{
 }
 `
 
-const ProductsMenu = ({ className, isHome }) => {
+const ProductsMenu = ({ reference, className, isHome }) => {
 
     const [mainActive, setMainActive] = useState('gresie')
     const [secondaryList, setSecondaryList] = useState(null)
@@ -104,7 +104,7 @@ const ProductsMenu = ({ className, isHome }) => {
     }
 
     return (
-        <div className={`products-menu ${className ? className : (isHome ? 'home' : '')}`}>
+        <div ref={reference} className={`products-menu ${className ? className : (isHome ? 'home' : '')}`}>
             <div className="products-menu_first">
                 <ul>
                     <li className={mainActive === "gresie" ? 'products-menu_active' : ''} onMouseEnter={onHoverBegin}>

@@ -4,7 +4,7 @@
     justify-content: flex-start;
     width: 300px;
     z-index: 1;
-    margin: .5%;
+    margin: 0.5%;
 
     @media (min-width: 1920px) {
         width: 500px;
@@ -17,7 +17,11 @@
 
 .image_container {
     width: 100%;
-    z-index: 1;    
+    z-index: 1;
+}
+
+.image {
+    max-height: 45vh;
 }
 
 .image_layout_line {

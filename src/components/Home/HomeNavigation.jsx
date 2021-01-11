@@ -24,7 +24,7 @@ const HomeNavigation = () => {
 
   return (
     <div className="home-navigation">
-      <Image fluid={navigationLogo.childImageSharp.fluid} className="logo" />
+      <Image fluid={navigationLogo.childImageSharp.fluid} className="logo" alt="maisondesign-logo" />
       <IsMenuOpenedContext.Provider value={{ isProductsMenuOpen, setProductsMenuOpen }}>
         <Burger classNameLinks={'navigation-links-home'} />
       </IsMenuOpenedContext.Provider>

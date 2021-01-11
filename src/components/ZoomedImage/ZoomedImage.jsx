@@ -8,7 +8,7 @@ const ZoomedImage = ({ image, text }) => {
         <div className={styles.card_container}>
             <Zoom>
                 <span className={styles.image_container}>
-                    <Image fluid={image} />
+                    <Image fluid={image} className={styles.image} />
                 </span>
             </Zoom>
             {

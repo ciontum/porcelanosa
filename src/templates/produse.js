@@ -107,7 +107,7 @@ query ($slug:String!,$hero:String,$images:String){
     edges {
       node {
         childImageSharp {
-          fluid(quality: 100, jpegQuality: 100, pngQuality: 100) {
+          fluid(maxHeight: 400, quality: 100, jpegQuality: 100, pngQuality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

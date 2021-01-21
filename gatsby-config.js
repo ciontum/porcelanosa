@@ -31,5 +31,6 @@ module.exports = {
         plugins: [],
       },
     },
-    `gatsby-transformer-remark-plaintext`],
+    `gatsby-transformer-remark-plaintext`,
+    `gatsby-plugin-react-helmet`],
 }

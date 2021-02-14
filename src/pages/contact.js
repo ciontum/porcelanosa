@@ -80,12 +80,7 @@ export default props => {
                                 <h3>MANEA BENIAMIN</h3>
                                 <span>ADMINISTRATOR</span>
                                 <p>+40 743 507 811</p>
-                            </div>
-                            <div className="contact-left_personal-group">
-                                <ManSVG />
-                                <h3>TOMA EMANUEL</h3>
-                                <span>ADMINISTRATOR</span>
-                                <p>+40 735 859 686</p>
+                                <p>+40 259 410 170</p>
                             </div>
                         </div>
                     </div>

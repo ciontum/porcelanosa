@@ -73,7 +73,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="footer_bottom">
-                <p>2020 Maison Design SRL. Toate drepturile rezervate</p>
+                <p>{new Date().getFullYear()} Maison Design SRL. Toate drepturile rezervate</p>
                 <p>Designed by Pantech <span style={{ color: "red" }}>.</span></p>
             </div>
         </footer>
